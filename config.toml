@@ -1,6 +1,6 @@
 baseurl = "https://gliptak.github.io/"
 title = ""
-copyright = "&copy; 2016 Gábor Lipták"
+copyright = "&copy; 2016-2017 Gábor Lipták"
 languageCode = "en-us"
 # git clone git@github.com:gcushen/hugo-academic.git
 theme = "hugo-academic"
@@ -61,11 +61,6 @@ googleAnalytics = ""
   #   Full list: https://jpswalsh.github.io/academicons/
 
   [[params.social]]
-    icon = "envelope"
-    icon_pack = "fa"
-    link = "mailto:test@example.org"
-
-  [[params.social]]
     icon = "linkedin"
     icon_pack = "fa"
     link = "https://www.linkedin.com/in/gaborliptak"
@@ -73,12 +68,12 @@ googleAnalytics = ""
   [[params.social]]
     icon = "github"
     icon_pack = "fa"
-    link = "//github.com/gliptak"
+    link = "http://github.com/gliptak"
 
   [[params.social]]
-    icon = "twitter"
+    icon = "stack-overflow"
     icon_pack = "fa"
-    link = "//twitter.com/gliptak_"
+    link = "https://stackoverflow.com/users/304690/gliptak"
 
 
 # Navigation Links
