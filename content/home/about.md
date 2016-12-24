@@ -32,4 +32,4 @@ weight = 0
 
 # Biography
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate. Etiam iaculis libero hendrerit ipsum tempus accumsan. Praesent ex justo, aliquam bibendum nulla in, vehicula rhoncus massa. Fusce gravida mattis tellus vel commodo. Etiam molestie non ligula ac venenatis. Integer semper diam at fringilla dapibus. Nunc tincidunt lacinia nisi, sed blandit purus fermentum vel. Morbi tempus dolor dolor. Phasellus scelerisque est elit, et porttitor mauris faucibus sit amet. Phasellus sollicitudin bibendum sem eu blandit. Curabitur congue felis eu velit faucibus porta. Curabitur a pharetra diam.
+Hands-on software architect working as an application architect, integration architect, and enterprise architect in various industries. Experienced in Microservices Architectures, Service-Based Architectures, and Service-Oriented Architectures. Conference speaker and trainer. Keeping coding skills sharp as an open source enthusiast.
