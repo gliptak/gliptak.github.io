@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.18-DEV" />
+  <meta name="author" content="Gábor Lipták">
+  
+
+  <link rel="stylesheet" href="/css/highlight.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/academicons.min.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700|Merriweather|Roboto+Mono">
+  <link rel="stylesheet" href="/css/hugo-academic.css">
+  
+
+  <link rel="alternate" href="https://gliptak.github.io/index.xml" type="application/rss+xml" title="">
+  <link rel="feed" href="https://gliptak.github.io/index.xml" type="application/rss+xml" title="">
+
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+
+  <link rel="canonical" href="https://gliptak.github.io/post/simpledb-example/">
+
+  
+
+  <title>AWS SimpleDB Boto3 Example | </title>
+
+</head>
+<body id="top">
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"></a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse" id="#navbar-collapse-1">
+
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li class="nav-item"><a href="/#top">Home</a></li>
+        
+        <li class="nav-item"><a href="/#posts">Posts</a></li>
+        
+        <li class="nav-item"><a href="/#projects">Projects</a></li>
+        
+        <li class="nav-item"><a href="/#contact">Contact</a></li>
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+    
+
+    <h1 itemprop="name">AWS SimpleDB Boto3 Example</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2017-02-15 17:51:55 -0500 EST" itemprop="datePublished">
+      2017-02-15
+    </time>
+  </span>
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/aws">aws</a
+    >, 
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/boto3">boto3</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fgliptak.github.io%2fpost%2fsimpledb-example%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=AWS%20SimpleDB%20Boto3%20Example&amp;url=https%3a%2f%2fgliptak.github.io%2fpost%2fsimpledb-example%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fgliptak.github.io%2fpost%2fsimpledb-example%2f&amp;title=AWS%20SimpleDB%20Boto3%20Example"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fgliptak.github.io%2fpost%2fsimpledb-example%2f&amp;title=AWS%20SimpleDB%20Boto3%20Example"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=AWS%20SimpleDB%20Boto3%20Example&amp;body=https%3a%2f%2fgliptak.github.io%2fpost%2fsimpledb-example%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <p>When looking into AWS SimpleDB, a quick search didn&rsquo;t return any short Python Boto3 examples. So I decided to post one.
+(As with any services you to subscribe to, running this code below might cost you money &hellip;)</p>
+
+<pre><code>from __future__ import print_function
+import boto3
+
+
+def quote(string):
+    return string.replace(&quot;'&quot;, &quot;''&quot;).replace('&quot;', '&quot;&quot;').replace('`', '``')
+
+
+def put_attributes(sdb, domain, id, color):
+    response = sdb.put_attributes(
+        DomainName=domain,
+        ItemName=id,
+        Attributes=[
+            {
+                'Name': 'color',
+                'Value': color,
+                'Replace': True
+            },
+        ],
+    )
+    print(response)
+
+
+if __name__ == &quot;__main__&quot;:
+    domain = &quot;TEST_DOMAIN&quot;
+    sdb = boto3.client('sdb')
+    response = sdb.create_domain(
+        DomainName=domain
+    )
+    print(response)
+    response = sdb.list_domains(
+    )
+    print(&quot;Current domains: %s&quot; % response['DomainNames'])
+    put_attributes(sdb, domain, &quot;id1&quot;, &quot;red&quot;)
+    put_attributes(sdb, domain, &quot;id2&quot;, &quot;redblue&quot;)
+    put_attributes(sdb, domain, &quot;id3&quot;, &quot;blue&quot;)
+    response = sdb.select(
+        SelectExpression='select * from %s where color like &quot;%%%s%%&quot;' % (domain, quote('blue')),
+    )
+    print(response)
+    response = sdb.delete_domain(
+        DomainName=domain
+    )
+    print(response)
+</code></pre>
+
+    </div>
+
+  </article>
+
+  <nav>
+  <ul class="pager">
+    
+
+    
+  </ul>
+</nav>
+
+  
+<section id="comments">
+  <div id="disqus_thread">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'https-gliptak-github-io';
+    var disqus_identifier = 'https:\/\/gliptak.github.io\/post\/simpledb-example\/';
+    var disqus_title = 'AWS SimpleDB Boto3 Example';
+    var disqus_url = 'https:\/\/gliptak.github.io\/post\/simpledb-example\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</section>
+
+
+
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2016-2017 Gábor Lipták &middot; 
+
+      Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
+      theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
+    <script src="/js/jquery-1.12.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+  </body>
+</html>
+

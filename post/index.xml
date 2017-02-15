@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title></title>
-    <link>https://gliptak.github.io/index.xml</link>
-    <description>Recent content on </description>
+    <title>Posts on </title>
+    <link>https://gliptak.github.io/post/index.xml</link>
+    <description>Recent content in Posts on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016-2017 Gábor Lipták</copyright>
     <lastBuildDate>Wed, 15 Feb 2017 17:51:55 -0500</lastBuildDate>
-    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>AWS SimpleDB Boto3 Example</title>
@@ -65,24 +65,6 @@ if __name__ == &amp;quot;__main__&amp;quot;:
     print(response)
 &lt;/code&gt;&lt;/pre&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>JAllele</title>
-      <link>https://gliptak.github.io/project/jallele/</link>
-      <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://gliptak.github.io/project/jallele/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Go - A Perspective</title>
-      <link>https://gliptak.github.io/project/go-a-perspective/</link>
-      <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://gliptak.github.io/project/go-a-perspective/</guid>
-      <description></description>
     </item>
     
   </channel>

@@ -18,17 +18,17 @@
   <link rel="stylesheet" href="/css/hugo-academic.css">
   
 
-  <link rel="alternate" href="https://gliptak.github.io/404.html/index.xml" type="application/rss+xml" title="">
-  <link rel="feed" href="https://gliptak.github.io/404.html/index.xml" type="application/rss+xml" title="">
+  <link rel="alternate" href="https://gliptak.github.io/post/index.xml" type="application/rss+xml" title="">
+  <link rel="feed" href="https://gliptak.github.io/post/index.xml" type="application/rss+xml" title="">
 
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
 
-  <link rel="canonical" href="https://gliptak.github.io/404/">
+  <link rel="canonical" href="https://gliptak.github.io/post/">
 
   
 
-  <title>404 Page not found | </title>
+  <title>Posts | </title>
 
 </head>
 <body id="top">
@@ -70,18 +70,54 @@
 
 <div class="container">
 
-  <h1>Page not found</h1>
-  <p>Maybe you were looking for one of these?</p>
+  <h1>Posts</h1>
 
-  <h2>Recent Posts</h2>
   
-  <ul>
-    <li><a href="https://gliptak.github.io/post/simpledb-example/">AWS SimpleDB Boto3 Example</a></li>
-  </ul>
+  
+  <div>
+    
+    <h2><a href="https://gliptak.github.io/post/simpledb-example/">AWS SimpleDB Boto3 Example</a></h2>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2017-02-15 17:51:55 -0500 EST" itemprop="datePublished">
+      2017-02-15
+    </time>
+  </span>
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/aws">aws</a
+    >, 
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/boto3">boto3</a
+    >
+    
+  </span>
+  
   
 
-  <h2>Recent Publications</h2>
   
+
+</div>
+
+    <div class="article-style"><p>
+      
+      When looking into AWS SimpleDB, a quick search didn&rsquo;t return any short Python Boto3 examples. So I decided to post one. (As with any services you to subscribe to, running this code below might cost you money &hellip;)
+from <strong>future</strong> import print_function import boto3 def quote(string): return string.replace(&quot;&lsquo;&quot;, &quot;&ldquo;&quot;).replace(&rsquo;&quot;&rsquo;, &lsquo;&quot;&quot;&rsquo;).replace(&rsquo;<code>', '</code>`&lsquo;) def put_attributes(sdb, domain, id, color): response = sdb.put_attributes( DomainName=domain, ItemName=id, Attributes=[ { &lsquo;Name&rsquo;: &lsquo;color&rsquo;, &lsquo;Value&rsquo;: color, &lsquo;Replace&rsquo;: True }, ], ) print(response) if <strong>name</strong> == &quot;<strong>main</strong>&quot;: domain = &quot;TEST_DOMAIN&quot; sdb = boto3.
+      
+    </p></div>
+  </div>
+  
+
+  
+
 
 </div>
 <footer class="site-footer">

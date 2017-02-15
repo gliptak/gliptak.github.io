@@ -207,6 +207,81 @@
 
 
 
+<section id="posts" class="home-section">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs-12 col-md-4 section-heading">
+        <h1>Recent Posts</h1>
+        
+        
+      </div>
+      <div class="col-xs-12 col-md-8">
+        
+
+        
+          
+            
+            
+
+
+<div class="article-list-item" itemscope itemprop="blogPost">
+  
+  <h3 class="article-title" itemprop="name">
+    <a href="https://gliptak.github.io/post/simpledb-example/" itemprop="url">AWS SimpleDB Boto3 Example</a>
+  </h3>
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2017-02-15 17:51:55 -0500 EST" itemprop="datePublished">
+      2017-02-15
+    </time>
+  </span>
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/aws">aws</a
+    >, 
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/boto3">boto3</a
+    >
+    
+  </span>
+  
+  
+
+  
+
+</div>
+
+  <div class="article-style" itemprop="articleBody">
+    
+    When looking into AWS SimpleDB, a quick search didn&rsquo;t return any short Python Boto3 examples. So I decided to post one. (As with any services you to subscribe to, running this code below might cost you money &hellip;)
+from __future__ import print_function import boto3 def quote(string): return string.replace(&quot;'&quot;, &quot;''&quot;).replace('&quot;', '&quot;&quot;').replace('`', '``') def put_attributes(sdb, domain, id, color): response = sdb.put_attributes( DomainName=domain, ItemName=id, Attributes=[ { 'Name': 'color', 'Value': color, 'Replace': True }, ], ) print(response) if __name__ == &quot;__main__&quot;: domain = &quot;TEST_DOMAIN&quot; sdb = boto3.
+    
+  </div>
+  <p class="read-more">
+    <a href="https://gliptak.github.io/post/simpledb-example/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+          
+        
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
   
   
