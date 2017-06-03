@@ -24,11 +24,11 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
 
-  <link rel="canonical" href="https://gliptak.github.io/post/simpledb-example/">
+  <link rel="canonical" href="https://gliptak.github.io/post/python-requests-siteminder/">
 
   
 
-  <title>AWS SimpleDB Boto3 Example | </title>
+  <title>Login into a CA SSO/Siteminder protected site with Python Requests | </title>
 
 </head>
 <body id="top">
@@ -74,15 +74,15 @@
 
     
 
-    <h1 itemprop="name">AWS SimpleDB Boto3 Example</h1>
+    <h1 itemprop="name">Login into a CA SSO/Siteminder protected site with Python Requests</h1>
 
     
 
 <div class="article-metadata">
 
   <span class="article-date">
-    <time datetime="2017-02-15 17:51:55 -0500 EST" itemprop="datePublished">
-      2017-02-15
+    <time datetime="2017-06-02 19:07:05 -0400 EDT" itemprop="datePublished">
+      2017-06-02
     </time>
   </span>
 
@@ -92,10 +92,16 @@
   <span class="article-tags">
     <i class="fa fa-tags"></i>
     
-    <a class="article-tag-link" href="https://gliptak.github.io/tags/aws">aws</a
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/python">Python</a
     >, 
     
-    <a class="article-tag-link" href="https://gliptak.github.io/tags/boto3">boto3</a
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/requests">Requests</a
+    >, 
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/siteminder">Siteminder</a
+    >, 
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/sso">SSO</a
     >
     
   </span>
@@ -108,35 +114,35 @@
   <ul class="share">
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fgliptak.github.io%2fpost%2fsimpledb-example%2f"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fgliptak.github.io%2fpost%2fpython-requests-siteminder%2f"
          target="_blank">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=AWS%20SimpleDB%20Boto3%20Example&amp;url=https%3a%2f%2fgliptak.github.io%2fpost%2fsimpledb-example%2f"
+         href="https://twitter.com/intent/tweet?text=Login%20into%20a%20CA%20SSO%2fSiteminder%20protected%20site%20with%20Python%20Requests&amp;url=https%3a%2f%2fgliptak.github.io%2fpost%2fpython-requests-siteminder%2f"
          target="_blank">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fgliptak.github.io%2fpost%2fsimpledb-example%2f&amp;title=AWS%20SimpleDB%20Boto3%20Example"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fgliptak.github.io%2fpost%2fpython-requests-siteminder%2f&amp;title=Login%20into%20a%20CA%20SSO%2fSiteminder%20protected%20site%20with%20Python%20Requests"
          target="_blank">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fgliptak.github.io%2fpost%2fsimpledb-example%2f&amp;title=AWS%20SimpleDB%20Boto3%20Example"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fgliptak.github.io%2fpost%2fpython-requests-siteminder%2f&amp;title=Login%20into%20a%20CA%20SSO%2fSiteminder%20protected%20site%20with%20Python%20Requests"
          target="_blank">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=AWS%20SimpleDB%20Boto3%20Example&amp;body=https%3a%2f%2fgliptak.github.io%2fpost%2fsimpledb-example%2f">
+         href="mailto:?subject=Login%20into%20a%20CA%20SSO%2fSiteminder%20protected%20site%20with%20Python%20Requests&amp;body=https%3a%2f%2fgliptak.github.io%2fpost%2fpython-requests-siteminder%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -150,53 +156,23 @@
 
 
     <div class="article-style" itemprop="articleBody">
-      <p>When looking into AWS SimpleDB, a quick search didn&rsquo;t return any short Python Boto3 examples. So I decided to post one.
-(As with any services you to subscribe to, running this code below might cost you money &hellip;)</p>
+      <p>While this below code is simple, it uses two important approaches:</p>
 
-<pre><code>from __future__ import print_function
-import boto3
+<ul>
+<li>utilizes a Requests Session to keep Siteminder login cookies/headers</li>
+<li>it has a two step load, allowing to fill out the Siteminder form</li>
+</ul>
 
-
-def quote(string):
-    return string.replace(&quot;'&quot;, &quot;''&quot;).replace('&quot;', '&quot;&quot;').replace('`', '``')
-
-
-def put_attributes(sdb, domain, id, color):
-    response = sdb.put_attributes(
-        DomainName=domain,
-        ItemName=id,
-        Attributes=[
-            {
-                'Name': 'color',
-                'Value': color,
-                'Replace': True
-            },
-        ],
-    )
-    print(response)
-
+<pre><code class="language-python">import requests
 
 if __name__ == &quot;__main__&quot;:
-    domain = &quot;TEST_DOMAIN&quot;
-    sdb = boto3.client('sdb')
-    response = sdb.create_domain(
-        DomainName=domain
-    )
-    print(response)
-    response = sdb.list_domains(
-    )
-    print(&quot;Current domains: %s&quot; % response['DomainNames'])
-    put_attributes(sdb, domain, &quot;id1&quot;, &quot;red&quot;)
-    put_attributes(sdb, domain, &quot;id2&quot;, &quot;redblue&quot;)
-    put_attributes(sdb, domain, &quot;id3&quot;, &quot;blue&quot;)
-    response = sdb.select(
-        SelectExpression='select * from %s where color like &quot;%%%s%%&quot;' % (domain, quote('blue')),
-    )
-    print(response)
-    response = sdb.delete_domain(
-        DomainName=domain
-    )
-    print(response)
+    mysite = 'http://mysite/'
+    credentials = {'USER': 'myuser', 'PASSWORD': 'mypassword'}
+    s = requests.session() # use Session to keep cookies around
+    page = s.get(mysite)
+    s.post(page.url, data=credentials) # page.url is the Siteminder login screen
+    page = s.get(mysite)
+    print(page.content)
 </code></pre>
 
     </div>
@@ -206,10 +182,10 @@ if __name__ == &quot;__main__&quot;:
   <nav>
   <ul class="pager">
     
-
+    <li class="previous"><a href="https://gliptak.github.io/post/simpledb-example/"><span
+      aria-hidden="true">&larr;</span> AWS SimpleDB Boto3 Example</a></li>
     
-    <li class="next"><a href="https://gliptak.github.io/post/python-requests-siteminder/">Login into a CA SSO/Siteminder protected site with Python Requests <span
-      aria-hidden="true">&rarr;</span></a></li>
+
     
   </ul>
 </nav>
@@ -220,9 +196,9 @@ if __name__ == &quot;__main__&quot;:
     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'https-gliptak-github-io';
-    var disqus_identifier = 'https:\/\/gliptak.github.io\/post\/simpledb-example\/';
-    var disqus_title = 'AWS SimpleDB Boto3 Example';
-    var disqus_url = 'https:\/\/gliptak.github.io\/post\/simpledb-example\/';
+    var disqus_identifier = 'https:\/\/gliptak.github.io\/post\/python-requests-siteminder\/';
+    var disqus_title = 'Login into a CA SSO\/Siteminder protected site with Python Requests';
+    var disqus_url = 'https:\/\/gliptak.github.io\/post\/python-requests-siteminder\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

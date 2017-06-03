@@ -76,6 +76,53 @@
   
   <div>
     
+    <h2><a href="https://gliptak.github.io/post/python-requests-siteminder/">Login into a CA SSO/Siteminder protected site with Python Requests</a></h2>
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2017-06-02 19:07:05 -0400 EDT" itemprop="datePublished">
+      2017-06-02
+    </time>
+  </span>
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/python">Python</a
+    >, 
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/requests">Requests</a
+    >, 
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/siteminder">Siteminder</a
+    >, 
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/sso">SSO</a
+    >
+    
+  </span>
+  
+  
+
+  
+
+</div>
+
+    <div class="article-style"><p>
+      
+      While this below code is simple, it uses two important approaches:
+ utilizes a Requests Session to keep Siteminder login cookies/headers it has a two step load, allowing to fill out the Siteminder form  import requests if <strong>name</strong> == &quot;<strong>main</strong>&quot;: mysite = &lsquo;<a href="http://mysite/'">http://mysite/'</a> credentials = {&lsquo;USER&rsquo;: &lsquo;myuser&rsquo;, &lsquo;PASSWORD&rsquo;: &lsquo;mypassword&rsquo;} s = requests.session() # use Session to keep cookies around page = s.get(mysite) s.post(page.url, data=credentials) # page.url is the Siteminder login screen page = s.
+      
+    </p></div>
+  </div>
+  
+  <div>
+    
     <h2><a href="https://gliptak.github.io/post/simpledb-example/">AWS SimpleDB Boto3 Example</a></h2>
     
 

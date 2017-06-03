@@ -7,8 +7,35 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016-2017 Gábor Lipták</copyright>
-    <lastBuildDate>Wed, 15 Feb 2017 17:51:55 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 02 Jun 2017 19:07:05 -0400</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Login into a CA SSO/Siteminder protected site with Python Requests</title>
+      <link>https://gliptak.github.io/post/python-requests-siteminder/</link>
+      <pubDate>Fri, 02 Jun 2017 19:07:05 -0400</pubDate>
+      
+      <guid>https://gliptak.github.io/post/python-requests-siteminder/</guid>
+      <description>&lt;p&gt;While this below code is simple, it uses two important approaches:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;utilizes a Requests Session to keep Siteminder login cookies/headers&lt;/li&gt;
+&lt;li&gt;it has a two step load, allowing to fill out the Siteminder form&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import requests
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+    mysite = &#39;http://mysite/&#39;
+    credentials = {&#39;USER&#39;: &#39;myuser&#39;, &#39;PASSWORD&#39;: &#39;mypassword&#39;}
+    s = requests.session() # use Session to keep cookies around
+    page = s.get(mysite)
+    s.post(page.url, data=credentials) # page.url is the Siteminder login screen
+    page = s.get(mysite)
+    print(page.content)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>AWS SimpleDB Boto3 Example</title>

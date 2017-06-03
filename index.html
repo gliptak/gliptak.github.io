@@ -228,6 +228,65 @@
 <div class="article-list-item" itemscope itemprop="blogPost">
   
   <h3 class="article-title" itemprop="name">
+    <a href="https://gliptak.github.io/post/python-requests-siteminder/" itemprop="url">Login into a CA SSO/Siteminder protected site with Python Requests</a>
+  </h3>
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2017-06-02 19:07:05 -0400 EDT" itemprop="datePublished">
+      2017-06-02
+    </time>
+  </span>
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/python">Python</a
+    >, 
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/requests">Requests</a
+    >, 
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/siteminder">Siteminder</a
+    >, 
+    
+    <a class="article-tag-link" href="https://gliptak.github.io/tags/sso">SSO</a
+    >
+    
+  </span>
+  
+  
+
+  
+
+</div>
+
+  <div class="article-style" itemprop="articleBody">
+    
+    While this below code is simple, it uses two important approaches:
+ utilizes a Requests Session to keep Siteminder login cookies/headers it has a two step load, allowing to fill out the Siteminder form  import requests if __name__ == &quot;__main__&quot;: mysite = 'http://mysite/' credentials = {'USER': 'myuser', 'PASSWORD': 'mypassword'} s = requests.session() # use Session to keep cookies around page = s.get(mysite) s.post(page.url, data=credentials) # page.url is the Siteminder login screen page = s.
+    
+  </div>
+  <p class="read-more">
+    <a href="https://gliptak.github.io/post/python-requests-siteminder/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+          
+            
+            
+
+
+<div class="article-list-item" itemscope itemprop="blogPost">
+  
+  <h3 class="article-title" itemprop="name">
     <a href="https://gliptak.github.io/post/simpledb-example/" itemprop="url">AWS SimpleDB Boto3 Example</a>
   </h3>
   
