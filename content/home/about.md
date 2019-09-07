@@ -1,35 +1,14 @@
 +++
-# About/Biography widget.
+# About widget.
+widget = "about"  # See https://sourcethemes.com/academic/docs/page-builder/
+headless = true  # This file represents a page section.
+active = true  # Activate this widget? true/false
+weight = 20  # Order that this section will appear in.
 
-date = "2016-04-20T00:00:00"
-draft = false
+title = "Biography"
 
-widget = "about"
-
-# Order that this section will appear in.
-weight = 0
-
-# List your academic interests.
-[interests]
-  title = "Interests"
-  interests = [
-    "Strategic Consulting",
-    "Solution Architecture",
-    "Data Science",
-    "Enterprise Mobile Solutions",
-  ]
-
-# List your qualifications (such as academic degrees).
-[education]
-  title = "Education"
-
-[[education.courses]]
-  course = "MEng specializing in Flexible Manufacturing Systems" 
-  institution = "Moscow State Technological University"
-  #year = 2009
-
+# Choose the user profile to display
+# This should be the username of a profile in your `content/authors/` folder.
+# See https://sourcethemes.com/academic/docs/get-started/#introduce-yourself
+author = "gliptak"
 +++
-
-# Biography
-
-Hands-on software architect working as an application architect, integration architect, and enterprise architect in various industries. Experienced in Microservices Architectures, Service-Based Architectures, and Service-Oriented Architectures. Conference speaker and trainer. Keeping coding skills sharp as an open source enthusiast.
