@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>https://gliptak.github.io/</loc>
     <lastmod>2017-06-02T19:07:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/authors/gliptak/</loc>
+    <lastmod>2017-06-02T19:07:05-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/authors/</loc>
+    <lastmod>2017-06-02T19:07:05-04:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -12,8 +25,55 @@
   </url>
   
   <url>
+    <loc>https://gliptak.github.io/post/</loc>
+    <lastmod>2017-06-02T19:07:05-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/tags/python/</loc>
+    <lastmod>2017-06-02T19:07:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/tags/requests/</loc>
+    <lastmod>2017-06-02T19:07:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/tags/sso/</loc>
+    <lastmod>2017-06-02T19:07:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/tags/siteminder/</loc>
+    <lastmod>2017-06-02T19:07:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/tags/</loc>
+    <lastmod>2017-06-02T19:07:05-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://gliptak.github.io/post/simpledb-example/</loc>
     <lastmod>2017-02-15T17:51:55-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/tags/aws/</loc>
+    <lastmod>2017-02-15T17:51:55-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/tags/boto3/</loc>
+    <lastmod>2017-02-15T17:51:55-05:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -22,38 +82,24 @@
   </url>
   
   <url>
+    <loc>https://gliptak.github.io/project/</loc>
+    <lastmod>2016-12-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://gliptak.github.io/project/go-a-perspective/</loc>
     <lastmod>2016-11-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://gliptak.github.io/home/about/</loc>
-    <lastmod>2016-04-20T00:00:00+00:00</lastmod>
+    <loc>https://gliptak.github.io/categories/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://gliptak.github.io/home/publications_selected/</loc>
-    <lastmod>2016-04-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://gliptak.github.io/home/publications/</loc>
-    <lastmod>2016-04-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://gliptak.github.io/home/posts/</loc>
-    <lastmod>2016-04-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://gliptak.github.io/home/projects/</loc>
-    <lastmod>2016-04-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://gliptak.github.io/home/contact/</loc>
-    <lastmod>2016-04-20T00:00:00+00:00</lastmod>
+    <loc>https://gliptak.github.io/publication_types/</loc>
+    <priority>0</priority>
   </url>
   
 </urlset>

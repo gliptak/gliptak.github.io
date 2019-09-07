@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <link>https://gliptak.github.io/authors/gliptak/</link>
+    <description>Recent content on </description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016-2019 Gábor Lipták</copyright>
+    <lastBuildDate>Fri, 02 Jun 2017 19:07:05 -0400</lastBuildDate>
+    
+	    <atom:link href="https://gliptak.github.io/authors/gliptak/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Login into a CA SSO/Siteminder protected site with Python Requests</title>
+      <link>https://gliptak.github.io/post/python-requests-siteminder/</link>
+      <pubDate>Fri, 02 Jun 2017 19:07:05 -0400</pubDate>
+      
+      <guid>https://gliptak.github.io/post/python-requests-siteminder/</guid>
+      <description>&lt;p&gt;While this below code is simple, it uses two important approaches:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;utilizes a Requests Session to keep Siteminder login cookies/headers&lt;/li&gt;
+&lt;li&gt;it has a two step load, allowing to fill out the Siteminder form&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import requests
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+    mysite = &#39;http://mysite/&#39;
+    credentials = {&#39;USER&#39;: &#39;myuser&#39;, &#39;PASSWORD&#39;: &#39;mypassword&#39;}
+    s = requests.session() # use Session to keep cookies around
+    page = s.get(mysite)
+    s.post(page.url, data=credentials) # page.url is the Siteminder login screen
+    page = s.get(mysite)
+    print(page.content)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>AWS SimpleDB Boto3 Example</title>
+      <link>https://gliptak.github.io/post/simpledb-example/</link>
+      <pubDate>Wed, 15 Feb 2017 17:51:55 -0500</pubDate>
+      
+      <guid>https://gliptak.github.io/post/simpledb-example/</guid>
+      <description>&lt;p&gt;When looking into AWS SimpleDB, a quick search didn&amp;rsquo;t return any short Python Boto3 examples. So I decided to post one.
+(As with any services you to subscribe to, running this code below might cost you money &amp;hellip;)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from __future__ import print_function
+import boto3
+
+
+def quote(string):
+    return string.replace(&amp;quot;&#39;&amp;quot;, &amp;quot;&#39;&#39;&amp;quot;).replace(&#39;&amp;quot;&#39;, &#39;&amp;quot;&amp;quot;&#39;).replace(&#39;`&#39;, &#39;``&#39;)
+
+
+def put_attributes(sdb, domain, id, color):
+    response = sdb.put_attributes(
+        DomainName=domain,
+        ItemName=id,
+        Attributes=[
+            {
+                &#39;Name&#39;: &#39;color&#39;,
+                &#39;Value&#39;: color,
+                &#39;Replace&#39;: True
+            },
+        ],
+    )
+    print(response)
+
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+    domain = &amp;quot;TEST_DOMAIN&amp;quot;
+    sdb = boto3.client(&#39;sdb&#39;)
+    response = sdb.create_domain(
+        DomainName=domain
+    )
+    print(response)
+    response = sdb.list_domains(
+    )
+    print(&amp;quot;Current domains: %s&amp;quot; % response[&#39;DomainNames&#39;])
+    put_attributes(sdb, domain, &amp;quot;id1&amp;quot;, &amp;quot;red&amp;quot;)
+    put_attributes(sdb, domain, &amp;quot;id2&amp;quot;, &amp;quot;redblue&amp;quot;)
+    put_attributes(sdb, domain, &amp;quot;id3&amp;quot;, &amp;quot;blue&amp;quot;)
+    response = sdb.select(
+        SelectExpression=&#39;select * from %s where color like &amp;quot;%%%s%%&amp;quot;&#39; % (domain, quote(&#39;blue&#39;)),
+    )
+    print(response)
+    response = sdb.delete_domain(
+        DomainName=domain
+    )
+    print(response)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://gliptak.github.io/authors/gliptak/</link>
+      <pubDate>Fri, 02 Jun 2017 19:07:05 -0400</pubDate>
+      
+      <guid>https://gliptak.github.io/authors/gliptak/</guid>
+      <description>&lt;p&gt;Hands-on software architect working as an application architect, integration architect, and enterprise architect in various industries. Experienced in Microservices Architectures, Service-Based Architectures, and Service-Oriented Architectures. Conference speaker and trainer. Keeping coding skills sharp as an open source enthusiast.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

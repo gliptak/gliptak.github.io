@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sso on </title>
-    <link>https://gliptak.github.io/tags/sso/index.xml</link>
-    <description>Recent content in Sso on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>SSO on </title>
+    <link>https://gliptak.github.io/tags/sso/</link>
+    <description>Recent content in SSO on </description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2016-2017 Gábor Lipták</copyright>
-    <atom:link href="/tags/sso/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>&amp;copy; 2016-2019 Gábor Lipták</copyright>
+    <lastBuildDate>Fri, 02 Jun 2017 19:07:05 -0400</lastBuildDate>
+    
+	    <atom:link href="https://gliptak.github.io/tags/sso/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Login into a CA SSO/Siteminder protected site with Python Requests</title>

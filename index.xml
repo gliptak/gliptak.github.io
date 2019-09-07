@@ -2,13 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
-    <link>https://gliptak.github.io/index.xml</link>
+    <link>https://gliptak.github.io/</link>
     <description>Recent content on </description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2016-2017 Gábor Lipták</copyright>
+    <copyright>&amp;copy; 2016-2019 Gábor Lipták</copyright>
     <lastBuildDate>Fri, 02 Jun 2017 19:07:05 -0400</lastBuildDate>
-    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+	    <atom:link href="https://gliptak.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Login into a CA SSO/Siteminder protected site with Python Requests</title>
@@ -46,7 +48,7 @@ if __name__ == &amp;quot;__main__&amp;quot;:
       <description>&lt;p&gt;When looking into AWS SimpleDB, a quick search didn&amp;rsquo;t return any short Python Boto3 examples. So I decided to post one.
 (As with any services you to subscribe to, running this code below might cost you money &amp;hellip;)&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;from __future__ import print_function
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from __future__ import print_function
 import boto3
 
 
