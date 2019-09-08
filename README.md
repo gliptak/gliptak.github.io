@@ -5,4 +5,5 @@ Hugo Publish Steps
 - ```hugo server```
 - ```hugo```
 - ```git checkout master```
-- Copy public/ to root
+- ```(cd public; cp -r . ..)
+ 
