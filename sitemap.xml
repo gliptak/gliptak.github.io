@@ -4,41 +4,52 @@
   
   <url>
     <loc>https://gliptak.github.io/</loc>
-    <lastmod>2019-09-07T21:17:30-04:00</lastmod>
+    <lastmod>2019-09-11T21:32:25-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/authors/gliptak/</loc>
+    <lastmod>2019-09-11T21:32:25-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/tags/aws/</loc>
+    <lastmod>2019-09-11T21:32:25-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/post/aws_ssm_ami/</loc>
+    <lastmod>2019-09-11T21:32:25-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/authors/</loc>
+    <lastmod>2019-09-11T21:32:25-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/tags/cloudformation/</loc>
+    <lastmod>2019-09-11T21:32:25-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/post/</loc>
+    <lastmod>2019-09-11T21:32:25-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/tags/</loc>
+    <lastmod>2019-09-11T21:32:25-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://gliptak.github.io/post/aws_organization_cli/</loc>
     <lastmod>2019-09-07T21:17:30-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://gliptak.github.io/post/</loc>
-    <lastmod>2019-09-07T21:17:30-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://gliptak.github.io/tags/</loc>
-    <lastmod>2019-09-07T21:17:30-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://gliptak.github.io/tags/aws/</loc>
-    <lastmod>2019-09-07T21:17:30-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://gliptak.github.io/authors/gliptak/</loc>
-    <lastmod>2017-06-02T19:07:05-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://gliptak.github.io/authors/</loc>
-    <lastmod>2017-06-02T19:07:05-04:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

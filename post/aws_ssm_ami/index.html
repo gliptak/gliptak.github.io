@@ -28,11 +28,11 @@
   
     
   
-  <meta name="description" content="Many AWS customers take advantage of AWS Organizations to organize and secure their workloads. In many cases, users login into their master account and configure permissions allowing to switch to member accounts in the Console. The same permissions can be used for AWS CLI.
-In this example below, a single AWS Access Key has to be generated (and rotated) in the master account and it can be used to switch to test/2222222 and production/3333333 accounts using the CrossAccountAccessRole already configured for switching in the Console.">
+  <meta name="description" content="When AWS infrastructure configured in &ldquo;traditional&rdquo; compute/storage/network style, identifying, referencing and patching AMIs in all regions in use is crucial. Cloudformation has a way to redirect AMI references through SSM Parameter Store.
+This represents a tradeoff, as recreating the Cloudformation stack might pickup the next (patched) AMI hence it is no longer immutable. But resulting state is similar to externally patched Linux/Windows images which also cannot be recreated by simply redeploying Cloudformation.">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/post/aws_organization_cli/">
+  <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/post/aws_ssm_ami/">
 
   
 
@@ -99,7 +99,7 @@ In this example below, a single AWS Access Key has to be generated (and rotated)
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://gliptak.github.io/post/aws_organization_cli/">
+  <link rel="canonical" href="https://gliptak.github.io/post/aws_ssm_ami/">
 
   
   
@@ -111,27 +111,27 @@ In this example below, a single AWS Access Key has to be generated (and rotated)
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="">
-  <meta property="og:url" content="https://gliptak.github.io/post/aws_organization_cli/">
-  <meta property="og:title" content="AWS Organizations CLI | ">
-  <meta property="og:description" content="Many AWS customers take advantage of AWS Organizations to organize and secure their workloads. In many cases, users login into their master account and configure permissions allowing to switch to member accounts in the Console. The same permissions can be used for AWS CLI.
-In this example below, a single AWS Access Key has to be generated (and rotated) in the master account and it can be used to switch to test/2222222 and production/3333333 accounts using the CrossAccountAccessRole already configured for switching in the Console."><meta property="og:image" content="https://gliptak.github.io/img/icon-192.png">
+  <meta property="og:url" content="https://gliptak.github.io/post/aws_ssm_ami/">
+  <meta property="og:title" content="AWS Cloudformation Referencing AMIs Using SSM Parameter Store | ">
+  <meta property="og:description" content="When AWS infrastructure configured in &ldquo;traditional&rdquo; compute/storage/network style, identifying, referencing and patching AMIs in all regions in use is crucial. Cloudformation has a way to redirect AMI references through SSM Parameter Store.
+This represents a tradeoff, as recreating the Cloudformation stack might pickup the next (patched) AMI hence it is no longer immutable. But resulting state is similar to externally patched Linux/Windows images which also cannot be recreated by simply redeploying Cloudformation."><meta property="og:image" content="https://gliptak.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://gliptak.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-09-07T21:17:30-04:00">
+  <meta property="article:published_time" content="2019-09-11T21:32:25-04:00">
   
-  <meta property="article:modified_time" content="2019-09-07T21:17:30-04:00">
+  <meta property="article:modified_time" content="2019-09-11T21:32:25-04:00">
   
-
-  
-
 
   
 
 
+  
 
 
 
-  <title>AWS Organizations CLI | </title>
+
+
+  <title>AWS Cloudformation Referencing AMIs Using SSM Parameter Store | </title>
 
 </head>
 
@@ -355,7 +355,7 @@ In this example below, a single AWS Access Key has to be generated (and rotated)
   
   
 <div class="article-container pt-3">
-  <h1 itemprop="name">AWS Organizations CLI</h1>
+  <h1 itemprop="name">AWS Cloudformation Referencing AMIs Using SSM Parameter Store</h1>
 
   
 
@@ -364,8 +364,8 @@ In this example below, a single AWS Access Key has to be generated (and rotated)
 
 
 
-<meta content="2019-09-07 21:17:30 -0400 EDT" itemprop="datePublished">
-<meta content="2019-09-07 21:17:30 -0400 EDT" itemprop="dateModified">
+<meta content="2019-09-11 21:32:25 -0400 EDT" itemprop="datePublished">
+<meta content="2019-09-11 21:32:25 -0400 EDT" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -390,7 +390,7 @@ In this example below, a single AWS Access Key has to be generated (and rotated)
     
       
     
-    <time>Sep 7, 2019</time>
+    <time>Sep 11, 2019</time>
   </span>
   
 
@@ -406,7 +406,7 @@ In this example below, a single AWS Access Key has to be generated (and rotated)
   
   
   <span class="middot-divider"></span>
-  <a href="/post/aws_organization_cli/#disqus_thread"></a>
+  <a href="/post/aws_ssm_ami/#disqus_thread"></a>
   
 
   
@@ -425,7 +425,7 @@ In this example below, a single AWS Access Key has to be generated (and rotated)
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://gliptak.github.io/post/aws_organization_cli/&amp;text=AWS%20Organizations%20CLI" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://gliptak.github.io/post/aws_ssm_ami/&amp;text=AWS%20Cloudformation%20Referencing%20AMIs%20Using%20SSM%20Parameter%20Store" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -438,7 +438,7 @@ In this example below, a single AWS Access Key has to be generated (and rotated)
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://gliptak.github.io/post/aws_organization_cli/&amp;t=AWS%20Organizations%20CLI" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://gliptak.github.io/post/aws_ssm_ami/&amp;t=AWS%20Cloudformation%20Referencing%20AMIs%20Using%20SSM%20Parameter%20Store" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook-f"></i>
         </a>
       </li>
@@ -451,7 +451,7 @@ In this example below, a single AWS Access Key has to be generated (and rotated)
       
       
       <li>
-        <a href="mailto:?subject=AWS%20Organizations%20CLI&amp;body=https://gliptak.github.io/post/aws_organization_cli/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=AWS%20Cloudformation%20Referencing%20AMIs%20Using%20SSM%20Parameter%20Store&amp;body=https://gliptak.github.io/post/aws_ssm_ami/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -464,7 +464,7 @@ In this example below, a single AWS Access Key has to be generated (and rotated)
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://gliptak.github.io/post/aws_organization_cli/&amp;title=AWS%20Organizations%20CLI" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://gliptak.github.io/post/aws_ssm_ami/&amp;title=AWS%20Cloudformation%20Referencing%20AMIs%20Using%20SSM%20Parameter%20Store" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -477,7 +477,7 @@ In this example below, a single AWS Access Key has to be generated (and rotated)
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=AWS%20Organizations%20CLI%20https://gliptak.github.io/post/aws_organization_cli/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=AWS%20Cloudformation%20Referencing%20AMIs%20Using%20SSM%20Parameter%20Store%20https://gliptak.github.io/post/aws_ssm_ami/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -490,7 +490,7 @@ In this example below, a single AWS Access Key has to be generated (and rotated)
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://gliptak.github.io/post/aws_organization_cli/&amp;title=AWS%20Organizations%20CLI" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://gliptak.github.io/post/aws_ssm_ami/&amp;title=AWS%20Cloudformation%20Referencing%20AMIs%20Using%20SSM%20Parameter%20Store" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -526,21 +526,81 @@ In this example below, a single AWS Access Key has to be generated (and rotated)
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      <p>Many AWS customers take advantage of AWS Organizations to organize and secure their workloads. In many cases, users login into their <code>master</code> account and configure permissions allowing to switch to <code>member</code> accounts in the Console. The same permissions can be used for <code>AWS CLI</code>.</p>
+      <p>When AWS infrastructure configured in &ldquo;traditional&rdquo; compute/storage/network style, identifying, referencing and patching AMIs in all regions in use is crucial. Cloudformation has a way to redirect AMI references through SSM Parameter Store.</p>
 
-<p>In this example below, a single <code>AWS Access Key</code> has to be generated (and rotated) in the <code>master</code> account and it can be used to switch to <code>test/2222222</code> and <code>production/3333333</code> accounts using the <code>CrossAccountAccessRole</code> already configured for switching in the Console.</p>
+<p>This represents a tradeoff, as recreating the Cloudformation stack might pickup the next (patched) AMI hence it is no longer immutable. But resulting state is similar to externally patched Linux/Windows images which also cannot be recreated by simply redeploying Cloudformation.</p>
 
-<pre><code>[master]
-aws_access_key_id     = AKIZZZZZZZZZZZZ
-aws_secret_access_key = a78594065069565
+<p>Th Cloudformation syntax as follows. <code>AmiId</code> can point to both AWS and customer published values:</p>
 
-[test]
-role_arn = arn:aws:iam::2222222:role/CrossAccountAccessRole
-source_profile = master
+<pre><code>AWSTemplateFormatVersion: '2010-09-09'
 
-[production]
-role_arn = arn:aws:iam::3333333:role/CrossAccountAccessRole
-source_profile = master
+Parameters:
+  AmiId:
+    Type: AWS::SSM::Parameter::Value&lt;AWS::EC2::Image::Id&gt;
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-ebs
+
+Resources:
+  Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref AmiId
+</code></pre>
+
+<p>At the time of this posting, here are some AWS maintained AMIs:</p>
+
+<pre><code>aws ssm get-parameters-by-path --path /aws/service/ami-amazon-linux-latest | jq &quot;.Parameters[].Name&quot;
+&quot;/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-ebs&quot;
+&quot;/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-gp2&quot;
+&quot;/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-s3&quot;
+&quot;/aws/service/ami-amazon-linux-latest/amzn-ami-minimal-hvm-x86_64-s3&quot;
+&quot;/aws/service/ami-amazon-linux-latest/amzn-ami-minimal-pv-x86_64-s3&quot;
+&quot;/aws/service/ami-amazon-linux-latest/amzn-ami-pv-x86_64-s3&quot;
+&quot;/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-arm64-gp2&quot;
+&quot;/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-ebs&quot;
+&quot;/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2&quot;
+&quot;/aws/service/ami-amazon-linux-latest/amzn2-ami-minimal-hvm-arm64-ebs&quot;
+&quot;/aws/service/ami-amazon-linux-latest/amzn-ami-minimal-hvm-x86_64-ebs&quot;
+&quot;/aws/service/ami-amazon-linux-latest/amzn-ami-minimal-pv-x86_64-ebs&quot;
+&quot;/aws/service/ami-amazon-linux-latest/amzn-ami-pv-x86_64-ebs&quot;
+&quot;/aws/service/ami-amazon-linux-latest/amzn2-ami-minimal-hvm-x86_64-ebs&quot;
+</code></pre>
+
+<pre><code>aws ssm get-parameters-by-path --path /aws/service/ami-windows-latest | jq &quot;.Parameters[].Name&quot; | grep &quot;English&quot; | grep &quot;\-2019&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2017_Web&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2016_SP2_Standard&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2016_SP2_Web&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-HyperV&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Core-Base&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Core-ContainersLatest&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2017_Express&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2016_SP2_Express&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-Base&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2017_Standard&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-ContainersLatest&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2017_Enterprise&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2016_SP2_Enterprise&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Tesla&quot;
+&quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-ECS_Optimized&quot;
+</code></pre>
+
+<p>And some &ldquo;oddballs&rdquo;</p>
+
+<pre><code>aws ssm get-parameters-by-path --path /aws/service/ami-windows-latest | jq &quot;.Parameters[].Name&quot; | grep -v Windows
+&quot;/aws/service/ami-windows-latest/amzn2-ami-hvm-2.0.20190313-x86_64-gp2-SQL_2017_Express&quot;
+&quot;/aws/service/ami-windows-latest/RHEL-7.6_HVM_GA-20181017-x86_64-0-Hourly2-GP2-SQL_2017_Enterprise&quot;
+&quot;/aws/service/ami-windows-latest/ubuntu-bionic-18.04-amd64-server-20180522-dotnetcore&quot;
+&quot;/aws/service/ami-windows-latest/amzn2-ami-hvm-2.0.20180622.1-x86_64-gp2-dotnetcore&quot;
+&quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20190212-SQL_2017_Web&quot;
+&quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20180306-SQL_2017_Express&quot;
+&quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20180306-SQL_2017_Standard&quot;
+&quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20180306-SQL_2017_Enterprise&quot;
+&quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20180306-SQL_2017_Web&quot;
+&quot;/aws/service/ami-windows-latest/amzn2-ami-hvm-2.0.20190313-x86_64-gp2-SQL_2017_Enterprise&quot;
+&quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20190212-SQL_2017_Enterprise&quot;
+&quot;/aws/service/ami-windows-latest/amzn2-ami-hvm-2.0.20190313-x86_64-gp2-SQL_2017_Web&quot;
+&quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20190212-SQL_2017_Express&quot;
+&quot;/aws/service/ami-windows-latest/amzn2-ami-hvm-2.0.20190313-x86_64-gp2-SQL_2017_Standard&quot;
+&quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20190212-SQL_2017_Standard&quot;
 </code></pre>
 
     </div>
@@ -550,6 +610,8 @@ source_profile = master
 <div class="article-tags">
   
   <a class="badge badge-light" href="/tags/aws/">AWS</a>
+  
+  <a class="badge badge-light" href="/tags/cloudformation/">Cloudformation</a>
   
 </div>
 
@@ -602,6 +664,8 @@ source_profile = master
         <div class="hr-light"></div>
         <h3>Related</h3>
         <ul>
+          
+          <li><a href="/post/aws_organization_cli/">AWS Organizations CLI</a></li>
           
           <li><a href="/post/simpledb-example/">AWS SimpleDB Boto3 Example</a></li>
           
