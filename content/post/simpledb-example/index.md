@@ -4,8 +4,8 @@ title: AWS SimpleDB Boto3 Example
 authors:
 - gliptak
 tags:
-- aws
-- boto3
+- AWS
+- Boto3
 categories: []
 date: "2017-02-15T17:51:55-05:00"
 featured: false

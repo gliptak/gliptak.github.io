@@ -4,7 +4,8 @@
 title: "AWS Organizations CLI"
 subtitle: ""
 summary: ""
-authors: []
+authors:
+- gliptak
 tags:
 - AWS
 categories: []
