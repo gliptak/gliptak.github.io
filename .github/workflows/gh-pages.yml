@@ -1,0 +1,49 @@
+name: github pages
+
+on:
+  push:
+    branches:
+      - hugo  # default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout hugo branch
+        uses: actions/checkout@v2
+
+      - name: Checkout master
+        uses: actions/checkout@v2
+        with:
+          repository: gliptak/gliptak.github.io
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+          path: ${{ github.workspace }}/public
+
+      - name: Checkout hugo-academic
+        uses: actions/checkout@v2
+        with:
+          repository: gcushen/hugo-academic
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: v4.4.0
+          path: ${{ github.workspace }}/themes/hugo-academic
+
+      - name: Find
+        run: |
+          find /home/runner/work/gliptak.github.io/
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.55.6'
+          extended: true
+
+      - name: Build
+        run: hugo
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: master  # deploying branch
