@@ -81,6 +81,8 @@ contact_links = [
   # {icon = "telegram", icon_pack = "fab", name = "Telegram Me", link = "https://telegram.me/@Telegram"},
   ]
 
+coordinates = {latitude = "29", longitude = "-82"}
+
 [map]
   # To show your address on a map in the Contact widget, enter your latitude and longitude (above)
   # and choose a map provider below.
@@ -99,8 +101,6 @@ contact_links = [
   engine = 2
   api_key = ""
   zoom = 15
-  coordinates = {latitude = "29", longitude = "-82"}
-
 
 ############################
 ## Plugins                ##
