@@ -19,11 +19,8 @@
       
       <guid>https://gliptak.github.io/post/aws_ssm_ami/</guid>
       <description>&lt;p&gt;When AWS infrastructure configured in &amp;ldquo;traditional&amp;rdquo; compute/storage/network style, identifying, referencing and patching AMIs in all regions in use is crucial. Cloudformation has a way to redirect AMI references through SSM Parameter Store.&lt;/p&gt;
-
 &lt;p&gt;This represents a tradeoff, as recreating the Cloudformation stack might pickup the next (patched) AMI hence it is no longer immutable. But resulting state is similar to externally patched Linux/Windows images which also cannot be recreated by simply redeploying Cloudformation.&lt;/p&gt;
-
 &lt;p&gt;Th Cloudformation syntax as follows. &lt;code&gt;AmiId&lt;/code&gt; can point to both AWS and customer published values:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;AWSTemplateFormatVersion: &#39;2010-09-09&#39;
 
 Parameters:
@@ -36,10 +33,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: !Ref AmiId
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;At the time of this posting, here are some AWS maintained AMIs:&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;At the time of this posting, here are some AWS maintained AMIs:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;aws ssm get-parameters-by-path --path /aws/service/ami-amazon-linux-latest | jq &amp;quot;.Parameters[].Name&amp;quot;
 &amp;quot;/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-ebs&amp;quot;
 &amp;quot;/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-gp2&amp;quot;
@@ -55,9 +49,7 @@ Resources:
 &amp;quot;/aws/service/ami-amazon-linux-latest/amzn-ami-minimal-pv-x86_64-ebs&amp;quot;
 &amp;quot;/aws/service/ami-amazon-linux-latest/amzn-ami-pv-x86_64-ebs&amp;quot;
 &amp;quot;/aws/service/ami-amazon-linux-latest/amzn2-ami-minimal-hvm-x86_64-ebs&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;aws ssm get-parameters-by-path --path /aws/service/ami-windows-latest | jq &amp;quot;.Parameters[].Name&amp;quot; | grep &amp;quot;English&amp;quot; | grep &amp;quot;\-2019&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;aws ssm get-parameters-by-path --path /aws/service/ami-windows-latest | jq &amp;quot;.Parameters[].Name&amp;quot; | grep &amp;quot;English&amp;quot; | grep &amp;quot;\-2019&amp;quot;
 &amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2017_Web&amp;quot;
 &amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2016_SP2_Standard&amp;quot;
 &amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2016_SP2_Web&amp;quot;
@@ -73,10 +65,7 @@ Resources:
 &amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2016_SP2_Enterprise&amp;quot;
 &amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Tesla&amp;quot;
 &amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-ECS_Optimized&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And some &amp;ldquo;oddballs&amp;rdquo;&lt;/p&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And some &amp;ldquo;oddballs&amp;rdquo;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;aws ssm get-parameters-by-path --path /aws/service/ami-windows-latest | jq &amp;quot;.Parameters[].Name&amp;quot; | grep -v Windows
 &amp;quot;/aws/service/ami-windows-latest/amzn2-ami-hvm-2.0.20190313-x86_64-gp2-SQL_2017_Express&amp;quot;
 &amp;quot;/aws/service/ami-windows-latest/RHEL-7.6_HVM_GA-20181017-x86_64-0-Hourly2-GP2-SQL_2017_Enterprise&amp;quot;
@@ -93,8 +82,7 @@ Resources:
 &amp;quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20190212-SQL_2017_Express&amp;quot;
 &amp;quot;/aws/service/ami-windows-latest/amzn2-ami-hvm-2.0.20190313-x86_64-gp2-SQL_2017_Standard&amp;quot;
 &amp;quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20190212-SQL_2017_Standard&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -104,9 +92,7 @@ Resources:
       
       <guid>https://gliptak.github.io/post/aws_organization_cli/</guid>
       <description>&lt;p&gt;Many AWS customers take advantage of AWS Organizations to organize and secure their workloads. In many cases, users login into their &lt;code&gt;master&lt;/code&gt; account and configure permissions allowing to switch to &lt;code&gt;member&lt;/code&gt; accounts in the Console. The same permissions can be used for &lt;code&gt;AWS CLI&lt;/code&gt;.&lt;/p&gt;
-
 &lt;p&gt;In this example below, a single &lt;code&gt;AWS Access Key&lt;/code&gt; has to be generated (and rotated) in the &lt;code&gt;master&lt;/code&gt; account and it can be used to switch to &lt;code&gt;test/2222222&lt;/code&gt; and &lt;code&gt;production/3333333&lt;/code&gt; accounts using the &lt;code&gt;CrossAccountAccessRole&lt;/code&gt; already configured for switching in the Console.&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;[master]
 aws_access_key_id     = AKIZZZZZZZZZZZZ
 aws_secret_access_key = a78594065069565
@@ -118,8 +104,7 @@ source_profile = master
 [production]
 role_arn = arn:aws:iam::3333333:role/CrossAccountAccessRole
 source_profile = master
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -129,24 +114,21 @@ source_profile = master
       
       <guid>https://gliptak.github.io/post/python-requests-siteminder/</guid>
       <description>&lt;p&gt;While this below code is simple, it uses two important approaches:&lt;/p&gt;
-
 &lt;ul&gt;
 &lt;li&gt;utilizes a Requests Session to keep Siteminder login cookies/headers&lt;/li&gt;
 &lt;li&gt;it has a two step load, allowing to fill out the Siteminder form&lt;/li&gt;
 &lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; requests
 
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import requests
-
-if __name__ == &amp;quot;__main__&amp;quot;:
-    mysite = &#39;http://mysite/&#39;
-    credentials = {&#39;USER&#39;: &#39;myuser&#39;, &#39;PASSWORD&#39;: &#39;mypassword&#39;}
-    s = requests.session() # use Session to keep cookies around
-    page = s.get(mysite)
-    s.post(page.url, data=credentials) # page.url is the Siteminder login screen
-    page = s.get(mysite)
-    print(page.content)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+    mysite &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;http://mysite/&amp;#39;&lt;/span&gt;
+    credentials &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;USER&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;myuser&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;PASSWORD&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mypassword&amp;#39;&lt;/span&gt;}
+    s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; requests&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;session() &lt;span style=&#34;color:#75715e&#34;&gt;# use Session to keep cookies around&lt;/span&gt;
+    page &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(mysite)
+    s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;post(page&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;url, data&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;credentials) &lt;span style=&#34;color:#75715e&#34;&gt;# page.url is the Siteminder login screen&lt;/span&gt;
+    page &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(mysite)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(page&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;content)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -157,53 +139,51 @@ if __name__ == &amp;quot;__main__&amp;quot;:
       <guid>https://gliptak.github.io/post/simpledb-example/</guid>
       <description>&lt;p&gt;When looking into AWS SimpleDB, a quick search didn&amp;rsquo;t return any short Python Boto3 examples. So I decided to post one.
 (As with any services you to subscribe to, running this code below might cost you money &amp;hellip;)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from __future__ import print_function
-import boto3
-
-
-def quote(string):
-    return string.replace(&amp;quot;&#39;&amp;quot;, &amp;quot;&#39;&#39;&amp;quot;).replace(&#39;&amp;quot;&#39;, &#39;&amp;quot;&amp;quot;&#39;).replace(&#39;`&#39;, &#39;``&#39;)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; __future__ &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; print_function
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; boto3
 
 
-def put_attributes(sdb, domain, id, color):
-    response = sdb.put_attributes(
-        DomainName=domain,
-        ItemName=id,
-        Attributes=[
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;quote&lt;/span&gt;(string):
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; string&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#34;&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#34;&amp;#34;&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;`&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;``&amp;#39;&lt;/span&gt;)
+
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;put_attributes&lt;/span&gt;(sdb, domain, id, color):
+    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;put_attributes(
+        DomainName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;domain,
+        ItemName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;id,
+        Attributes&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[
             {
-                &#39;Name&#39;: &#39;color&#39;,
-                &#39;Value&#39;: color,
-                &#39;Replace&#39;: True
+                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Name&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;color&amp;#39;&lt;/span&gt;,
+                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Value&amp;#39;&lt;/span&gt;: color,
+                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Replace&amp;#39;&lt;/span&gt;: True
             },
         ],
     )
-    print(response)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(response)
 
 
-if __name__ == &amp;quot;__main__&amp;quot;:
-    domain = &amp;quot;TEST_DOMAIN&amp;quot;
-    sdb = boto3.client(&#39;sdb&#39;)
-    response = sdb.create_domain(
-        DomainName=domain
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+    domain &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;TEST_DOMAIN&amp;#34;&lt;/span&gt;
+    sdb &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; boto3&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;client(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sdb&amp;#39;&lt;/span&gt;)
+    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;create_domain(
+        DomainName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;domain
     )
-    print(response)
-    response = sdb.list_domains(
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(response)
+    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;list_domains(
     )
-    print(&amp;quot;Current domains: %s&amp;quot; % response[&#39;DomainNames&#39;])
-    put_attributes(sdb, domain, &amp;quot;id1&amp;quot;, &amp;quot;red&amp;quot;)
-    put_attributes(sdb, domain, &amp;quot;id2&amp;quot;, &amp;quot;redblue&amp;quot;)
-    put_attributes(sdb, domain, &amp;quot;id3&amp;quot;, &amp;quot;blue&amp;quot;)
-    response = sdb.select(
-        SelectExpression=&#39;select * from %s where color like &amp;quot;%%%s%%&amp;quot;&#39; % (domain, quote(&#39;blue&#39;)),
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Current domains: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; response[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;DomainNames&amp;#39;&lt;/span&gt;])
+    put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id1&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;red&amp;#34;&lt;/span&gt;)
+    put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id2&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;redblue&amp;#34;&lt;/span&gt;)
+    put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id3&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;blue&amp;#34;&lt;/span&gt;)
+    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;select(
+        SelectExpression&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;select * from &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; where color like &amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%%%s%%&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; (domain, quote(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;blue&amp;#39;&lt;/span&gt;)),
     )
-    print(response)
-    response = sdb.delete_domain(
-        DomainName=domain
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(response)
+    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;delete_domain(
+        DomainName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;domain
     )
-    print(response)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(response)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>

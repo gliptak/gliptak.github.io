@@ -29,7 +29,7 @@
     
   
   <meta name="description" content="When looking into AWS SimpleDB, a quick search didn&rsquo;t return any short Python Boto3 examples. So I decided to post one. (As with any services you to subscribe to, running this code below might cost you money &hellip;)
-from __future__ import print_function import boto3 def quote(string): return string.replace(&quot;&#39;&quot;, &quot;&#39;&#39;&quot;).replace(&#39;&quot;&#39;, &#39;&quot;&quot;&#39;).replace(&#39;`&#39;, &#39;``&#39;) def put_attributes(sdb, domain, id, color): response = sdb.put_attributes( DomainName=domain, ItemName=id, Attributes=[ { &#39;Name&#39;: &#39;color&#39;, &#39;Value&#39;: color, &#39;Replace&#39;: True }, ], ) print(response) if __name__ == &quot;__main__&quot;: domain = &quot;TEST_DOMAIN&quot; sdb = boto3.">
+from __future__ import print_function import boto3 def quote(string): return string.replace(&#34;&#39;&#34;, &#34;&#39;&#39;&#34;).replace(&#39;&#34;&#39;, &#39;&#34;&#34;&#39;).replace(&#39;`&#39;, &#39;``&#39;) def put_attributes(sdb, domain, id, color): response = sdb.put_attributes( DomainName=domain, ItemName=id, Attributes=[ { &#39;Name&#39;: &#39;color&#39;, &#39;Value&#39;: color, &#39;Replace&#39;: True }, ], ) print(response) if __name__ == &#34;__main__&#34;: domain = &#34;TEST_DOMAIN&#34; sdb = boto3.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/post/simpledb-example/">
@@ -85,7 +85,7 @@ from __future__ import print_function import boto3 def quote(string): return str
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.3bc694af15fd1e4ff7262e7dd46f11a8.css">
+  <link rel="stylesheet" href="/css/academic.min.5a7f437ee6610ca105be34ebf9701c04.css">
 
   
 
@@ -114,7 +114,7 @@ from __future__ import print_function import boto3 def quote(string): return str
   <meta property="og:url" content="https://gliptak.github.io/post/simpledb-example/">
   <meta property="og:title" content="AWS SimpleDB Boto3 Example | ">
   <meta property="og:description" content="When looking into AWS SimpleDB, a quick search didn&rsquo;t return any short Python Boto3 examples. So I decided to post one. (As with any services you to subscribe to, running this code below might cost you money &hellip;)
-from __future__ import print_function import boto3 def quote(string): return string.replace(&quot;&#39;&quot;, &quot;&#39;&#39;&quot;).replace(&#39;&quot;&#39;, &#39;&quot;&quot;&#39;).replace(&#39;`&#39;, &#39;``&#39;) def put_attributes(sdb, domain, id, color): response = sdb.put_attributes( DomainName=domain, ItemName=id, Attributes=[ { &#39;Name&#39;: &#39;color&#39;, &#39;Value&#39;: color, &#39;Replace&#39;: True }, ], ) print(response) if __name__ == &quot;__main__&quot;: domain = &quot;TEST_DOMAIN&quot; sdb = boto3."><meta property="og:image" content="https://gliptak.github.io/img/icon-192.png">
+from __future__ import print_function import boto3 def quote(string): return string.replace(&#34;&#39;&#34;, &#34;&#39;&#39;&#34;).replace(&#39;&#34;&#39;, &#39;&#34;&#34;&#39;).replace(&#39;`&#39;, &#39;``&#39;) def put_attributes(sdb, domain, id, color): response = sdb.put_attributes( DomainName=domain, ItemName=id, Attributes=[ { &#39;Name&#39;: &#39;color&#39;, &#39;Value&#39;: color, &#39;Replace&#39;: True }, ], ) print(response) if __name__ == &#34;__main__&#34;: domain = &#34;TEST_DOMAIN&#34; sdb = boto3."><meta property="og:image" content="https://gliptak.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://gliptak.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2017-02-15T17:51:55-05:00">
@@ -528,53 +528,51 @@ from __future__ import print_function import boto3 def quote(string): return str
     <div class="article-style" itemprop="articleBody">
       <p>When looking into AWS SimpleDB, a quick search didn&rsquo;t return any short Python Boto3 examples. So I decided to post one.
 (As with any services you to subscribe to, running this code below might cost you money &hellip;)</p>
-
-<pre><code class="language-python">from __future__ import print_function
-import boto3
-
-
-def quote(string):
-    return string.replace(&quot;'&quot;, &quot;''&quot;).replace('&quot;', '&quot;&quot;').replace('`', '``')
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> __future__ <span style="color:#f92672">import</span> print_function
+<span style="color:#f92672">import</span> boto3
 
 
-def put_attributes(sdb, domain, id, color):
-    response = sdb.put_attributes(
-        DomainName=domain,
-        ItemName=id,
-        Attributes=[
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">quote</span>(string):
+    <span style="color:#66d9ef">return</span> string<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;&#39;&#34;</span>, <span style="color:#e6db74">&#34;&#39;&#39;&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;&#34;&#39;</span>, <span style="color:#e6db74">&#39;&#34;&#34;&#39;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;`&#39;</span>, <span style="color:#e6db74">&#39;``&#39;</span>)
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">put_attributes</span>(sdb, domain, id, color):
+    response <span style="color:#f92672">=</span> sdb<span style="color:#f92672">.</span>put_attributes(
+        DomainName<span style="color:#f92672">=</span>domain,
+        ItemName<span style="color:#f92672">=</span>id,
+        Attributes<span style="color:#f92672">=</span>[
             {
-                'Name': 'color',
-                'Value': color,
-                'Replace': True
+                <span style="color:#e6db74">&#39;Name&#39;</span>: <span style="color:#e6db74">&#39;color&#39;</span>,
+                <span style="color:#e6db74">&#39;Value&#39;</span>: color,
+                <span style="color:#e6db74">&#39;Replace&#39;</span>: True
             },
         ],
     )
-    print(response)
+    <span style="color:#66d9ef">print</span>(response)
 
 
-if __name__ == &quot;__main__&quot;:
-    domain = &quot;TEST_DOMAIN&quot;
-    sdb = boto3.client('sdb')
-    response = sdb.create_domain(
-        DomainName=domain
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    domain <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;TEST_DOMAIN&#34;</span>
+    sdb <span style="color:#f92672">=</span> boto3<span style="color:#f92672">.</span>client(<span style="color:#e6db74">&#39;sdb&#39;</span>)
+    response <span style="color:#f92672">=</span> sdb<span style="color:#f92672">.</span>create_domain(
+        DomainName<span style="color:#f92672">=</span>domain
     )
-    print(response)
-    response = sdb.list_domains(
+    <span style="color:#66d9ef">print</span>(response)
+    response <span style="color:#f92672">=</span> sdb<span style="color:#f92672">.</span>list_domains(
     )
-    print(&quot;Current domains: %s&quot; % response['DomainNames'])
-    put_attributes(sdb, domain, &quot;id1&quot;, &quot;red&quot;)
-    put_attributes(sdb, domain, &quot;id2&quot;, &quot;redblue&quot;)
-    put_attributes(sdb, domain, &quot;id3&quot;, &quot;blue&quot;)
-    response = sdb.select(
-        SelectExpression='select * from %s where color like &quot;%%%s%%&quot;' % (domain, quote('blue')),
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Current domains: </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> response[<span style="color:#e6db74">&#39;DomainNames&#39;</span>])
+    put_attributes(sdb, domain, <span style="color:#e6db74">&#34;id1&#34;</span>, <span style="color:#e6db74">&#34;red&#34;</span>)
+    put_attributes(sdb, domain, <span style="color:#e6db74">&#34;id2&#34;</span>, <span style="color:#e6db74">&#34;redblue&#34;</span>)
+    put_attributes(sdb, domain, <span style="color:#e6db74">&#34;id3&#34;</span>, <span style="color:#e6db74">&#34;blue&#34;</span>)
+    response <span style="color:#f92672">=</span> sdb<span style="color:#f92672">.</span>select(
+        SelectExpression<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;select * from </span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> where color like &#34;</span><span style="color:#e6db74">%%%s%%</span><span style="color:#e6db74">&#34;&#39;</span> <span style="color:#f92672">%</span> (domain, quote(<span style="color:#e6db74">&#39;blue&#39;</span>)),
     )
-    print(response)
-    response = sdb.delete_domain(
-        DomainName=domain
+    <span style="color:#66d9ef">print</span>(response)
+    response <span style="color:#f92672">=</span> sdb<span style="color:#f92672">.</span>delete_domain(
+        DomainName<span style="color:#f92672">=</span>domain
     )
-    print(response)
-</code></pre>
-
+    <span style="color:#66d9ef">print</span>(response)
+</code></pre></div>
     </div>
 
     
@@ -767,7 +765,7 @@ if __name__ == &quot;__main__&quot;:
     
     
     
-    <script src="/js/academic.min.4e51017b38c7ebaadd7e25fc9503f88c.js"></script>
+    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
 
     
 
@@ -782,7 +780,7 @@ if __name__ == &quot;__main__&quot;:
   
 
   <p class="powered-by">
-    &copy; 2016-2020 Gábor Lipták &middot; 
+    © 2016-2020 Gábor Lipták &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

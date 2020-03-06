@@ -85,7 +85,7 @@ This represents a tradeoff, as recreating the Cloudformation stack might pickup 
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.3bc694af15fd1e4ff7262e7dd46f11a8.css">
+  <link rel="stylesheet" href="/css/academic.min.5a7f437ee6610ca105be34ebf9701c04.css">
 
   
 
@@ -527,11 +527,8 @@ This represents a tradeoff, as recreating the Cloudformation stack might pickup 
 
     <div class="article-style" itemprop="articleBody">
       <p>When AWS infrastructure configured in &ldquo;traditional&rdquo; compute/storage/network style, identifying, referencing and patching AMIs in all regions in use is crucial. Cloudformation has a way to redirect AMI references through SSM Parameter Store.</p>
-
 <p>This represents a tradeoff, as recreating the Cloudformation stack might pickup the next (patched) AMI hence it is no longer immutable. But resulting state is similar to externally patched Linux/Windows images which also cannot be recreated by simply redeploying Cloudformation.</p>
-
 <p>Th Cloudformation syntax as follows. <code>AmiId</code> can point to both AWS and customer published values:</p>
-
 <pre><code>AWSTemplateFormatVersion: '2010-09-09'
 
 Parameters:
@@ -544,10 +541,7 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: !Ref AmiId
-</code></pre>
-
-<p>At the time of this posting, here are some AWS maintained AMIs:</p>
-
+</code></pre><p>At the time of this posting, here are some AWS maintained AMIs:</p>
 <pre><code>aws ssm get-parameters-by-path --path /aws/service/ami-amazon-linux-latest | jq &quot;.Parameters[].Name&quot;
 &quot;/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-ebs&quot;
 &quot;/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-gp2&quot;
@@ -563,9 +557,7 @@ Resources:
 &quot;/aws/service/ami-amazon-linux-latest/amzn-ami-minimal-pv-x86_64-ebs&quot;
 &quot;/aws/service/ami-amazon-linux-latest/amzn-ami-pv-x86_64-ebs&quot;
 &quot;/aws/service/ami-amazon-linux-latest/amzn2-ami-minimal-hvm-x86_64-ebs&quot;
-</code></pre>
-
-<pre><code>aws ssm get-parameters-by-path --path /aws/service/ami-windows-latest | jq &quot;.Parameters[].Name&quot; | grep &quot;English&quot; | grep &quot;\-2019&quot;
+</code></pre><pre><code>aws ssm get-parameters-by-path --path /aws/service/ami-windows-latest | jq &quot;.Parameters[].Name&quot; | grep &quot;English&quot; | grep &quot;\-2019&quot;
 &quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2017_Web&quot;
 &quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2016_SP2_Standard&quot;
 &quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2016_SP2_Web&quot;
@@ -581,10 +573,7 @@ Resources:
 &quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2016_SP2_Enterprise&quot;
 &quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Tesla&quot;
 &quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-ECS_Optimized&quot;
-</code></pre>
-
-<p>And some &ldquo;oddballs&rdquo;</p>
-
+</code></pre><p>And some &ldquo;oddballs&rdquo;</p>
 <pre><code>aws ssm get-parameters-by-path --path /aws/service/ami-windows-latest | jq &quot;.Parameters[].Name&quot; | grep -v Windows
 &quot;/aws/service/ami-windows-latest/amzn2-ami-hvm-2.0.20190313-x86_64-gp2-SQL_2017_Express&quot;
 &quot;/aws/service/ami-windows-latest/RHEL-7.6_HVM_GA-20181017-x86_64-0-Hourly2-GP2-SQL_2017_Enterprise&quot;
@@ -602,7 +591,6 @@ Resources:
 &quot;/aws/service/ami-windows-latest/amzn2-ami-hvm-2.0.20190313-x86_64-gp2-SQL_2017_Standard&quot;
 &quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20190212-SQL_2017_Standard&quot;
 </code></pre>
-
     </div>
 
     
@@ -807,7 +795,7 @@ Resources:
     
     
     
-    <script src="/js/academic.min.4e51017b38c7ebaadd7e25fc9503f88c.js"></script>
+    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
 
     
 
@@ -822,7 +810,7 @@ Resources:
   
 
   <p class="powered-by">
-    &copy; 2016-2020 Gábor Lipták &middot; 
+    © 2016-2020 Gábor Lipták &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

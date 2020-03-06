@@ -20,53 +20,51 @@
       <guid>https://gliptak.github.io/post/simpledb-example/</guid>
       <description>&lt;p&gt;When looking into AWS SimpleDB, a quick search didn&amp;rsquo;t return any short Python Boto3 examples. So I decided to post one.
 (As with any services you to subscribe to, running this code below might cost you money &amp;hellip;)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from __future__ import print_function
-import boto3
-
-
-def quote(string):
-    return string.replace(&amp;quot;&#39;&amp;quot;, &amp;quot;&#39;&#39;&amp;quot;).replace(&#39;&amp;quot;&#39;, &#39;&amp;quot;&amp;quot;&#39;).replace(&#39;`&#39;, &#39;``&#39;)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; __future__ &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; print_function
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; boto3
 
 
-def put_attributes(sdb, domain, id, color):
-    response = sdb.put_attributes(
-        DomainName=domain,
-        ItemName=id,
-        Attributes=[
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;quote&lt;/span&gt;(string):
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; string&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#34;&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#34;&amp;#34;&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;`&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;``&amp;#39;&lt;/span&gt;)
+
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;put_attributes&lt;/span&gt;(sdb, domain, id, color):
+    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;put_attributes(
+        DomainName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;domain,
+        ItemName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;id,
+        Attributes&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[
             {
-                &#39;Name&#39;: &#39;color&#39;,
-                &#39;Value&#39;: color,
-                &#39;Replace&#39;: True
+                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Name&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;color&amp;#39;&lt;/span&gt;,
+                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Value&amp;#39;&lt;/span&gt;: color,
+                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Replace&amp;#39;&lt;/span&gt;: True
             },
         ],
     )
-    print(response)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(response)
 
 
-if __name__ == &amp;quot;__main__&amp;quot;:
-    domain = &amp;quot;TEST_DOMAIN&amp;quot;
-    sdb = boto3.client(&#39;sdb&#39;)
-    response = sdb.create_domain(
-        DomainName=domain
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+    domain &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;TEST_DOMAIN&amp;#34;&lt;/span&gt;
+    sdb &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; boto3&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;client(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sdb&amp;#39;&lt;/span&gt;)
+    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;create_domain(
+        DomainName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;domain
     )
-    print(response)
-    response = sdb.list_domains(
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(response)
+    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;list_domains(
     )
-    print(&amp;quot;Current domains: %s&amp;quot; % response[&#39;DomainNames&#39;])
-    put_attributes(sdb, domain, &amp;quot;id1&amp;quot;, &amp;quot;red&amp;quot;)
-    put_attributes(sdb, domain, &amp;quot;id2&amp;quot;, &amp;quot;redblue&amp;quot;)
-    put_attributes(sdb, domain, &amp;quot;id3&amp;quot;, &amp;quot;blue&amp;quot;)
-    response = sdb.select(
-        SelectExpression=&#39;select * from %s where color like &amp;quot;%%%s%%&amp;quot;&#39; % (domain, quote(&#39;blue&#39;)),
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Current domains: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; response[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;DomainNames&amp;#39;&lt;/span&gt;])
+    put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id1&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;red&amp;#34;&lt;/span&gt;)
+    put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id2&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;redblue&amp;#34;&lt;/span&gt;)
+    put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id3&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;blue&amp;#34;&lt;/span&gt;)
+    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;select(
+        SelectExpression&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;select * from &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; where color like &amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%%%s%%&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; (domain, quote(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;blue&amp;#39;&lt;/span&gt;)),
     )
-    print(response)
-    response = sdb.delete_domain(
-        DomainName=domain
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(response)
+    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;delete_domain(
+        DomainName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;domain
     )
-    print(response)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(response)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>
