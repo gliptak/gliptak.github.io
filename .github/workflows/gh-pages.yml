@@ -25,7 +25,7 @@ jobs:
         with:
           repository: gcushen/hugo-academic
           token: ${{ secrets.GITHUB_TOKEN }}
-          ref: v4.5.0
+          ref: v4.6.3
           path: ${{ github.workspace }}/themes/hugo-academic
 
       - name: Find
