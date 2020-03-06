@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on </title>
+    <title>Tags | </title>
     <link>https://gliptak.github.io/tags/</link>
-    <description>Recent content in Tags on </description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2016-2020 Gábor Lipták</copyright>
-    <lastBuildDate>Wed, 11 Sep 2019 21:32:25 -0400</lastBuildDate>
-    
-	    <atom:link href="https://gliptak.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    
+      <atom:link href="https://gliptak.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <description>Tags</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Wed, 11 Sep 2019 21:32:25 -0400</lastBuildDate>
+    <image>
+      <url>https://gliptak.github.io/img/icon-192.png</url>
+      <title>Tags</title>
+      <link>https://gliptak.github.io/tags/</link>
+    </image>
     
     <item>
       <title>AWS</title>
       <link>https://gliptak.github.io/tags/aws/</link>
       <pubDate>Wed, 11 Sep 2019 21:32:25 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/tags/aws/</guid>
       <description></description>
     </item>
@@ -25,7 +24,6 @@
       <title>Cloudformation</title>
       <link>https://gliptak.github.io/tags/cloudformation/</link>
       <pubDate>Wed, 11 Sep 2019 21:32:25 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/tags/cloudformation/</guid>
       <description></description>
     </item>
@@ -34,7 +32,6 @@
       <title>Python</title>
       <link>https://gliptak.github.io/tags/python/</link>
       <pubDate>Fri, 02 Jun 2017 19:07:05 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/tags/python/</guid>
       <description></description>
     </item>
@@ -43,7 +40,6 @@
       <title>Requests</title>
       <link>https://gliptak.github.io/tags/requests/</link>
       <pubDate>Fri, 02 Jun 2017 19:07:05 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/tags/requests/</guid>
       <description></description>
     </item>
@@ -52,7 +48,6 @@
       <title>Siteminder</title>
       <link>https://gliptak.github.io/tags/siteminder/</link>
       <pubDate>Fri, 02 Jun 2017 19:07:05 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/tags/siteminder/</guid>
       <description></description>
     </item>
@@ -61,7 +56,6 @@
       <title>SSO</title>
       <link>https://gliptak.github.io/tags/sso/</link>
       <pubDate>Fri, 02 Jun 2017 19:07:05 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/tags/sso/</guid>
       <description></description>
     </item>
@@ -70,7 +64,6 @@
       <title>Boto3</title>
       <link>https://gliptak.github.io/tags/boto3/</link>
       <pubDate>Wed, 15 Feb 2017 17:51:55 -0500</pubDate>
-      
       <guid>https://gliptak.github.io/tags/boto3/</guid>
       <description></description>
     </item>

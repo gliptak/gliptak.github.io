@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>AWS on </title>
+    <title>AWS | </title>
     <link>https://gliptak.github.io/tags/aws/</link>
-    <description>Recent content in AWS on </description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2016-2020 Gábor Lipták</copyright>
-    <lastBuildDate>Wed, 11 Sep 2019 21:32:25 -0400</lastBuildDate>
-    
-	    <atom:link href="https://gliptak.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
-    
+      <atom:link href="https://gliptak.github.io/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <description>AWS</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Wed, 11 Sep 2019 21:32:25 -0400</lastBuildDate>
+    <image>
+      <url>https://gliptak.github.io/img/icon-192.png</url>
+      <title>AWS</title>
+      <link>https://gliptak.github.io/tags/aws/</link>
+    </image>
     
     <item>
       <title>AWS Cloudformation Referencing AMIs Using SSM Parameter Store</title>
       <link>https://gliptak.github.io/post/aws_ssm_ami/</link>
       <pubDate>Wed, 11 Sep 2019 21:32:25 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/post/aws_ssm_ami/</guid>
       <description>&lt;p&gt;When AWS infrastructure configured in &amp;ldquo;traditional&amp;rdquo; compute/storage/network style, identifying, referencing and patching AMIs in all regions in use is crucial. Cloudformation has a way to redirect AMI references through SSM Parameter Store.&lt;/p&gt;
 &lt;p&gt;This represents a tradeoff, as recreating the Cloudformation stack might pickup the next (patched) AMI hence it is no longer immutable. But resulting state is similar to externally patched Linux/Windows images which also cannot be recreated by simply redeploying Cloudformation.&lt;/p&gt;
@@ -89,7 +88,6 @@ Resources:
       <title>AWS Organizations CLI</title>
       <link>https://gliptak.github.io/post/aws_organization_cli/</link>
       <pubDate>Sat, 07 Sep 2019 21:17:30 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/post/aws_organization_cli/</guid>
       <description>&lt;p&gt;Many AWS customers take advantage of AWS Organizations to organize and secure their workloads. In many cases, users login into their &lt;code&gt;master&lt;/code&gt; account and configure permissions allowing to switch to &lt;code&gt;member&lt;/code&gt; accounts in the Console. The same permissions can be used for &lt;code&gt;AWS CLI&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;In this example below, a single &lt;code&gt;AWS Access Key&lt;/code&gt; has to be generated (and rotated) in the &lt;code&gt;master&lt;/code&gt; account and it can be used to switch to &lt;code&gt;test/2222222&lt;/code&gt; and &lt;code&gt;production/3333333&lt;/code&gt; accounts using the &lt;code&gt;CrossAccountAccessRole&lt;/code&gt; already configured for switching in the Console.&lt;/p&gt;
@@ -111,7 +109,6 @@ source_profile = master
       <title>AWS SimpleDB Boto3 Example</title>
       <link>https://gliptak.github.io/post/simpledb-example/</link>
       <pubDate>Wed, 15 Feb 2017 17:51:55 -0500</pubDate>
-      
       <guid>https://gliptak.github.io/post/simpledb-example/</guid>
       <description>&lt;p&gt;When looking into AWS SimpleDB, a quick search didn&amp;rsquo;t return any short Python Boto3 examples. So I decided to post one.
 (As with any services you to subscribe to, running this code below might cost you money &amp;hellip;)&lt;/p&gt;

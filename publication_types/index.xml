@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Publication_types on </title>
+    <title>Publication_types | </title>
     <link>https://gliptak.github.io/publication_types/</link>
-    <description>Recent content in Publication_types on </description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2016-2020 Gábor Lipták</copyright>
-    
-	    <atom:link href="https://gliptak.github.io/publication_types/index.xml" rel="self" type="application/rss+xml" />
-    
+      <atom:link href="https://gliptak.github.io/publication_types/index.xml" rel="self" type="application/rss+xml" />
+    <description>Publication_types</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright>
+    <image>
+      <url>https://gliptak.github.io/img/icon-192.png</url>
+      <title>Publication_types</title>
+      <link>https://gliptak.github.io/publication_types/</link>
+    </image>
     
   </channel>
 </rss>

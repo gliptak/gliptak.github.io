@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Boto3 on </title>
+    <title>Boto3 | </title>
     <link>https://gliptak.github.io/tags/boto3/</link>
-    <description>Recent content in Boto3 on </description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2016-2020 Gábor Lipták</copyright>
-    <lastBuildDate>Wed, 15 Feb 2017 17:51:55 -0500</lastBuildDate>
-    
-	    <atom:link href="https://gliptak.github.io/tags/boto3/index.xml" rel="self" type="application/rss+xml" />
-    
+      <atom:link href="https://gliptak.github.io/tags/boto3/index.xml" rel="self" type="application/rss+xml" />
+    <description>Boto3</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Wed, 15 Feb 2017 17:51:55 -0500</lastBuildDate>
+    <image>
+      <url>https://gliptak.github.io/img/icon-192.png</url>
+      <title>Boto3</title>
+      <link>https://gliptak.github.io/tags/boto3/</link>
+    </image>
     
     <item>
       <title>AWS SimpleDB Boto3 Example</title>
       <link>https://gliptak.github.io/post/simpledb-example/</link>
       <pubDate>Wed, 15 Feb 2017 17:51:55 -0500</pubDate>
-      
       <guid>https://gliptak.github.io/post/simpledb-example/</guid>
       <description>&lt;p&gt;When looking into AWS SimpleDB, a quick search didn&amp;rsquo;t return any short Python Boto3 examples. So I decided to post one.
 (As with any services you to subscribe to, running this code below might cost you money &amp;hellip;)&lt;/p&gt;

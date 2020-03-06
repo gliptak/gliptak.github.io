@@ -1,9 +1,3 @@
-Hugo Publish Steps
-==================
+# Source for https://gliptak.github.io/
 
-- ```git checkout hugo```
-- ```hugo server```
-- ```hugo```
-- ```git checkout master```
-- ```(cd public; cp -r . ..)
- 
+Commits on ```hugo``` branch deployed using ```Github Actions```

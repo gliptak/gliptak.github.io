@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cloudformation on </title>
+    <title>Cloudformation | </title>
     <link>https://gliptak.github.io/tags/cloudformation/</link>
-    <description>Recent content in Cloudformation on </description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2016-2020 Gábor Lipták</copyright>
-    <lastBuildDate>Wed, 11 Sep 2019 21:32:25 -0400</lastBuildDate>
-    
-	    <atom:link href="https://gliptak.github.io/tags/cloudformation/index.xml" rel="self" type="application/rss+xml" />
-    
+      <atom:link href="https://gliptak.github.io/tags/cloudformation/index.xml" rel="self" type="application/rss+xml" />
+    <description>Cloudformation</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Wed, 11 Sep 2019 21:32:25 -0400</lastBuildDate>
+    <image>
+      <url>https://gliptak.github.io/img/icon-192.png</url>
+      <title>Cloudformation</title>
+      <link>https://gliptak.github.io/tags/cloudformation/</link>
+    </image>
     
     <item>
       <title>AWS Cloudformation Referencing AMIs Using SSM Parameter Store</title>
       <link>https://gliptak.github.io/post/aws_ssm_ami/</link>
       <pubDate>Wed, 11 Sep 2019 21:32:25 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/post/aws_ssm_ami/</guid>
       <description>&lt;p&gt;When AWS infrastructure configured in &amp;ldquo;traditional&amp;rdquo; compute/storage/network style, identifying, referencing and patching AMIs in all regions in use is crucial. Cloudformation has a way to redirect AMI references through SSM Parameter Store.&lt;/p&gt;
 &lt;p&gt;This represents a tradeoff, as recreating the Cloudformation stack might pickup the next (patched) AMI hence it is no longer immutable. But resulting state is similar to externally patched Linux/Windows images which also cannot be recreated by simply redeploying Cloudformation.&lt;/p&gt;

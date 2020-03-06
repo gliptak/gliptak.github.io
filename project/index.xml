@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Projects on </title>
+    <title>Projects | </title>
     <link>https://gliptak.github.io/project/</link>
-    <description>Recent content in Projects on </description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2016-2020 Gábor Lipták</copyright>
-    <lastBuildDate>Fri, 23 Dec 2016 00:00:00 +0000</lastBuildDate>
-    
-	    <atom:link href="https://gliptak.github.io/project/index.xml" rel="self" type="application/rss+xml" />
-    
+      <atom:link href="https://gliptak.github.io/project/index.xml" rel="self" type="application/rss+xml" />
+    <description>Projects</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Fri, 23 Dec 2016 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://gliptak.github.io/img/icon-192.png</url>
+      <title>Projects</title>
+      <link>https://gliptak.github.io/project/</link>
+    </image>
     
     <item>
       <title>JAllele</title>
       <link>https://gliptak.github.io/project/jallele/</link>
       <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://gliptak.github.io/project/jallele/</guid>
       <description></description>
     </item>
@@ -25,7 +24,6 @@
       <title>Go - A Perspective</title>
       <link>https://gliptak.github.io/project/go-a-perspective/</link>
       <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://gliptak.github.io/project/go-a-perspective/</guid>
       <description></description>
     </item>
