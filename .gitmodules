@@ -1,0 +1,8 @@
+[submodule "public"]
+	path = public
+	url = git@github.com:gliptak/gliptak.github.io.git
+	branch = e15d437e
+[submodule "themes/hugo-academic"]
+	path = themes/hugo-academic
+	url = git@github.com:gcushen/hugo-academic.git
+        branch = 96d061b
