@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Source Themes Academic 4.6.3">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
 
   
 
@@ -45,11 +45,14 @@
 
   
   
+
+  
+  
   
   
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
     
@@ -61,8 +64,8 @@
       
       
         
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
         
       
     
@@ -71,6 +74,118 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
     
 
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
     
 
   
@@ -98,11 +213,12 @@
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/img/icon-32.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
 
   <link rel="canonical" href="https://gliptak.github.io/post/python-requests-siteminder/">
 
+  
   
   
   
@@ -117,8 +233,8 @@
   <meta property="og:url" content="https://gliptak.github.io/post/python-requests-siteminder/">
   <meta property="og:title" content="Login into a CA SSO/Siteminder protected site with Python Requests | ">
   <meta property="og:description" content="While this below code is simple, it uses two important approaches:
- utilizes a Requests Session to keep Siteminder login cookies/headers it has a two step load, allowing to fill out the Siteminder form  import requests if __name__ == &#34;__main__&#34;: mysite = &#39;http://mysite/&#39; credentials = {&#39;USER&#39;: &#39;myuser&#39;, &#39;PASSWORD&#39;: &#39;mypassword&#39;} s = requests.session() # use Session to keep cookies around page = s.get(mysite) s.post(page.url, data=credentials) # page.url is the Siteminder login screen page = s."><meta property="og:image" content="https://gliptak.github.io/img/icon-192.png">
-  <meta property="twitter:image" content="https://gliptak.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
+ utilizes a Requests Session to keep Siteminder login cookies/headers it has a two step load, allowing to fill out the Siteminder form  import requests if __name__ == &#34;__main__&#34;: mysite = &#39;http://mysite/&#39; credentials = {&#39;USER&#39;: &#39;myuser&#39;, &#39;PASSWORD&#39;: &#39;mypassword&#39;} s = requests.session() # use Session to keep cookies around page = s.get(mysite) s.post(page.url, data=credentials) # page.url is the Siteminder login screen page = s."><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2017-06-02T19:07:05-04:00">
@@ -137,8 +253,6 @@
 
 
   
-
-
 
 
 
@@ -166,7 +280,7 @@
     "name": "",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://gliptak.github.io/img/icon-512.png"
+      "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
   "description": "While this below code is simple, it uses two important approaches:\n utilizes a Requests Session to keep Siteminder login cookies/headers it has a two step load, allowing to fill out the Siteminder form  import requests if __name__ == \u0026#34;__main__\u0026#34;: mysite = \u0026#39;http://mysite/\u0026#39; credentials = {\u0026#39;USER\u0026#39;: \u0026#39;myuser\u0026#39;, \u0026#39;PASSWORD\u0026#39;: \u0026#39;mypassword\u0026#39;} s = requests.session() # use Session to keep cookies around page = s.get(mysite) s.post(page.url, data=credentials) # page.url is the Siteminder login screen page = s."
@@ -226,6 +340,12 @@
 
 
   
+
+
+
+
+
+
 
 <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
   <div class="container">
@@ -438,11 +558,8 @@
   <div>
     
 
-
-
   
   <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
-
   </div>
   
   
@@ -633,11 +750,8 @@
 
 
   
-  
     
-  
-  
-
+    
 
 
 
@@ -647,6 +761,7 @@
   
   
     
+  
   
   
   <div class="media author-card content-widget-hr">
@@ -662,6 +777,10 @@
 
     </div>
   </div>
+
+
+  
+
 
 
 
@@ -711,9 +830,6 @@
 
     
     
-
-    
-    
     
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
@@ -724,14 +840,12 @@
 
       
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
         
       
 
-      
-      
     
 
     
@@ -742,6 +856,11 @@
     
     
     <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
     
 
     
@@ -808,7 +927,7 @@
     
     
     
-    <script src="/js/academic.min.3227ab49eed49815d1b4ba40154f74e7.js"></script>
+    <script src="/js/academic.min.c816d323c3a55093dae0829b44ea1ca8.js"></script>
 
     
 
