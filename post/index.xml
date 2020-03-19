@@ -5,12 +5,34 @@
     <link>https://gliptak.github.io/post/</link>
       <atom:link href="https://gliptak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Wed, 11 Sep 2019 21:32:25 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Thu, 19 Mar 2020 17:32:25 -0400</lastBuildDate>
     <image>
       <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>https://gliptak.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>AWS S3 Signed Upload URL Basics</title>
+      <link>https://gliptak.github.io/post/aws_s3_signed_url/</link>
+      <pubDate>Thu, 19 Mar 2020 17:32:25 -0400</pubDate>
+      <guid>https://gliptak.github.io/post/aws_s3_signed_url/</guid>
+      <description>&lt;p&gt;While I found a number of examples for generating signed upload S3 URLs, there didn&amp;rsquo;t seem to be examples with the basics.&lt;/p&gt;
+&lt;p&gt;After substituting the name for your bucket, file name and expiry desired, run below code to generate the URL:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import boto3
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+    s3_client = boto3.client(&#39;s3&#39;)
+    response = s3_client.generate_presigned_url(
+        ClientMethod=&#39;put_object&#39;,
+        Params={&amp;quot;Bucket&amp;quot;: &amp;quot;mybucket&amp;quot;, &amp;quot;Key&amp;quot;: &amp;quot;file.pdf&amp;quot;},
+        ExpiresIn=48*60*60,
+        HttpMethod=&amp;quot;PUT&amp;quot;)
+    print(response)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To upload from command line run below (substituting URL from previous section):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl &amp;quot;https://mybucket.s3.amazonaws.com/file.pdf?AWSAccessKeyId=AKIAWR6H3WAK6NZTVBJP&amp;amp;Signature=CkFT8z3KK8zznNSZ6sOZryFHQTM%3D&amp;amp;Expires=1584826340&amp;quot; --upload-file file.pdf
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     
     <item>
       <title>AWS Cloudformation Referencing AMIs Using SSM Parameter Store</title>
