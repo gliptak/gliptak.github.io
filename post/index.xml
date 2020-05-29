@@ -5,12 +5,32 @@
     <link>https://gliptak.github.io/post/</link>
       <atom:link href="https://gliptak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Thu, 19 Mar 2020 17:32:25 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Fri, 29 May 2020 11:17:30 -0400</lastBuildDate>
     <image>
       <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>https://gliptak.github.io/post/</link>
     </image>
+    
+    <item>
+      <title>AWS EC2 Instance Connect</title>
+      <link>https://gliptak.github.io/post/aws_ec2instanceconnect/</link>
+      <pubDate>Fri, 29 May 2020 11:17:30 -0400</pubDate>
+      <guid>https://gliptak.github.io/post/aws_ec2instanceconnect/</guid>
+      <description>&lt;p&gt;EC2 Instance Connect is somewhat overlooked functionality improving security of EC2 logins. During configuration, the &lt;code&gt;default&lt;/code&gt; instance user is assigned a public key so it&amp;rsquo;s private pair can be used to connect to the instance. The private key tends to be shared within support teams and logins can no longer be attributed to an individual. EC2 instance Connect runs and logs connect commands as the individual user and user&amp;rsquo;s permission.&lt;/p&gt;
+&lt;p&gt;Onto the steps. Run:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; aws ec2-instance-connect send-ssh-public-key --instance-id i-0123abc --instance-os-user ec2-user --availability-zone us-east-1b --ssh-public-key file://id_rsa.pub
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Substitute the right values for your instance, they can be found on the &lt;code&gt;Console&lt;/code&gt; or queried running &lt;code&gt;aws ec2 describe-instances&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;After above command successful, use (routable) IP to connect to your intstance:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ssh ec2-user@1.2.3.4
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The functionality also available from the &lt;code&gt;AWS Console&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;ec2instanceconnect.png&#34; alt=&#34;AWS Console Instance Connect&#34; title=&#34;AWS Console Instance Connect&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This activity is logged by 
+&lt;a href=&#34;https://aws.amazon.com/cloudtrail/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CloudTrail&lt;/a&gt; although the shell commands still being run as the &lt;code&gt;default&lt;/code&gt; instance user.&lt;/p&gt;
+&lt;p&gt;While EC2 Instance Connect offers less functionality as compared to other tooling like 
+&lt;a href=&#34;https://docs.aws.amazon.com/systems-manager/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AWS Systems Manager SSM&lt;/a&gt; or a &lt;code&gt;proper&lt;/code&gt; Privileged Access Management (PAM) tool, it requires no additional configuration on the instance.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>AWS S3 Signed Upload URL Basics</title>

@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content="EC2 Instance Connect is somewhat overlooked functionality improving security of EC2 logins. During configuration, the default instance user is assigned a public key so it&rsquo;s private pair can be used to connect to the instance. The private key tends to be shared within support teams and logins can no longer be attributed to an individual. EC2 instance Connect runs and logs connect commands as the individual user and user&rsquo;s permission.">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/tags/aws/">
+  <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/post/aws_ec2instanceconnect/">
 
   
 
@@ -210,14 +210,12 @@
 
 
   
-  <link rel="alternate" href="/tags/aws/index.xml" type="application/rss+xml" title="">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://gliptak.github.io/tags/aws/">
+  <link rel="canonical" href="https://gliptak.github.io/post/aws_ec2instanceconnect/">
 
   
   
@@ -231,18 +229,63 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="">
-  <meta property="og:url" content="https://gliptak.github.io/tags/aws/">
-  <meta property="og:title" content="AWS | ">
-  <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="og:url" content="https://gliptak.github.io/post/aws_ec2instanceconnect/">
+  <meta property="og:title" content="AWS EC2 Instance Connect | ">
+  <meta property="og:description" content="EC2 Instance Connect is somewhat overlooked functionality improving security of EC2 logins. During configuration, the default instance user is assigned a public key so it&rsquo;s private pair can be used to connect to the instance. The private key tends to be shared within support teams and logins can no longer be attributed to an individual. EC2 instance Connect runs and logs connect commands as the individual user and user&rsquo;s permission."><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2020-05-29T11:17:30-04:00">
+    
+      <meta property="article:published_time" content="2020-05-29T11:17:30-04:00">
+    
+    <meta property="article:modified_time" content="2020-05-29T11:17:30-04:00">
   
 
   
 
 
+    
 
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gliptak.github.io/post/aws_ec2instanceconnect/"
+  },
+  "headline": "AWS EC2 Instance Connect",
+  
+  "datePublished": "2020-05-29T11:17:30-04:00",
+  "dateModified": "2020-05-29T11:17:30-04:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Gábor Lipták"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "EC2 Instance Connect is somewhat overlooked functionality improving security of EC2 logins. During configuration, the default instance user is assigned a public key so it\u0026rsquo;s private pair can be used to connect to the instance. The private key tends to be shared within support teams and logins can no longer be attributed to an individual. EC2 instance Connect runs and logs connect commands as the individual user and user\u0026rsquo;s permission."
+}
+</script>
+
+  
 
   
 
@@ -250,10 +293,13 @@
   
 
 
+  
 
 
 
-  <title>AWS | </title>
+
+
+  <title>AWS EC2 Instance Connect | </title>
 
 </head>
 
@@ -472,110 +518,317 @@
 </nav>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
+  <article class="article">
 
   
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
   
   
+  
+<div class="article-container pt-3">
+  <h1>AWS EC2 Instance Connect</h1>
+
+  
+
   
     
-  
-<div class="universal-wrapper pt-3">
-  <h1>AWS</h1>
+
+
+<div class="article-metadata">
 
   
+  
+  
+  
+  <div>
+    
+
+  
+  <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    2020-05-29
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/aws_ec2instanceconnect/#disqus_thread"></a>
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 </div>
 
 
 
-<div class="universal-wrapper">
-  
+  <div class="article-container">
 
-  
-  
-    
-    
-    
-    <div>
-      <h2><a href="/post/aws_ec2instanceconnect/" >AWS EC2 Instance Connect</a></h2>
-      <div class="article-style">
-        
-          EC2 Instance Connect is somewhat overlooked functionality improving security of EC2 logins. During configuration, the default instance user is assigned a public key so it&rsquo;s private pair can be used to connect to the instance. The private key tends to be shared within support teams and logins can no longer be attributed to an individual. EC2 instance Connect runs and logs connect commands as the individual user and user&rsquo;s permission.
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/post/aws_s3_signed_url/" >AWS S3 Signed Upload URL Basics</a></h2>
-      <div class="article-style">
-        
-          While I found a number of examples for generating signed upload S3 URLs, there didn&rsquo;t seem to be examples with the basics.
-After substituting the name for your bucket, file name and expiry desired, run below code to generate the URL:
-import boto3 if __name__ == &quot;__main__&quot;: s3_client = boto3.client('s3') response = s3_client.generate_presigned_url( ClientMethod='put_object', Params={&quot;Bucket&quot;: &quot;mybucket&quot;, &quot;Key&quot;: &quot;file.pdf&quot;}, ExpiresIn=48*60*60, HttpMethod=&quot;PUT&quot;) print(response) To upload from command line run below (substituting URL from previous section):
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/post/aws_ssm_ami/" >AWS Cloudformation Referencing AMIs Using SSM Parameter Store</a></h2>
-      <div class="article-style">
-        
-          When AWS infrastructure configured in &ldquo;traditional&rdquo; compute/storage/network style, identifying, referencing and patching AMIs in all regions in use is crucial. Cloudformation has a way to redirect AMI references through SSM Parameter Store.
-This represents a tradeoff, as recreating the Cloudformation stack might pickup the next (patched) AMI hence it is no longer immutable. But resulting state is similar to externally patched Linux/Windows images which also cannot be recreated by simply redeploying Cloudformation.
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/post/aws_organization_cli/" >AWS Organizations CLI</a></h2>
-      <div class="article-style">
-        
-          Many AWS customers take advantage of AWS Organizations to organize and secure their workloads. In many cases, users login into their master account and configure permissions allowing to switch to member accounts in the Console. The same permissions can be used for AWS CLI.
-In this example below, a single AWS Access Key has to be generated (and rotated) in the master account and it can be used to switch to test/2222222 and production/3333333 accounts using the CrossAccountAccessRole already configured for switching in the Console.
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/post/simpledb-example/" >AWS SimpleDB Boto3 Example</a></h2>
-      <div class="article-style">
-        
-          When looking into AWS SimpleDB, a quick search didn&rsquo;t return any short Python Boto3 examples. So I decided to post one. (As with any services you to subscribe to, running this code below might cost you money &hellip;)
-from __future__ import print_function import boto3 def quote(string): return string.replace(&#34;&#39;&#34;, &#34;&#39;&#39;&#34;).replace(&#39;&#34;&#39;, &#39;&#34;&#34;&#39;).replace(&#39;`&#39;, &#39;``&#39;) def put_attributes(sdb, domain, id, color): response = sdb.put_attributes( DomainName=domain, ItemName=id, Attributes=[ { &#39;Name&#39;: &#39;color&#39;, &#39;Value&#39;: color, &#39;Replace&#39;: True }, ], ) print(response) if __name__ == &#34;__main__&#34;: domain = &#34;TEST_DOMAIN&#34; sdb = boto3.
-        
-      </div>
-    </div>
-  
+    <div class="article-style">
+      <p>EC2 Instance Connect is somewhat overlooked functionality improving security of EC2 logins. During configuration, the <code>default</code> instance user is assigned a public key so it&rsquo;s private pair can be used to connect to the instance. The private key tends to be shared within support teams and logins can no longer be attributed to an individual. EC2 instance Connect runs and logs connect commands as the individual user and user&rsquo;s permission.</p>
+<p>Onto the steps. Run:</p>
+<pre><code> aws ec2-instance-connect send-ssh-public-key --instance-id i-0123abc --instance-os-user ec2-user --availability-zone us-east-1b --ssh-public-key file://id_rsa.pub
+</code></pre><p>Substitute the right values for your instance, they can be found on the <code>Console</code> or queried running <code>aws ec2 describe-instances</code>.</p>
+<p>After above command successful, use (routable) IP to connect to your intstance:</p>
+<pre><code>ssh ec2-user@1.2.3.4
+</code></pre><p>The functionality also available from the <code>AWS Console</code>:</p>
+<p><img src="ec2instanceconnect.png" alt="AWS Console Instance Connect" title="AWS Console Instance Connect"></p>
+<p>This activity is logged by 
+<a href="https://aws.amazon.com/cloudtrail/" target="_blank" rel="noopener">CloudTrail</a> although the shell commands still being run as the <code>default</code> instance user.</p>
+<p>While EC2 Instance Connect offers less functionality as compared to other tooling like 
+<a href="https://docs.aws.amazon.com/systems-manager/" target="_blank" rel="noopener">AWS Systems Manager SSM</a> or a <code>proper</code> Privileged Access Management (PAM) tool, it requires no additional configuration on the instance.</p>
 
-  
+    </div>
 
+    
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/aws/">AWS</a>
+  
 </div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://gliptak.github.io/post/aws_ec2instanceconnect/&amp;text=AWS%20EC2%20Instance%20Connect" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://gliptak.github.io/post/aws_ec2instanceconnect/&amp;t=AWS%20EC2%20Instance%20Connect" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=AWS%20EC2%20Instance%20Connect&amp;body=https://gliptak.github.io/post/aws_ec2instanceconnect/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://gliptak.github.io/post/aws_ec2instanceconnect/&amp;title=AWS%20EC2%20Instance%20Connect" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=AWS%20EC2%20Instance%20Connect%20https://gliptak.github.io/post/aws_ec2instanceconnect/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://gliptak.github.io/post/aws_ec2instanceconnect/&amp;title=AWS%20EC2%20Instance%20Connect" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://gliptak.github.io/">Gábor Lipták</a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+<section id="comments">
+  
+    
+<div id="disqus_thread"></div>
+<script>
+  let disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "https-gliptak-github-io" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  
+</section>
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/aws_s3_signed_url/">AWS S3 Signed Upload URL Basics</a></li>
+      
+      <li><a href="/post/aws_ssm_ami/">AWS Cloudformation Referencing AMIs Using SSM Parameter Store</a></li>
+      
+      <li><a href="/post/aws_organization_cli/">AWS Organizations CLI</a></li>
+      
+      <li><a href="/post/simpledb-example/">AWS SimpleDB Boto3 Example</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
 
       
 
