@@ -28,10 +28,11 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content="For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:
+import json import logging import boto3 logger = logging.getLogger() logger.setLevel(logging.INFO) def lambda_handler(event, context): logger.info(json.dumps(event)) account_id = boto3.client(&#39;sts&#39;).get_caller_identity().get(&#39;Account&#39;) # use a client which is region based logs_client = boto3.client(&#39;logs&#39;) region_name = logs_client.meta.region_name logger.info(f&quot;{account_id}:{region_name}&quot;) ">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/tags/">
+  <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/post/aws_lambda_accountregion/">
 
   
 
@@ -210,14 +211,12 @@
 
 
   
-  <link rel="alternate" href="/tags/index.xml" type="application/rss+xml" title="">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://gliptak.github.io/tags/">
+  <link rel="canonical" href="https://gliptak.github.io/post/aws_lambda_accountregion/">
 
   
   
@@ -231,18 +230,64 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="">
-  <meta property="og:url" content="https://gliptak.github.io/tags/">
-  <meta property="og:title" content="Tags | ">
-  <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="og:url" content="https://gliptak.github.io/post/aws_lambda_accountregion/">
+  <meta property="og:title" content="AWS Lambda Lookup AccountId and Region | ">
+  <meta property="og:description" content="For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:
+import json import logging import boto3 logger = logging.getLogger() logger.setLevel(logging.INFO) def lambda_handler(event, context): logger.info(json.dumps(event)) account_id = boto3.client(&#39;sts&#39;).get_caller_identity().get(&#39;Account&#39;) # use a client which is region based logs_client = boto3.client(&#39;logs&#39;) region_name = logs_client.meta.region_name logger.info(f&quot;{account_id}:{region_name}&quot;) "><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2020-10-02T18:32:25-04:00">
+    
+      <meta property="article:published_time" content="2020-10-02T18:32:25-04:00">
+    
+    <meta property="article:modified_time" content="2019-09-11T21:32:25-04:00">
   
 
   
 
 
+    
 
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gliptak.github.io/post/aws_lambda_accountregion/"
+  },
+  "headline": "AWS Lambda Lookup AccountId and Region",
+  
+  "datePublished": "2020-10-02T18:32:25-04:00",
+  "dateModified": "2019-09-11T21:32:25-04:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Gábor Lipták"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:\nimport json import logging import boto3 logger = logging.getLogger() logger.setLevel(logging.INFO) def lambda_handler(event, context): logger.info(json.dumps(event)) account_id = boto3.client('sts').get_caller_identity().get('Account') # use a client which is region based logs_client = boto3.client('logs') region_name = logs_client.meta.region_name logger.info(f\u0026quot;{account_id}:{region_name}\u0026quot;) "
+}
+</script>
+
+  
 
   
 
@@ -250,10 +295,13 @@
   
 
 
+  
 
 
 
-  <title>Tags | </title>
+
+
+  <title>AWS Lambda Lookup AccountId and Region | </title>
 
 </head>
 
@@ -472,135 +520,326 @@
 </nav>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
+  <article class="article">
 
   
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
   
   
+  
+<div class="article-container pt-3">
+  <h1>AWS Lambda Lookup AccountId and Region</h1>
+
+  
+
   
     
-  
-<div class="universal-wrapper pt-3">
-  <h1>Tags</h1>
+
+
+<div class="article-metadata">
 
   
+  
+  
+  
+  <div>
+    
+
+  
+  <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    2019-09-11
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/aws_lambda_accountregion/#disqus_thread"></a>
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 </div>
 
 
 
-<div class="universal-wrapper">
-  
+  <div class="article-container">
 
-  
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/aws/" >AWS</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/lambda/" >Lambda</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/s3/" >S3</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/cloudformation/" >Cloudformation</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/python/" >Python</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/requests/" >Requests</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/siteminder/" >Siteminder</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/sso/" >SSO</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/boto3/" >Boto3</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
+    <div class="article-style">
+      <p>For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:</p>
+<pre><code>import json
+import logging
+import boto3
 
-  
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
+def lambda_handler(event, context):
+    logger.info(json.dumps(event))
+    account_id = boto3.client('sts').get_caller_identity().get('Account')
+    # use a client which is region based
+    logs_client = boto3.client('logs')
+    region_name = logs_client.meta.region_name
+    logger.info(f&quot;{account_id}:{region_name}&quot;)
+</code></pre>
+    </div>
+
+    
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/aws/">AWS</a>
+  
+  <a class="badge badge-light" href="/tags/lambda/">Lambda</a>
+  
 </div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://gliptak.github.io/post/aws_lambda_accountregion/&amp;text=AWS%20Lambda%20Lookup%20AccountId%20and%20Region" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://gliptak.github.io/post/aws_lambda_accountregion/&amp;t=AWS%20Lambda%20Lookup%20AccountId%20and%20Region" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=AWS%20Lambda%20Lookup%20AccountId%20and%20Region&amp;body=https://gliptak.github.io/post/aws_lambda_accountregion/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://gliptak.github.io/post/aws_lambda_accountregion/&amp;title=AWS%20Lambda%20Lookup%20AccountId%20and%20Region" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=AWS%20Lambda%20Lookup%20AccountId%20and%20Region%20https://gliptak.github.io/post/aws_lambda_accountregion/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://gliptak.github.io/post/aws_lambda_accountregion/&amp;title=AWS%20Lambda%20Lookup%20AccountId%20and%20Region" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://gliptak.github.io/">Gábor Lipták</a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+<section id="comments">
+  
+    
+<div id="disqus_thread"></div>
+<script>
+  let disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "https-gliptak-github-io" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  
+</section>
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/aws_ec2instanceconnect/">AWS EC2 Instance Connect</a></li>
+      
+      <li><a href="/post/aws_s3_signed_url/">AWS S3 Signed Upload URL Basics</a></li>
+      
+      <li><a href="/post/aws_ssm_ami/">AWS Cloudformation Referencing AMIs Using SSM Parameter Store</a></li>
+      
+      <li><a href="/post/aws_organization_cli/">AWS Organizations CLI</a></li>
+      
+      <li><a href="/post/simpledb-example/">AWS SimpleDB Boto3 Example</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
 
       
 

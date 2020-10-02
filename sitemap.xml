@@ -23,8 +23,13 @@
   </url>
   
   <url>
-    <loc>https://gliptak.github.io/post/aws_ec2instanceconnect/</loc>
-    <lastmod>2020-05-29T11:17:30-04:00</lastmod>
+    <loc>https://gliptak.github.io/post/aws_lambda_accountregion/</loc>
+    <lastmod>2019-09-11T21:32:25-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/tags/lambda/</loc>
+    <lastmod>2019-09-11T21:32:25-04:00</lastmod>
   </url>
   
   <url>
@@ -34,6 +39,11 @@
   
   <url>
     <loc>https://gliptak.github.io/tags/</loc>
+    <lastmod>2020-05-29T11:17:30-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gliptak.github.io/post/aws_ec2instanceconnect/</loc>
     <lastmod>2020-05-29T11:17:30-04:00</lastmod>
   </url>
   

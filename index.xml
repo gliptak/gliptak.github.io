@@ -5,12 +5,35 @@
     <link>https://gliptak.github.io/</link>
       <atom:link href="https://gliptak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description></description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Fri, 29 May 2020 11:17:30 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Fri, 02 Oct 2020 18:32:25 -0400</lastBuildDate>
     <image>
       <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title></title>
       <link>https://gliptak.github.io/</link>
     </image>
+    
+    <item>
+      <title>AWS Lambda Lookup AccountId and Region</title>
+      <link>https://gliptak.github.io/post/aws_lambda_accountregion/</link>
+      <pubDate>Fri, 02 Oct 2020 18:32:25 -0400</pubDate>
+      <guid>https://gliptak.github.io/post/aws_lambda_accountregion/</guid>
+      <description>&lt;p&gt;For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import json
+import logging
+import boto3
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+def lambda_handler(event, context):
+    logger.info(json.dumps(event))
+    account_id = boto3.client(&#39;sts&#39;).get_caller_identity().get(&#39;Account&#39;)
+    # use a client which is region based
+    logs_client = boto3.client(&#39;logs&#39;)
+    region_name = logs_client.meta.region_name
+    logger.info(f&amp;quot;{account_id}:{region_name}&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     
     <item>
       <title>AWS EC2 Instance Connect</title>

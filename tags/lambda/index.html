@@ -31,7 +31,7 @@
   <meta name="description" content="">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/tags/">
+  <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/tags/lambda/">
 
   
 
@@ -210,14 +210,14 @@
 
 
   
-  <link rel="alternate" href="/tags/index.xml" type="application/rss+xml" title="">
+  <link rel="alternate" href="/tags/lambda/index.xml" type="application/rss+xml" title="">
   
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://gliptak.github.io/tags/">
+  <link rel="canonical" href="https://gliptak.github.io/tags/lambda/">
 
   
   
@@ -231,8 +231,8 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="">
-  <meta property="og:url" content="https://gliptak.github.io/tags/">
-  <meta property="og:title" content="Tags | ">
+  <meta property="og:url" content="https://gliptak.github.io/tags/lambda/">
+  <meta property="og:title" content="Lambda | ">
   <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
@@ -253,7 +253,7 @@
 
 
 
-  <title>Tags | </title>
+  <title>Lambda | </title>
 
 </head>
 
@@ -493,7 +493,7 @@
     
   
 <div class="universal-wrapper pt-3">
-  <h1>Tags</h1>
+  <h1>Lambda</h1>
 
   
 
@@ -511,88 +511,11 @@
     
     
     <div>
-      <h2><a href="/tags/aws/" >AWS</a></h2>
+      <h2><a href="/post/aws_lambda_accountregion/" >AWS Lambda Lookup AccountId and Region</a></h2>
       <div class="article-style">
         
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/lambda/" >Lambda</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/s3/" >S3</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/cloudformation/" >Cloudformation</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/python/" >Python</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/requests/" >Requests</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/siteminder/" >Siteminder</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/sso/" >SSO</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/tags/boto3/" >Boto3</a></h2>
-      <div class="article-style">
+          For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:
+import json import logging import boto3 logger = logging.getLogger() logger.setLevel(logging.INFO) def lambda_handler(event, context): logger.info(json.dumps(event)) account_id = boto3.client('sts').get_caller_identity().get('Account') # use a client which is region based logs_client = boto3.client('logs') region_name = logs_client.meta.region_name logger.info(f&quot;{account_id}:{region_name}&quot;) 
         
       </div>
     </div>
