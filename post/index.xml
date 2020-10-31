@@ -30,7 +30,6 @@ def generate(session_key):
         ts = dt.datetime.now(tz=dt.timezone.utc).isoformat()
         print(f&#39;{ts}, collection=&amp;quot;{collection.name}&amp;quot;&#39;)
 
-
 if __name__ == &amp;quot;__main__&amp;quot;:
     session_key = sys.stdin.read()
     generate(session_key)

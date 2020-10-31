@@ -631,7 +631,6 @@ def generate(session_key):
         ts = dt.datetime.now(tz=dt.timezone.utc).isoformat()
         print(f'{ts}, collection=&quot;{collection.name}&quot;')
 
-
 if __name__ == &quot;__main__&quot;:
     session_key = sys.stdin.read()
     generate(session_key)
