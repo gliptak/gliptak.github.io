@@ -17,7 +17,7 @@
       <link>https://gliptak.github.io/post/splunk_custom_input_session/</link>
       <pubDate>Sat, 31 Oct 2020 11:17:30 -0400</pubDate>
       <guid>https://gliptak.github.io/post/splunk_custom_input_session/</guid>
-      <description>&lt;p&gt;Splunk can be extended with custom inputs written in Python. In order to connect to Splunk services, code has to be configured and use a session token. Here is the basic setup which emits records with &lt;code&gt;kvstore&lt;/code&gt; names&lt;/p&gt;
+      <description>&lt;p&gt;&lt;code&gt;Splunk&lt;/code&gt; can be extended with custom inputs written in &lt;code&gt;Python&lt;/code&gt;. In order to connect to &lt;code&gt;Splunk&lt;/code&gt; services, code has to be configured and use a session token. Here is the basic setup emitting records with &lt;code&gt;kvstore&lt;/code&gt; names&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
 
 import splunklib.client as client
@@ -39,7 +39,7 @@ if __name__ == &amp;quot;__main__&amp;quot;:
 interval = 300
 disabled = False
 passAuth = nobody
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;kvstore&lt;/code&gt; access uses user &lt;code&gt;nobody&lt;/code&gt;, other services might need a different user configured.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;kvstore&lt;/code&gt; access uses user &lt;code&gt;nobody&lt;/code&gt;, other &lt;code&gt;Splunk&lt;/code&gt; services might need a different user configured.&lt;/p&gt;
 </description>
     </item>
     

@@ -534,7 +534,7 @@
 
     
     <div class="article-style">
-      Splunk can be extended with custom inputs written in Python. In order to connect to Splunk services, code has to be configured and use a session token. Here is the basic setup which emits records with kvstore names
+      Splunk can be extended with custom inputs written in Python. In order to connect to Splunk services, code has to be configured and use a session token. Here is the basic setup emitting records with kvstore names
 #!/usr/bin/env python import splunklib.client as client import sys import datetime as dt def generate(session_key): service = client.connect(token = session_key) for collection in service.kvstore: ts = dt.datetime.now(tz=dt.timezone.utc).isoformat() print(f'{ts}, collection=&quot;{collection.name}&quot;') if __name__ == &quot;__main__&quot;: session_key = sys.
     </div>
     

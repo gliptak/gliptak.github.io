@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="Splunk can be extended with custom inputs written in Python. In order to connect to Splunk services, code has to be configured and use a session token. Here is the basic setup which emits records with kvstore names
+  <meta name="description" content="Splunk can be extended with custom inputs written in Python. In order to connect to Splunk services, code has to be configured and use a session token. Here is the basic setup emitting records with kvstore names
 #!/usr/bin/env python import splunklib.client as client import sys import datetime as dt def generate(session_key): service = client.connect(token = session_key) for collection in service.kvstore: ts = dt.datetime.now(tz=dt.timezone.utc).isoformat() print(f&#39;{ts}, collection=&quot;{collection.name}&quot;&#39;) if __name__ == &quot;__main__&quot;: session_key = sys.">
 
   
@@ -232,7 +232,7 @@
   <meta property="og:site_name" content="">
   <meta property="og:url" content="https://gliptak.github.io/post/splunk_custom_input_session/">
   <meta property="og:title" content="Splunk custom input with session | ">
-  <meta property="og:description" content="Splunk can be extended with custom inputs written in Python. In order to connect to Splunk services, code has to be configured and use a session token. Here is the basic setup which emits records with kvstore names
+  <meta property="og:description" content="Splunk can be extended with custom inputs written in Python. In order to connect to Splunk services, code has to be configured and use a session token. Here is the basic setup emitting records with kvstore names
 #!/usr/bin/env python import splunklib.client as client import sys import datetime as dt def generate(session_key): service = client.connect(token = session_key) for collection in service.kvstore: ts = dt.datetime.now(tz=dt.timezone.utc).isoformat() print(f&#39;{ts}, collection=&quot;{collection.name}&quot;&#39;) if __name__ == &quot;__main__&quot;: session_key = sys."><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
@@ -283,7 +283,7 @@
       "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "Splunk can be extended with custom inputs written in Python. In order to connect to Splunk services, code has to be configured and use a session token. Here is the basic setup which emits records with kvstore names\n#!/usr/bin/env python import splunklib.client as client import sys import datetime as dt def generate(session_key): service = client.connect(token = session_key) for collection in service.kvstore: ts = dt.datetime.now(tz=dt.timezone.utc).isoformat() print(f'{ts}, collection=\u0026quot;{collection.name}\u0026quot;') if __name__ == \u0026quot;__main__\u0026quot;: session_key = sys."
+  "description": "Splunk can be extended with custom inputs written in Python. In order to connect to Splunk services, code has to be configured and use a session token. Here is the basic setup emitting records with kvstore names\n#!/usr/bin/env python import splunklib.client as client import sys import datetime as dt def generate(session_key): service = client.connect(token = session_key) for collection in service.kvstore: ts = dt.datetime.now(tz=dt.timezone.utc).isoformat() print(f'{ts}, collection=\u0026quot;{collection.name}\u0026quot;') if __name__ == \u0026quot;__main__\u0026quot;: session_key = sys."
 }
 </script>
 
@@ -618,7 +618,7 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p>Splunk can be extended with custom inputs written in Python. In order to connect to Splunk services, code has to be configured and use a session token. Here is the basic setup which emits records with <code>kvstore</code> names</p>
+      <p><code>Splunk</code> can be extended with custom inputs written in <code>Python</code>. In order to connect to <code>Splunk</code> services, code has to be configured and use a session token. Here is the basic setup emitting records with <code>kvstore</code> names</p>
 <pre><code>#!/usr/bin/env python
 
 import splunklib.client as client
@@ -640,7 +640,7 @@ if __name__ == &quot;__main__&quot;:
 interval = 300
 disabled = False
 passAuth = nobody
-</code></pre><p><code>kvstore</code> access uses user <code>nobody</code>, other services might need a different user configured.</p>
+</code></pre><p><code>kvstore</code> access uses user <code>nobody</code>, other <code>Splunk</code> services might need a different user configured.</p>
 
     </div>
 
@@ -651,6 +651,8 @@ passAuth = nobody
 <div class="article-tags">
   
   <a class="badge badge-light" href="/tags/splunk/">Splunk</a>
+  
+  <a class="badge badge-light" href="/tags/python/">Python</a>
   
 </div>
 
@@ -821,6 +823,15 @@ passAuth = nobody
 
 
   
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/python-requests-siteminder/">Login into a CA SSO/Siteminder protected site with Python Requests</a></li>
+      
+    </ul>
+  </div>
   
 
 
