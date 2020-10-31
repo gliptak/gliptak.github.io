@@ -17,7 +17,7 @@
       <link>https://gliptak.github.io/post/splunk_custom_input_session/</link>
       <pubDate>Sat, 31 Oct 2020 11:17:30 -0400</pubDate>
       <guid>https://gliptak.github.io/post/splunk_custom_input_session/</guid>
-      <description>&lt;p&gt;&lt;code&gt;Splunk&lt;/code&gt; can be extended with custom inputs written in &lt;code&gt;Python&lt;/code&gt;. In order to connect to &lt;code&gt;Splunk&lt;/code&gt; services, code has to be configured and use a session token. Here is the basic setup emitting records with &lt;code&gt;kvstore&lt;/code&gt; names&lt;/p&gt;
+      <description>&lt;p&gt;&lt;code&gt;Splunk&lt;/code&gt; can be extended with custom inputs written in &lt;code&gt;Python&lt;/code&gt;. In order to connect to &lt;code&gt;Splunk&lt;/code&gt; services, code has to be configured and use a session token. Here is a basic setup emitting records with &lt;code&gt;kvstore&lt;/code&gt; names&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
 
 import splunklib.client as client
