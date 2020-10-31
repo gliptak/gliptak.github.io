@@ -40,7 +40,7 @@ Onto the steps. Run:
 
 Substitute the right values for your instance, they can be found on the **AWS Console** or queried running ```aws ec2 describe-instances```.
 
-After above command successful, use (routable) FQDN/IP to connect to your instance:
+After above command successful, use (routable) FQDN/IP to connect to your instance (some operating systems use a different **default** user):
 
 ```
 ssh ec2-user@1.2.3.4
