@@ -5,12 +5,43 @@
     <link>https://gliptak.github.io/authors/gliptak/</link>
       <atom:link href="https://gliptak.github.io/authors/gliptak/index.xml" rel="self" type="application/rss+xml" />
     <description></description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Sat, 31 Oct 2020 10:17:30 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Sat, 31 Oct 2020 11:17:30 -0400</lastBuildDate>
     <image>
       <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title></title>
       <link>https://gliptak.github.io/authors/gliptak/</link>
     </image>
+    
+    <item>
+      <title>Splunk custom input with session</title>
+      <link>https://gliptak.github.io/post/splunk_custom_input_session/</link>
+      <pubDate>Sat, 31 Oct 2020 11:17:30 -0400</pubDate>
+      <guid>https://gliptak.github.io/post/splunk_custom_input_session/</guid>
+      <description>&lt;p&gt;Splunk can be extended with custom inputs written in Python. In order to connect to Splunk services, code has to be configured and use a session token. Here is the basic setup which emits records with &lt;code&gt;kvstore&lt;/code&gt; names&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
+
+import splunklib.client as client
+import sys
+import datetime as dt
+
+def generate(session_key):
+    service = client.connect(token = session_key)
+    for collection in service.kvstore:
+        ts = dt.datetime.now(tz=dt.timezone.utc).isoformat()
+        print(f&#39;{ts}, collection=&amp;quot;{collection.name}&amp;quot;&#39;)
+
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+    session_key = sys.stdin.read()
+    generate(session_key)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and the corresponding &lt;code&gt;default/inputs.conf&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[script://./bin/listkvstores.py]
+interval = 300
+disabled = False
+passAuth = nobody
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;kvstore&lt;/code&gt; access uses user &lt;code&gt;nobody&lt;/code&gt;, other services might need a different user configured.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>AWS Account Cleanup</title>
