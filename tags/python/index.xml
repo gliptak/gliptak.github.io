@@ -31,7 +31,7 @@ exit
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;ℹ️ Above command can also be used to install system packages and pip install Python libraries&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;After completing above steps, login to &lt;code&gt;Jupyterhub&lt;/code&gt; at http://localhost:8000/user/jovyan/tree/work&lt;/p&gt;
+&lt;p&gt;After completing above steps, login to &lt;code&gt;Jupyterhub&lt;/code&gt; at (http://localhost:8000/user/jovyan/tree/work)[http://localhost:8000/user/jovyan/tree/work]&lt;/p&gt;
 &lt;p&gt;To cleanup running instance&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;docker stop jupyterhub
 &lt;/code&gt;&lt;/pre&gt;</description>
