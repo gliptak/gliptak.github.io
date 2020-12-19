@@ -5,12 +5,37 @@
     <link>https://gliptak.github.io/tags/python/</link>
       <atom:link href="https://gliptak.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <description>Python</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Sat, 31 Oct 2020 11:17:30 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2020 Gábor Lipták</copyright><lastBuildDate>Sat, 19 Dec 2020 17:07:05 -0400</lastBuildDate>
     <image>
       <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Python</title>
       <link>https://gliptak.github.io/tags/python/</link>
     </image>
+    
+    <item>
+      <title>Running Jupyterhub Docker</title>
+      <link>https://gliptak.github.io/post/jupyterhub_docker/</link>
+      <pubDate>Sat, 19 Dec 2020 17:07:05 -0400</pubDate>
+      <guid>https://gliptak.github.io/post/jupyterhub_docker/</guid>
+      <description>&lt;p&gt;&lt;code&gt;Jupyterhub&lt;/code&gt; doesn&amp;rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:&lt;/p&gt;
+&lt;p&gt;As the Docker image name indicates, this is &lt;code&gt;singleuser&lt;/code&gt; instance preconfigured for user &lt;code&gt;jovyan&lt;/code&gt;. Run below command in directory with your notebooks&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;There doesn&amp;rsquo;t seem to be (default) password set for &lt;code&gt;jovyan&lt;/code&gt; user, so at this point you cannot login into the GUI. Set password for &lt;code&gt;jovyan&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec --user root -it jupyterhub bash
+# passwd jovyan
+New password: 
+Retype new password: 
+passwd: password updated successfully
+# exit
+exit
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;ℹ️ Above command can also be used to install system packages and pip install Python libraries&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After completing above steps, login to &lt;code&gt;Jupyterhub&lt;/code&gt; at http://localhost:8000/user/jovyan/tree/work&lt;/p&gt;
+&lt;p&gt;To cleanup running instance&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker stop jupyterhub
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     
     <item>
       <title>Splunk custom input with session</title>
