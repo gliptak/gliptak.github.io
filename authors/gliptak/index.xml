@@ -29,7 +29,7 @@ passwd: password updated successfully
 # exit
 exit
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;ℹ️ Above command can also be used to install system packages and pip install Python libraries&lt;/p&gt;
+&lt;p&gt;ℹ️ Above shell command can also be used to install system packages and pip install Python libraries&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;After completing above steps, login to &lt;code&gt;Jupyterhub&lt;/code&gt; at 
 &lt;a href=&#34;http://localhost:8000/user/jovyan/tree/work&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://localhost:8000/user/jovyan/tree/work&lt;/a&gt;&lt;/p&gt;
