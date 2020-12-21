@@ -29,7 +29,7 @@
     
   
   <meta name="description" content="Jupyterhub doesn&rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:
-As the Docker image name indicates, this is singleuser instance preconfigured for user jovyan. Run below command in directory with your notebooks
+As the Docker image name indicates, this is https://hub.docker.com/r/jupyterhub/singleuser instance preconfigured for user jovyan. Run below command in directory with your notebooks
 docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub There doesn&rsquo;t seem to be (default) password set for jovyan user, so at this point you cannot login into the GUI.">
 
   
@@ -234,7 +234,7 @@ docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jup
   <meta property="og:url" content="https://gliptak.github.io/post/jupyterhub_docker/">
   <meta property="og:title" content="Running Jupyterhub Docker | ">
   <meta property="og:description" content="Jupyterhub doesn&rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:
-As the Docker image name indicates, this is singleuser instance preconfigured for user jovyan. Run below command in directory with your notebooks
+As the Docker image name indicates, this is https://hub.docker.com/r/jupyterhub/singleuser instance preconfigured for user jovyan. Run below command in directory with your notebooks
 docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub There doesn&rsquo;t seem to be (default) password set for jovyan user, so at this point you cannot login into the GUI."><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
@@ -285,7 +285,7 @@ docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jup
       "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "Jupyterhub doesn\u0026rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:\nAs the Docker image name indicates, this is singleuser instance preconfigured for user jovyan. Run below command in directory with your notebooks\ndocker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub There doesn\u0026rsquo;t seem to be (default) password set for jovyan user, so at this point you cannot login into the GUI."
+  "description": "Jupyterhub doesn\u0026rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:\nAs the Docker image name indicates, this is https://hub.docker.com/r/jupyterhub/singleuser instance preconfigured for user jovyan. Run below command in directory with your notebooks\ndocker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub There doesn\u0026rsquo;t seem to be (default) password set for jovyan user, so at this point you cannot login into the GUI."
 }
 </script>
 
@@ -621,7 +621,8 @@ docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jup
 
     <div class="article-style">
       <p><code>Jupyterhub</code> doesn&rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:</p>
-<p>As the Docker image name indicates, this is <code>singleuser</code> instance preconfigured for user <code>jovyan</code>. Run below command in directory with your notebooks</p>
+<p>As the Docker image name indicates, this is 
+<a href="singleuser">https://hub.docker.com/r/jupyterhub/singleuser</a> instance preconfigured for user <code>jovyan</code>. Run below command in directory with your notebooks</p>
 <pre><code>docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub
 </code></pre><p>There doesn&rsquo;t seem to be (default) password set for <code>jovyan</code> user, so at this point you cannot login into the GUI. Set password for <code>jovyan</code></p>
 <pre><code>docker exec --user root -it jupyterhub bash
