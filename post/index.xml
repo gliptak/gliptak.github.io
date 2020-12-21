@@ -19,7 +19,7 @@
       <guid>https://gliptak.github.io/post/jupyterhub_docker/</guid>
       <description>&lt;p&gt;&lt;code&gt;Jupyterhub&lt;/code&gt; doesn&amp;rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:&lt;/p&gt;
 &lt;p&gt;As the Docker image name indicates, this is 
-&lt;a href=&#34;singleuser&#34;&gt;https://hub.docker.com/r/jupyterhub/singleuser&lt;/a&gt; instance preconfigured for user &lt;code&gt;jovyan&lt;/code&gt;. Run below command in directory with your notebooks&lt;/p&gt;
+&lt;a href=&#34;https://hub.docker.com/r/jupyterhub/singleuser&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;singleuser&lt;/a&gt; instance preconfigured for user &lt;code&gt;jovyan&lt;/code&gt;. Run below command in directory with your notebooks&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;There doesn&amp;rsquo;t seem to be (default) password set for &lt;code&gt;jovyan&lt;/code&gt; user, so at this point you cannot login into the GUI. Set password for &lt;code&gt;jovyan&lt;/code&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;docker exec --user root -it jupyterhub bash
