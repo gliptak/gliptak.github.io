@@ -1,158 +1,96 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://gliptak.github.io/</loc>
     <lastmod>2020-12-19T17:07:05-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/authors/gliptak/</loc>
     <lastmod>2020-12-19T17:07:05-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/authors/</loc>
     <lastmod>2020-12-19T17:07:05-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/tags/jupyter/</loc>
     <lastmod>2020-12-19T17:07:05-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/post/</loc>
     <lastmod>2020-12-19T17:07:05-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/tags/python/</loc>
     <lastmod>2020-12-19T17:07:05-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/post/jupyterhub_docker/</loc>
     <lastmod>2020-12-19T17:07:05-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/tags/</loc>
     <lastmod>2020-12-19T17:07:05-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/tags/splunk/</loc>
     <lastmod>2020-10-31T11:17:30-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/post/splunk_custom_input_session/</loc>
     <lastmod>2020-10-31T11:17:30-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/tags/aws/</loc>
     <lastmod>2020-10-31T10:17:30-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/post/aws_account_cleanup/</loc>
     <lastmod>2020-10-31T10:17:30-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/post/aws_lambda_accountregion/</loc>
     <lastmod>2020-10-02T18:32:25-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/tags/lambda/</loc>
     <lastmod>2020-10-02T18:32:25-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/post/aws_ec2instanceconnect/</loc>
     <lastmod>2020-05-29T11:17:30-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/post/aws_s3_signed_url/</loc>
     <lastmod>2020-03-19T17:32:25-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/tags/s3/</loc>
     <lastmod>2020-03-19T17:32:25-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/post/aws_ssm_ami/</loc>
     <lastmod>2019-09-11T21:32:25-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/tags/cloudformation/</loc>
     <lastmod>2019-09-11T21:32:25-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/post/aws_organization_cli/</loc>
     <lastmod>2019-09-07T21:17:30-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/post/python-requests-siteminder/</loc>
     <lastmod>2017-06-02T19:07:05-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/tags/requests/</loc>
     <lastmod>2017-06-02T19:07:05-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/tags/siteminder/</loc>
     <lastmod>2017-06-02T19:07:05-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/tags/sso/</loc>
     <lastmod>2017-06-02T19:07:05-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/post/simpledb-example/</loc>
     <lastmod>2017-02-15T17:51:55-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/tags/boto3/</loc>
     <lastmod>2017-02-15T17:51:55-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/project/jallele/</loc>
     <lastmod>2016-12-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/project/</loc>
     <lastmod>2016-12-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/project/go-a-perspective/</loc>
     <lastmod>2016-11-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://gliptak.github.io/publication_types/</loc>
   </url>
-  
 </urlset>

@@ -1,87 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cloudformation | </title>
+    <title>Cloudformation on </title>
     <link>https://gliptak.github.io/tags/cloudformation/</link>
-      <atom:link href="https://gliptak.github.io/tags/cloudformation/index.xml" rel="self" type="application/rss+xml" />
-    <description>Cloudformation</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2021 Gábor Lipták</copyright><lastBuildDate>Wed, 11 Sep 2019 21:32:25 -0400</lastBuildDate>
-    <image>
-      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
-      <title>Cloudformation</title>
-      <link>https://gliptak.github.io/tags/cloudformation/</link>
-    </image>
-    
+    <description>Recent content in Cloudformation on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2016-2021 Gábor Lipták</copyright>
+    <lastBuildDate>Wed, 11 Sep 2019 21:32:25 -0400</lastBuildDate><atom:link href="https://gliptak.github.io/tags/cloudformation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AWS Cloudformation Referencing AMIs Using SSM Parameter Store</title>
       <link>https://gliptak.github.io/post/aws_ssm_ami/</link>
       <pubDate>Wed, 11 Sep 2019 21:32:25 -0400</pubDate>
+      
       <guid>https://gliptak.github.io/post/aws_ssm_ami/</guid>
-      <description>&lt;p&gt;When AWS infrastructure configured in &amp;ldquo;traditional&amp;rdquo; compute/storage/network style, identifying, referencing and patching AMIs in all regions in use is crucial. Cloudformation has a way to redirect AMI references through SSM Parameter Store.&lt;/p&gt;
-&lt;p&gt;This represents a tradeoff, as recreating the Cloudformation stack might pickup the next (patched) AMI hence it is no longer immutable. But resulting state is similar to externally patched Linux/Windows images which also cannot be recreated by simply redeploying Cloudformation.&lt;/p&gt;
-&lt;p&gt;Th Cloudformation syntax as follows. &lt;code&gt;AmiId&lt;/code&gt; can point to both AWS and customer published values:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;AWSTemplateFormatVersion: &#39;2010-09-09&#39;
-
-Parameters:
-  AmiId:
-    Type: AWS::SSM::Parameter::Value&amp;lt;AWS::EC2::Image::Id&amp;gt;
-    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-ebs
-
-Resources:
-  Instance:
-    Type: AWS::EC2::Instance
-    Properties:
-      ImageId: !Ref AmiId
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;At the time of this posting, here are some AWS maintained AMIs:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;aws ssm get-parameters-by-path --path /aws/service/ami-amazon-linux-latest | jq &amp;quot;.Parameters[].Name&amp;quot;
-&amp;quot;/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-ebs&amp;quot;
-&amp;quot;/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-gp2&amp;quot;
-&amp;quot;/aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-s3&amp;quot;
-&amp;quot;/aws/service/ami-amazon-linux-latest/amzn-ami-minimal-hvm-x86_64-s3&amp;quot;
-&amp;quot;/aws/service/ami-amazon-linux-latest/amzn-ami-minimal-pv-x86_64-s3&amp;quot;
-&amp;quot;/aws/service/ami-amazon-linux-latest/amzn-ami-pv-x86_64-s3&amp;quot;
-&amp;quot;/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-arm64-gp2&amp;quot;
-&amp;quot;/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-ebs&amp;quot;
-&amp;quot;/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2&amp;quot;
-&amp;quot;/aws/service/ami-amazon-linux-latest/amzn2-ami-minimal-hvm-arm64-ebs&amp;quot;
-&amp;quot;/aws/service/ami-amazon-linux-latest/amzn-ami-minimal-hvm-x86_64-ebs&amp;quot;
-&amp;quot;/aws/service/ami-amazon-linux-latest/amzn-ami-minimal-pv-x86_64-ebs&amp;quot;
-&amp;quot;/aws/service/ami-amazon-linux-latest/amzn-ami-pv-x86_64-ebs&amp;quot;
-&amp;quot;/aws/service/ami-amazon-linux-latest/amzn2-ami-minimal-hvm-x86_64-ebs&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;aws ssm get-parameters-by-path --path /aws/service/ami-windows-latest | jq &amp;quot;.Parameters[].Name&amp;quot; | grep &amp;quot;English&amp;quot; | grep &amp;quot;\-2019&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2017_Web&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2016_SP2_Standard&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2016_SP2_Web&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-HyperV&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Core-Base&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Core-ContainersLatest&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2017_Express&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2016_SP2_Express&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-Base&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2017_Standard&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-ContainersLatest&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2017_Enterprise&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-SQL_2016_SP2_Enterprise&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Tesla&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-ECS_Optimized&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And some &amp;ldquo;oddballs&amp;rdquo;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;aws ssm get-parameters-by-path --path /aws/service/ami-windows-latest | jq &amp;quot;.Parameters[].Name&amp;quot; | grep -v Windows
-&amp;quot;/aws/service/ami-windows-latest/amzn2-ami-hvm-2.0.20190313-x86_64-gp2-SQL_2017_Express&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/RHEL-7.6_HVM_GA-20181017-x86_64-0-Hourly2-GP2-SQL_2017_Enterprise&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/ubuntu-bionic-18.04-amd64-server-20180522-dotnetcore&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/amzn2-ami-hvm-2.0.20180622.1-x86_64-gp2-dotnetcore&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20190212-SQL_2017_Web&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20180306-SQL_2017_Express&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20180306-SQL_2017_Standard&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20180306-SQL_2017_Enterprise&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20180306-SQL_2017_Web&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/amzn2-ami-hvm-2.0.20190313-x86_64-gp2-SQL_2017_Enterprise&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20190212-SQL_2017_Enterprise&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/amzn2-ami-hvm-2.0.20190313-x86_64-gp2-SQL_2017_Web&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20190212-SQL_2017_Express&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/amzn2-ami-hvm-2.0.20190313-x86_64-gp2-SQL_2017_Standard&amp;quot;
-&amp;quot;/aws/service/ami-windows-latest/ubuntu-xenial-16.04-amd64-server-20190212-SQL_2017_Standard&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;</description>
+      <description>When AWS infrastructure configured in &amp;ldquo;traditional&amp;rdquo; compute/storage/network style, identifying, referencing and patching AMIs in all regions in use is crucial. Cloudformation has a way to redirect AMI references through SSM Parameter Store.
+This represents a tradeoff, as recreating the Cloudformation stack might pickup the next (patched) AMI hence it is no longer immutable. But resulting state is similar to externally patched Linux/Windows images which also cannot be recreated by simply redeploying Cloudformation.</description>
     </item>
     
   </channel>
