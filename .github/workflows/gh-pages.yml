@@ -25,7 +25,7 @@ jobs:
         with:
           repository: gcushen/hugo-academic
           token: ${{ secrets.GITHUB_TOKEN }}
-          ref: v5.2.0
+          ref: v4.8.0
           path: ${{ github.workspace }}/themes/hugo-academic
 
       - name: Find
@@ -35,7 +35,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.84.1'
+          hugo-version: '0.66.0'
           extended: true
 
       - name: Build
