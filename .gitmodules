@@ -4,5 +4,5 @@
 	branch = e15d437e
 [submodule "themes/hugo-academic"]
 	path = themes/hugo-academic
-	url = git@github.com:gcushen/hugo-academic.git
-        branch = cdf5ef1
+	url = https://github.com/gcushen/hugo-academic.git
+	branch = 89d079b
