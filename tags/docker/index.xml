@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lambda on </title>
-    <link>https://gliptak.github.io/tags/lambda/</link>
-    <description>Recent content in Lambda on </description>
+    <title>Docker on </title>
+    <link>https://gliptak.github.io/tags/docker/</link>
+    <description>Recent content in Docker on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016-2021 Gábor Lipták</copyright>
-    <lastBuildDate>Mon, 28 Jun 2021 01:47:41 +0000</lastBuildDate><atom:link href="https://gliptak.github.io/tags/lambda/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Jun 2021 01:47:41 +0000</lastBuildDate><atom:link href="https://gliptak.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Packaging AWS Lambda functions with large dependencies as containers</title>
       <link>https://gliptak.github.io/post/aws_lambda_container/</link>
@@ -21,13 +21,14 @@ import sagemaker import sys def handler(event, context): print(sys.</description
     </item>
     
     <item>
-      <title>AWS Lambda Lookup AccountId and Region</title>
-      <link>https://gliptak.github.io/post/aws_lambda_accountregion/</link>
-      <pubDate>Fri, 02 Oct 2020 18:32:25 -0400</pubDate>
+      <title>Running Jupyterhub Docker</title>
+      <link>https://gliptak.github.io/post/jupyterhub_docker/</link>
+      <pubDate>Sat, 19 Dec 2020 17:07:05 -0400</pubDate>
       
-      <guid>https://gliptak.github.io/post/aws_lambda_accountregion/</guid>
-      <description>For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:
-import json import logging import boto3 logger = logging.getLogger() logger.setLevel(logging.INFO) def lambda_handler(event, context): logger.info(json.dumps(event)) account_id = boto3.client(&#39;sts&#39;).get_caller_identity().get(&#39;Account&#39;) # use a client which is region based logs_client = boto3.client(&#39;logs&#39;) region_name = logs_client.meta.region_name logger.info(f&amp;quot;{account_id}:{region_name}&amp;quot;) </description>
+      <guid>https://gliptak.github.io/post/jupyterhub_docker/</guid>
+      <description>Jupyterhub doesn&amp;rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:
+As the Docker image name indicates, this is singleuser instance preconfigured for user jovyan. Run below command in directory with your notebooks
+docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub There doesn&amp;rsquo;t seem to be (default) password set for jovyan user, so at this point you cannot login into the GUI.</description>
     </item>
     
   </channel>

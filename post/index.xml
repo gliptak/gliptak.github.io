@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016-2021 Gábor Lipták</copyright>
-    <lastBuildDate>Sat, 19 Dec 2020 17:07:05 -0400</lastBuildDate><atom:link href="https://gliptak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Jun 2021 01:47:41 +0000</lastBuildDate><atom:link href="https://gliptak.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Packaging AWS Lambda functions with large dependencies as containers</title>
+      <link>https://gliptak.github.io/post/aws_lambda_container/</link>
+      <pubDate>Mon, 28 Jun 2021 01:47:41 +0000</pubDate>
+      
+      <guid>https://gliptak.github.io/post/aws_lambda_container/</guid>
+      <description>While the actual application code for many lambda functions might be small, in many (data science) usecases libraries used and to be packaged together push over the deployment package limit of 50 MB compressed. Container packaging to the rescue.
+A sample Dockerfile installing SageMaker Python SDK
+ARG WORK_DIR=&amp;quot;/home/app/&amp;quot; FROM public.ecr.aws/lambda/python:3.8 ARG WORK_DIR RUN pip install wheel sagemaker COPY main.py . WORKDIR ${WORK_DIR} CMD [&amp;quot;main.handler&amp;quot;] and corresponding main.py
+import sagemaker import sys def handler(event, context): print(sys.</description>
+    </item>
+    
     <item>
       <title>Running Jupyterhub Docker</title>
       <link>https://gliptak.github.io/post/jupyterhub_docker/</link>
