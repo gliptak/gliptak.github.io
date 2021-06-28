@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016-2021 Gábor Lipták</copyright>
-    <lastBuildDate>Mon, 28 Jun 2021 01:47:41 +0000</lastBuildDate><atom:link href="https://gliptak.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 27 Jun 2021 01:47:41 -0400</lastBuildDate><atom:link href="https://gliptak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Packaging AWS Lambda functions with large dependencies as containers</title>
       <link>https://gliptak.github.io/post/aws_lambda_container/</link>
-      <pubDate>Mon, 28 Jun 2021 01:47:41 +0000</pubDate>
+      <pubDate>Sun, 27 Jun 2021 01:47:41 -0400</pubDate>
       
       <guid>https://gliptak.github.io/post/aws_lambda_container/</guid>
       <description>While the actual application code for many lambda functions might be small, in many (data science) usecases libraries used and to be packaged together push over the deployment package limit of 50 MB compressed. Container packaging to the rescue.
