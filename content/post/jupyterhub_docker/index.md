@@ -6,6 +6,7 @@ authors:
 tags:
 - Python
 - Jupyter
+- Docker
 categories: []
 date: "2020-12-19T17:07:05-04:00"
 featured: false
