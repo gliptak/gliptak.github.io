@@ -11,8 +11,8 @@ tags:
 - Lambda
 - Docker
 categories: []
-date: 2021-06-28T01:47:41Z
-lastmod: 2021-06-28T01:47:41Z
+date: 2021-06-27T01:47:41-04:00
+lastmod: 2021-06-27T01:47:41-04:00
 featured: false
 draft: false
 

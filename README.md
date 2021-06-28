@@ -4,8 +4,10 @@ Commits on ```hugo``` branch deployed using ```Github Actions```
 
 https://gohugo.io/hugo-modules/use-modules/
 
-hugo version v0.66.0
+hugo version v0.84.1
 
-git submodule add https://github.com/gcushen/hugo-academic.git themese/hugo-academic
+```
+git submodule add https://github.com/gcushen/hugo-academic.git themes/hugo-academic
 cd themes/hugo-academic
-git checkout v4.8.0
+git checkout v5.2.0
+```
