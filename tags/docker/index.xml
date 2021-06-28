@@ -1,34 +1,97 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker on </title>
+    <title>Docker | </title>
     <link>https://gliptak.github.io/tags/docker/</link>
-    <description>Recent content in Docker on </description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2016-2021 Gábor Lipták</copyright>
-    <lastBuildDate>Sun, 27 Jun 2021 01:47:41 -0400</lastBuildDate><atom:link href="https://gliptak.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://gliptak.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <description>Docker</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2021 Gábor Lipták</copyright><lastBuildDate>Sun, 27 Jun 2021 01:47:41 -0400</lastBuildDate>
+    <image>
+      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Docker</title>
+      <link>https://gliptak.github.io/tags/docker/</link>
+    </image>
+    
     <item>
       <title>Packaging AWS Lambda functions with large dependencies as containers</title>
       <link>https://gliptak.github.io/post/aws_lambda_container/</link>
       <pubDate>Sun, 27 Jun 2021 01:47:41 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/post/aws_lambda_container/</guid>
-      <description>While the actual application code for many lambda functions might be small, in many (data science) usecases libraries used and to be packaged together push over the deployment package limit of 50 MB compressed. Container packaging to the rescue.
-A sample Dockerfile installing SageMaker Python SDK
-ARG WORK_DIR=&amp;quot;/home/app/&amp;quot; FROM public.ecr.aws/lambda/python:3.8 ARG WORK_DIR RUN pip install wheel sagemaker COPY main.py . WORKDIR ${WORK_DIR} CMD [&amp;quot;main.handler&amp;quot;] and corresponding main.py
-import sagemaker import sys def handler(event, context): print(sys.</description>
+      <description>&lt;p&gt;While the actual application code for many lambda functions might be small, in many (data science) usecases libraries used and to be packaged together push over the deployment package limit of 50 MB compressed. Container packaging to the rescue.&lt;/p&gt;
+&lt;p&gt;A sample &lt;code&gt;Dockerfile&lt;/code&gt; installing 
+&lt;a href=&#34;https://github.com/aws/sagemaker-python-sdk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SageMaker Python SDK&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ARG WORK_DIR=&amp;quot;/home/app/&amp;quot;
+
+FROM public.ecr.aws/lambda/python:3.8
+ARG WORK_DIR
+
+RUN pip install wheel sagemaker
+
+COPY main.py .
+
+WORKDIR ${WORK_DIR}
+CMD [&amp;quot;main.handler&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and corresponding &lt;code&gt;main.py&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; sagemaker
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; sys
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;handler&lt;/span&gt;(event, context):
+    print(sys&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;version)
+    print(&lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sagemaker &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;sagemaker&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__version__&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; {
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;success&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As an added bonus, above image can be built and tested locally:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker build -t sagemaker-python-sdk-demo:latest .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;curl -XPOST &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://localhost:9002/2015-03-31/functions/function/invocations&amp;#34;&lt;/span&gt; -d &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{}&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;success&amp;#34;&lt;/span&gt;: true&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker run --rm -p 9002:8080 sagemaker-python-sdk-demo:latest
+
+time&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2021-06-28T02:12:34.914&amp;#34;&lt;/span&gt; level&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;info msg&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;exec &amp;#39;/var/runtime/bootstrap&amp;#39; (cwd=/home/app, handler=)&amp;#34;&lt;/span&gt;
+time&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2021-06-28T02:13:21.485&amp;#34;&lt;/span&gt; level&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;info msg&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;extensionsDisabledByLayer(/opt/disable-extensions-jwigqn8j) -&amp;gt; stat /opt/disable-extensions-jwigqn8j: no such file or directory&amp;#34;&lt;/span&gt;
+time&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2021-06-28T02:13:21.485&amp;#34;&lt;/span&gt; level&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;warning msg&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Cannot list external agents&amp;#34;&lt;/span&gt; error&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;open /opt/extensions: no such file or directory&amp;#34;&lt;/span&gt;
+START RequestId: 0265665a-d04e-4f29-b87d-472f3e7001ae Version: $LATEST
+3.8.10 &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;default, Jun &lt;span style=&#34;color:#ae81ff&#34;&gt;21&lt;/span&gt; 2021, 07:32:26&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; 
+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;GCC 7.3.1 &lt;span style=&#34;color:#ae81ff&#34;&gt;20180712&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Red Hat 7.3.1-12&lt;span style=&#34;color:#f92672&#34;&gt;)]&lt;/span&gt;
+sagemaker 2.47.0
+END RequestId: 0265665a-d04e-4f29-b87d-472f3e7001ae
+REPORT RequestId: 0265665a-d04e-4f29-b87d-472f3e7001ae	Init Duration: 0.45 ms	Duration: 1025.09 ms	Billed Duration: &lt;span style=&#34;color:#ae81ff&#34;&gt;1100&lt;/span&gt; ms	Memory Size: &lt;span style=&#34;color:#ae81ff&#34;&gt;3008&lt;/span&gt; MB	Max Memory Used: &lt;span style=&#34;color:#ae81ff&#34;&gt;3008&lt;/span&gt; MB
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note the memory consumed above&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Review 
+&lt;a href=&#34;https://docs.aws.amazon.com/lambda/latest/dg/images-create.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Amazon ECR Registry upload&lt;/a&gt; and 
+&lt;a href=&#34;https://docs.aws.amazon.com/lambda/latest/dg/configuration-images.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;deployment&lt;/a&gt; documentation&lt;/p&gt;
+</description>
     </item>
     
     <item>
       <title>Running Jupyterhub Docker</title>
       <link>https://gliptak.github.io/post/jupyterhub_docker/</link>
       <pubDate>Sat, 19 Dec 2020 17:07:05 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/post/jupyterhub_docker/</guid>
-      <description>Jupyterhub doesn&amp;rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:
-As the Docker image name indicates, this is singleuser instance preconfigured for user jovyan. Run below command in directory with your notebooks
-docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub There doesn&amp;rsquo;t seem to be (default) password set for jovyan user, so at this point you cannot login into the GUI.</description>
+      <description>&lt;p&gt;&lt;code&gt;Jupyterhub&lt;/code&gt; doesn&amp;rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:&lt;/p&gt;
+&lt;p&gt;As the Docker image name indicates, this is 
+&lt;a href=&#34;https://hub.docker.com/r/jupyterhub/singleuser&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;singleuser&lt;/a&gt; instance preconfigured for user &lt;code&gt;jovyan&lt;/code&gt;. Run below command in directory with your notebooks&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;There doesn&amp;rsquo;t seem to be (default) password set for &lt;code&gt;jovyan&lt;/code&gt; user, so at this point you cannot login into the GUI. Set password for &lt;code&gt;jovyan&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec --user root -it jupyterhub bash
+# passwd jovyan
+New password: 
+Retype new password: 
+passwd: password updated successfully
+# exit
+exit
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;ℹ️ Above shell command can also be used to install system packages and pip install Python libraries. Please note that additional installs will not persist beyond stopping this current instance&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After completing above steps, login to &lt;code&gt;Jupyterhub&lt;/code&gt; at 
+&lt;a href=&#34;http://localhost:8000/user/jovyan/tree/work&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://localhost:8000/user/jovyan/tree/work&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;To cleanup running instance&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker stop jupyterhub
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
   </channel>

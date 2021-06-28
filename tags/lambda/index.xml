@@ -1,33 +1,93 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lambda on </title>
+    <title>Lambda | </title>
     <link>https://gliptak.github.io/tags/lambda/</link>
-    <description>Recent content in Lambda on </description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2016-2021 Gábor Lipták</copyright>
-    <lastBuildDate>Sun, 27 Jun 2021 01:47:41 -0400</lastBuildDate><atom:link href="https://gliptak.github.io/tags/lambda/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://gliptak.github.io/tags/lambda/index.xml" rel="self" type="application/rss+xml" />
+    <description>Lambda</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2021 Gábor Lipták</copyright><lastBuildDate>Sun, 27 Jun 2021 01:47:41 -0400</lastBuildDate>
+    <image>
+      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Lambda</title>
+      <link>https://gliptak.github.io/tags/lambda/</link>
+    </image>
+    
     <item>
       <title>Packaging AWS Lambda functions with large dependencies as containers</title>
       <link>https://gliptak.github.io/post/aws_lambda_container/</link>
       <pubDate>Sun, 27 Jun 2021 01:47:41 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/post/aws_lambda_container/</guid>
-      <description>While the actual application code for many lambda functions might be small, in many (data science) usecases libraries used and to be packaged together push over the deployment package limit of 50 MB compressed. Container packaging to the rescue.
-A sample Dockerfile installing SageMaker Python SDK
-ARG WORK_DIR=&amp;quot;/home/app/&amp;quot; FROM public.ecr.aws/lambda/python:3.8 ARG WORK_DIR RUN pip install wheel sagemaker COPY main.py . WORKDIR ${WORK_DIR} CMD [&amp;quot;main.handler&amp;quot;] and corresponding main.py
-import sagemaker import sys def handler(event, context): print(sys.</description>
+      <description>&lt;p&gt;While the actual application code for many lambda functions might be small, in many (data science) usecases libraries used and to be packaged together push over the deployment package limit of 50 MB compressed. Container packaging to the rescue.&lt;/p&gt;
+&lt;p&gt;A sample &lt;code&gt;Dockerfile&lt;/code&gt; installing 
+&lt;a href=&#34;https://github.com/aws/sagemaker-python-sdk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SageMaker Python SDK&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ARG WORK_DIR=&amp;quot;/home/app/&amp;quot;
+
+FROM public.ecr.aws/lambda/python:3.8
+ARG WORK_DIR
+
+RUN pip install wheel sagemaker
+
+COPY main.py .
+
+WORKDIR ${WORK_DIR}
+CMD [&amp;quot;main.handler&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and corresponding &lt;code&gt;main.py&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; sagemaker
+&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; sys
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;handler&lt;/span&gt;(event, context):
+    print(sys&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;version)
+    print(&lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sagemaker &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;sagemaker&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__version__&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; {
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;success&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As an added bonus, above image can be built and tested locally:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker build -t sagemaker-python-sdk-demo:latest .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;curl -XPOST &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://localhost:9002/2015-03-31/functions/function/invocations&amp;#34;&lt;/span&gt; -d &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;{}&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;success&amp;#34;&lt;/span&gt;: true&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker run --rm -p 9002:8080 sagemaker-python-sdk-demo:latest
+
+time&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2021-06-28T02:12:34.914&amp;#34;&lt;/span&gt; level&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;info msg&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;exec &amp;#39;/var/runtime/bootstrap&amp;#39; (cwd=/home/app, handler=)&amp;#34;&lt;/span&gt;
+time&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2021-06-28T02:13:21.485&amp;#34;&lt;/span&gt; level&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;info msg&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;extensionsDisabledByLayer(/opt/disable-extensions-jwigqn8j) -&amp;gt; stat /opt/disable-extensions-jwigqn8j: no such file or directory&amp;#34;&lt;/span&gt;
+time&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2021-06-28T02:13:21.485&amp;#34;&lt;/span&gt; level&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;warning msg&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Cannot list external agents&amp;#34;&lt;/span&gt; error&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;open /opt/extensions: no such file or directory&amp;#34;&lt;/span&gt;
+START RequestId: 0265665a-d04e-4f29-b87d-472f3e7001ae Version: $LATEST
+3.8.10 &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;default, Jun &lt;span style=&#34;color:#ae81ff&#34;&gt;21&lt;/span&gt; 2021, 07:32:26&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; 
+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;GCC 7.3.1 &lt;span style=&#34;color:#ae81ff&#34;&gt;20180712&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Red Hat 7.3.1-12&lt;span style=&#34;color:#f92672&#34;&gt;)]&lt;/span&gt;
+sagemaker 2.47.0
+END RequestId: 0265665a-d04e-4f29-b87d-472f3e7001ae
+REPORT RequestId: 0265665a-d04e-4f29-b87d-472f3e7001ae	Init Duration: 0.45 ms	Duration: 1025.09 ms	Billed Duration: &lt;span style=&#34;color:#ae81ff&#34;&gt;1100&lt;/span&gt; ms	Memory Size: &lt;span style=&#34;color:#ae81ff&#34;&gt;3008&lt;/span&gt; MB	Max Memory Used: &lt;span style=&#34;color:#ae81ff&#34;&gt;3008&lt;/span&gt; MB
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note the memory consumed above&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Review 
+&lt;a href=&#34;https://docs.aws.amazon.com/lambda/latest/dg/images-create.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Amazon ECR Registry upload&lt;/a&gt; and 
+&lt;a href=&#34;https://docs.aws.amazon.com/lambda/latest/dg/configuration-images.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;deployment&lt;/a&gt; documentation&lt;/p&gt;
+</description>
     </item>
     
     <item>
       <title>AWS Lambda Lookup AccountId and Region</title>
       <link>https://gliptak.github.io/post/aws_lambda_accountregion/</link>
       <pubDate>Fri, 02 Oct 2020 18:32:25 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/post/aws_lambda_accountregion/</guid>
-      <description>For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:
-import json import logging import boto3 logger = logging.getLogger() logger.setLevel(logging.INFO) def lambda_handler(event, context): logger.info(json.dumps(event)) account_id = boto3.client(&#39;sts&#39;).get_caller_identity().get(&#39;Account&#39;) # use a client which is region based logs_client = boto3.client(&#39;logs&#39;) region_name = logs_client.meta.region_name logger.info(f&amp;quot;{account_id}:{region_name}&amp;quot;) </description>
+      <description>&lt;p&gt;For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import json
+import logging
+import boto3
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+def lambda_handler(event, context):
+    logger.info(json.dumps(event))
+    account_id = boto3.client(&#39;sts&#39;).get_caller_identity().get(&#39;Account&#39;)
+    # use a client which is region based
+    logs_client = boto3.client(&#39;logs&#39;)
+    region_name = logs_client.meta.region_name
+    logger.info(f&amp;quot;{account_id}:{region_name}&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
   </channel>

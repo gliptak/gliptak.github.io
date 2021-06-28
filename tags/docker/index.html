@@ -31,7 +31,7 @@
   <meta name="description" content="">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/tags/">
+  <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/tags/docker/">
 
   
 
@@ -210,14 +210,14 @@
 
 
   
-  <link rel="alternate" href="/tags/index.xml" type="application/rss+xml" title="">
+  <link rel="alternate" href="/tags/docker/index.xml" type="application/rss+xml" title="">
   
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://gliptak.github.io/tags/">
+  <link rel="canonical" href="https://gliptak.github.io/tags/docker/">
 
   
   
@@ -231,8 +231,8 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="">
-  <meta property="og:url" content="https://gliptak.github.io/tags/">
-  <meta property="og:title" content="Tags | ">
+  <meta property="og:url" content="https://gliptak.github.io/tags/docker/">
+  <meta property="og:title" content="Docker | ">
   <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
@@ -253,7 +253,7 @@
 
 
 
-  <title>Tags | </title>
+  <title>Docker | </title>
 
 </head>
 
@@ -493,7 +493,7 @@
     
   
 <div class="universal-wrapper pt-3">
-  <h1>Tags</h1>
+  <h1>Docker</h1>
 
   
 
@@ -511,8 +511,13 @@
     
     
     <div>
-      <h2><a href="/tags/sso/" >SSO</a></h2>
+      <h2><a href="/post/aws_lambda_container/" >Packaging AWS Lambda functions with large dependencies as containers</a></h2>
       <div class="article-style">
+        
+          While the actual application code for many lambda functions might be small, in many (data science) usecases libraries used and to be packaged together push over the deployment package limit of 50 MB compressed. Container packaging to the rescue.
+A sample Dockerfile installing SageMaker Python SDK
+ARG WORK_DIR=&quot;/home/app/&quot; FROM public.ecr.aws/lambda/python:3.8 ARG WORK_DIR RUN pip install wheel sagemaker COPY main.py . WORKDIR ${WORK_DIR} CMD [&quot;main.handler&quot;] and corresponding main.py
+import sagemaker import sys def handler(event, context): print(sys.
         
       </div>
     </div>
@@ -521,23 +526,18 @@
     
     
     <div>
-      <h2><a href="/tags/boto3/" >Boto3</a></h2>
+      <h2><a href="/post/jupyterhub_docker/" >Running Jupyterhub Docker</a></h2>
       <div class="article-style">
+        
+          Jupyterhub doesn&rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:
+As the Docker image name indicates, this is singleuser instance preconfigured for user jovyan. Run below command in directory with your notebooks
+docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub There doesn&rsquo;t seem to be (default) password set for jovyan user, so at this point you cannot login into the GUI.
         
       </div>
     </div>
   
 
   
-<nav>
-  <ul class="pagination justify-content-center">
-    
-    <li class="page-item"><a class="page-link" href="/tags/">&laquo;</a></li>
-    
-    
-  </ul>
-</nav>
-
 
 </div>
 

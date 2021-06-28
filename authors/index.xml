@@ -1,21 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Authors on </title>
+    <title>Authors | </title>
     <link>https://gliptak.github.io/authors/</link>
-    <description>Recent content in Authors on </description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2016-2021 Gábor Lipták</copyright>
-    <lastBuildDate>Sun, 27 Jun 2021 01:47:41 -0400</lastBuildDate><atom:link href="https://gliptak.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title></title>
-      <link>https://gliptak.github.io/authors/gliptak/</link>
-      <pubDate>Sun, 27 Jun 2021 01:47:41 -0400</pubDate>
-      
-      <guid>https://gliptak.github.io/authors/gliptak/</guid>
-      <description>Hands-on software architect working as an application architect, integration architect, and enterprise architect in various industries. Experienced in Microservices Architectures, Service-Based Architectures, and Service-Oriented Architectures. Conference speaker and trainer. Keeping coding skills sharp as an open source enthusiast.</description>
-    </item>
+      <atom:link href="https://gliptak.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authors</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2021 Gábor Lipták</copyright><lastBuildDate>Sun, 27 Jun 2021 01:47:41 -0400</lastBuildDate>
+    <image>
+      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Authors</title>
+      <link>https://gliptak.github.io/authors/</link>
+    </image>
     
   </channel>
 </rss>

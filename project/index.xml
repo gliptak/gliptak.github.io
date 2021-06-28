@@ -1,29 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Projects on </title>
+    <title>Projects | </title>
     <link>https://gliptak.github.io/project/</link>
-    <description>Recent content in Projects on </description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2016-2021 Gábor Lipták</copyright>
-    <lastBuildDate>Fri, 23 Dec 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://gliptak.github.io/project/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://gliptak.github.io/project/index.xml" rel="self" type="application/rss+xml" />
+    <description>Projects</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2021 Gábor Lipták</copyright><lastBuildDate>Fri, 23 Dec 2016 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Projects</title>
+      <link>https://gliptak.github.io/project/</link>
+    </image>
+    
     <item>
       <title>JAllele</title>
       <link>https://gliptak.github.io/project/jallele/</link>
       <pubDate>Fri, 23 Dec 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://gliptak.github.io/project/jallele/</guid>
-      <description>JAllele is a Java mutation testing tool.</description>
+      <description></description>
     </item>
     
     <item>
       <title>Go - A Perspective</title>
       <link>https://gliptak.github.io/project/go-a-perspective/</link>
       <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://gliptak.github.io/project/go-a-perspective/</guid>
-      <description>Presentation on Go features anchoring them onto other languages like C, Java, Python, etc.</description>
+      <description></description>
     </item>
     
   </channel>

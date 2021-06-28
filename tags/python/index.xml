@@ -1,42 +1,95 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on </title>
+    <title>Python | </title>
     <link>https://gliptak.github.io/tags/python/</link>
-    <description>Recent content in Python on </description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2016-2021 Gábor Lipták</copyright>
-    <lastBuildDate>Sat, 19 Dec 2020 17:07:05 -0400</lastBuildDate><atom:link href="https://gliptak.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+      <atom:link href="https://gliptak.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <description>Python</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2021 Gábor Lipták</copyright><lastBuildDate>Sat, 19 Dec 2020 17:07:05 -0400</lastBuildDate>
+    <image>
+      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Python</title>
+      <link>https://gliptak.github.io/tags/python/</link>
+    </image>
+    
     <item>
       <title>Running Jupyterhub Docker</title>
       <link>https://gliptak.github.io/post/jupyterhub_docker/</link>
       <pubDate>Sat, 19 Dec 2020 17:07:05 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/post/jupyterhub_docker/</guid>
-      <description>Jupyterhub doesn&amp;rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:
-As the Docker image name indicates, this is singleuser instance preconfigured for user jovyan. Run below command in directory with your notebooks
-docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub There doesn&amp;rsquo;t seem to be (default) password set for jovyan user, so at this point you cannot login into the GUI.</description>
+      <description>&lt;p&gt;&lt;code&gt;Jupyterhub&lt;/code&gt; doesn&amp;rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:&lt;/p&gt;
+&lt;p&gt;As the Docker image name indicates, this is 
+&lt;a href=&#34;https://hub.docker.com/r/jupyterhub/singleuser&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;singleuser&lt;/a&gt; instance preconfigured for user &lt;code&gt;jovyan&lt;/code&gt;. Run below command in directory with your notebooks&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;There doesn&amp;rsquo;t seem to be (default) password set for &lt;code&gt;jovyan&lt;/code&gt; user, so at this point you cannot login into the GUI. Set password for &lt;code&gt;jovyan&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker exec --user root -it jupyterhub bash
+# passwd jovyan
+New password: 
+Retype new password: 
+passwd: password updated successfully
+# exit
+exit
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;ℹ️ Above shell command can also be used to install system packages and pip install Python libraries. Please note that additional installs will not persist beyond stopping this current instance&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After completing above steps, login to &lt;code&gt;Jupyterhub&lt;/code&gt; at 
+&lt;a href=&#34;http://localhost:8000/user/jovyan/tree/work&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://localhost:8000/user/jovyan/tree/work&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;To cleanup running instance&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker stop jupyterhub
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
       <title>Splunk custom input with session</title>
       <link>https://gliptak.github.io/post/splunk_custom_input_session/</link>
       <pubDate>Sat, 31 Oct 2020 11:17:30 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/post/splunk_custom_input_session/</guid>
-      <description>Splunk can be extended with custom inputs written in Python. In order to connect to Splunk services, code has to be configured and use a session token. Here is a basic setup emitting records with kvstore names
-#!/usr/bin/env python import splunklib.client as client import sys import datetime as dt def generate(session_key): service = client.connect(token = session_key) for collection in service.kvstore: ts = dt.datetime.now(tz=dt.timezone.utc).isoformat() print(f&#39;{ts}, collection=&amp;quot;{collection.name}&amp;quot;&#39;) if __name__ == &amp;quot;__main__&amp;quot;: session_key = sys.</description>
+      <description>&lt;p&gt;&lt;code&gt;Splunk&lt;/code&gt; can be extended with custom inputs written in &lt;code&gt;Python&lt;/code&gt;. In order to connect to &lt;code&gt;Splunk&lt;/code&gt; services, code has to be configured and use a session token. Here is a basic setup emitting records with &lt;code&gt;kvstore&lt;/code&gt; names&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python
+
+import splunklib.client as client
+import sys
+import datetime as dt
+
+def generate(session_key):
+    service = client.connect(token = session_key)
+    for collection in service.kvstore:
+        ts = dt.datetime.now(tz=dt.timezone.utc).isoformat()
+        print(f&#39;{ts}, collection=&amp;quot;{collection.name}&amp;quot;&#39;)
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+    session_key = sys.stdin.read()
+    generate(session_key)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and the corresponding &lt;code&gt;default/inputs.conf&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[script://./bin/listkvstores.py]
+interval = 300
+disabled = False
+passAuth = nobody
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;kvstore&lt;/code&gt; access uses user &lt;code&gt;nobody&lt;/code&gt;, other &lt;code&gt;Splunk&lt;/code&gt; services might need a different user configured.&lt;/p&gt;
+</description>
     </item>
     
     <item>
       <title>Login into a CA SSO/Siteminder protected site with Python Requests</title>
       <link>https://gliptak.github.io/post/python-requests-siteminder/</link>
       <pubDate>Fri, 02 Jun 2017 19:07:05 -0400</pubDate>
-      
       <guid>https://gliptak.github.io/post/python-requests-siteminder/</guid>
-      <description>While this below code is simple, it uses two important approaches:
- utilizes a Requests Session to keep Siteminder login cookies/headers it has a two step load, allowing to fill out the Siteminder form  import requests if __name__ == &amp;#34;__main__&amp;#34;: mysite = &amp;#39;http://mysite/&amp;#39; credentials = {&amp;#39;USER&amp;#39;: &amp;#39;myuser&amp;#39;, &amp;#39;PASSWORD&amp;#39;: &amp;#39;mypassword&amp;#39;} s = requests.session() # use Session to keep cookies around page = s.get(mysite) s.post(page.url, data=credentials) # page.url is the Siteminder login screen page = s.</description>
+      <description>&lt;p&gt;While this below code is simple, it uses two important approaches:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;utilizes a Requests Session to keep Siteminder login cookies/headers&lt;/li&gt;
+&lt;li&gt;it has a two step load, allowing to fill out the Siteminder form&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; requests
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+    mysite &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;http://mysite/&amp;#39;&lt;/span&gt;
+    credentials &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;USER&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;myuser&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;PASSWORD&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mypassword&amp;#39;&lt;/span&gt;}
+    s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; requests&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;session() &lt;span style=&#34;color:#75715e&#34;&gt;# use Session to keep cookies around&lt;/span&gt;
+    page &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(mysite)
+    s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;post(page&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;url, data&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;credentials) &lt;span style=&#34;color:#75715e&#34;&gt;# page.url is the Siteminder login screen&lt;/span&gt;
+    page &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(mysite)
+    print(page&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;content)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>

@@ -1,120 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on </title>
+    <title>Tags | </title>
     <link>https://gliptak.github.io/tags/</link>
-    <description>Recent content in Tags on </description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2016-2021 Gábor Lipták</copyright>
-    <lastBuildDate>Sun, 27 Jun 2021 01:47:41 -0400</lastBuildDate><atom:link href="https://gliptak.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AWS</title>
-      <link>https://gliptak.github.io/tags/aws/</link>
-      <pubDate>Sun, 27 Jun 2021 01:47:41 -0400</pubDate>
-      
-      <guid>https://gliptak.github.io/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Docker</title>
-      <link>https://gliptak.github.io/tags/docker/</link>
-      <pubDate>Sun, 27 Jun 2021 01:47:41 -0400</pubDate>
-      
-      <guid>https://gliptak.github.io/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Lambda</title>
-      <link>https://gliptak.github.io/tags/lambda/</link>
-      <pubDate>Sun, 27 Jun 2021 01:47:41 -0400</pubDate>
-      
-      <guid>https://gliptak.github.io/tags/lambda/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Jupyter</title>
-      <link>https://gliptak.github.io/tags/jupyter/</link>
-      <pubDate>Sat, 19 Dec 2020 17:07:05 -0400</pubDate>
-      
-      <guid>https://gliptak.github.io/tags/jupyter/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>https://gliptak.github.io/tags/python/</link>
-      <pubDate>Sat, 19 Dec 2020 17:07:05 -0400</pubDate>
-      
-      <guid>https://gliptak.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Splunk</title>
-      <link>https://gliptak.github.io/tags/splunk/</link>
-      <pubDate>Sat, 31 Oct 2020 11:17:30 -0400</pubDate>
-      
-      <guid>https://gliptak.github.io/tags/splunk/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>S3</title>
-      <link>https://gliptak.github.io/tags/s3/</link>
-      <pubDate>Thu, 19 Mar 2020 17:32:25 -0400</pubDate>
-      
-      <guid>https://gliptak.github.io/tags/s3/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cloudformation</title>
-      <link>https://gliptak.github.io/tags/cloudformation/</link>
-      <pubDate>Wed, 11 Sep 2019 21:32:25 -0400</pubDate>
-      
-      <guid>https://gliptak.github.io/tags/cloudformation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Requests</title>
-      <link>https://gliptak.github.io/tags/requests/</link>
-      <pubDate>Fri, 02 Jun 2017 19:07:05 -0400</pubDate>
-      
-      <guid>https://gliptak.github.io/tags/requests/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Siteminder</title>
-      <link>https://gliptak.github.io/tags/siteminder/</link>
-      <pubDate>Fri, 02 Jun 2017 19:07:05 -0400</pubDate>
-      
-      <guid>https://gliptak.github.io/tags/siteminder/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SSO</title>
-      <link>https://gliptak.github.io/tags/sso/</link>
-      <pubDate>Fri, 02 Jun 2017 19:07:05 -0400</pubDate>
-      
-      <guid>https://gliptak.github.io/tags/sso/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Boto3</title>
-      <link>https://gliptak.github.io/tags/boto3/</link>
-      <pubDate>Wed, 15 Feb 2017 17:51:55 -0500</pubDate>
-      
-      <guid>https://gliptak.github.io/tags/boto3/</guid>
-      <description></description>
-    </item>
+      <atom:link href="https://gliptak.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <description>Tags</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2021 Gábor Lipták</copyright><lastBuildDate>Sun, 27 Jun 2021 01:47:41 -0400</lastBuildDate>
+    <image>
+      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Tags</title>
+      <link>https://gliptak.github.io/tags/</link>
+    </image>
     
   </channel>
 </rss>

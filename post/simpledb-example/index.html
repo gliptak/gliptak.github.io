@@ -636,11 +636,11 @@ from __future__ import print_function import boto3 def quote(string): return str
             {
                 <span style="color:#e6db74">&#39;Name&#39;</span>: <span style="color:#e6db74">&#39;color&#39;</span>,
                 <span style="color:#e6db74">&#39;Value&#39;</span>: color,
-                <span style="color:#e6db74">&#39;Replace&#39;</span>: True
+                <span style="color:#e6db74">&#39;Replace&#39;</span>: <span style="color:#66d9ef">True</span>
             },
         ],
     )
-    <span style="color:#66d9ef">print</span>(response)
+    print(response)
 
 
 <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
@@ -649,21 +649,21 @@ from __future__ import print_function import boto3 def quote(string): return str
     response <span style="color:#f92672">=</span> sdb<span style="color:#f92672">.</span>create_domain(
         DomainName<span style="color:#f92672">=</span>domain
     )
-    <span style="color:#66d9ef">print</span>(response)
+    print(response)
     response <span style="color:#f92672">=</span> sdb<span style="color:#f92672">.</span>list_domains(
     )
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Current domains: </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> response[<span style="color:#e6db74">&#39;DomainNames&#39;</span>])
+    print(<span style="color:#e6db74">&#34;Current domains: </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> response[<span style="color:#e6db74">&#39;DomainNames&#39;</span>])
     put_attributes(sdb, domain, <span style="color:#e6db74">&#34;id1&#34;</span>, <span style="color:#e6db74">&#34;red&#34;</span>)
     put_attributes(sdb, domain, <span style="color:#e6db74">&#34;id2&#34;</span>, <span style="color:#e6db74">&#34;redblue&#34;</span>)
     put_attributes(sdb, domain, <span style="color:#e6db74">&#34;id3&#34;</span>, <span style="color:#e6db74">&#34;blue&#34;</span>)
     response <span style="color:#f92672">=</span> sdb<span style="color:#f92672">.</span>select(
         SelectExpression<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;select * from </span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> where color like &#34;</span><span style="color:#e6db74">%%%s%%</span><span style="color:#e6db74">&#34;&#39;</span> <span style="color:#f92672">%</span> (domain, quote(<span style="color:#e6db74">&#39;blue&#39;</span>)),
     )
-    <span style="color:#66d9ef">print</span>(response)
+    print(response)
     response <span style="color:#f92672">=</span> sdb<span style="color:#f92672">.</span>delete_domain(
         DomainName<span style="color:#f92672">=</span>domain
     )
-    <span style="color:#66d9ef">print</span>(response)
+    print(response)
 </code></pre></div>
     </div>
 
@@ -954,7 +954,7 @@ from __future__ import print_function import boto3 def quote(string): return str
     
     
     
-    <script src="/js/academic.min.c816d323c3a55093dae0829b44ea1ca8.js"></script>
+    <script src="/js/academic.min.6f1005d1a84220e2f466ff3d8e712f31.js"></script>
 
     
 

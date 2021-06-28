@@ -236,7 +236,7 @@
   <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2020-10-31T10:17:30-04:00">
+    <meta property="og:updated_time" content="2021-06-27T01:47:41-04:00">
   
 
   
@@ -511,6 +511,21 @@
     
     
     <div>
+      <h2><a href="/post/aws_lambda_container/" >Packaging AWS Lambda functions with large dependencies as containers</a></h2>
+      <div class="article-style">
+        
+          While the actual application code for many lambda functions might be small, in many (data science) usecases libraries used and to be packaged together push over the deployment package limit of 50 MB compressed. Container packaging to the rescue.
+A sample Dockerfile installing SageMaker Python SDK
+ARG WORK_DIR=&quot;/home/app/&quot; FROM public.ecr.aws/lambda/python:3.8 ARG WORK_DIR RUN pip install wheel sagemaker COPY main.py . WORKDIR ${WORK_DIR} CMD [&quot;main.handler&quot;] and corresponding main.py
+import sagemaker import sys def handler(event, context): print(sys.
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div>
       <h2><a href="/post/aws_account_cleanup/" >AWS Account Cleanup</a></h2>
       <div class="article-style">
         
@@ -705,7 +720,7 @@ from __future__ import print_function import boto3 def quote(string): return str
     
     
     
-    <script src="/js/academic.min.c816d323c3a55093dae0829b44ea1ca8.js"></script>
+    <script src="/js/academic.min.6f1005d1a84220e2f466ff3d8e712f31.js"></script>
 
     
 
