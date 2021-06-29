@@ -31,7 +31,7 @@
     page &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(mysite)
     s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;post(page&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;url, data&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;credentials) &lt;span style=&#34;color:#75715e&#34;&gt;# page.url is the Siteminder login screen&lt;/span&gt;
     page &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(mysite)
-    print(page&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;content)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(page&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;content)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
