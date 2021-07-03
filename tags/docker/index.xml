@@ -36,10 +36,10 @@ CMD [&amp;quot;main.handler&amp;quot;]
 &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; sys
 
 &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;handler&lt;/span&gt;(event, context):
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(sys&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;version)
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sagemaker {sagemaker.__version__}&amp;#34;&lt;/span&gt;)
+    print(sys&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;version)
+    print(&lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sagemaker &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;sagemaker&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__version__&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;)
     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; {
-        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;success&amp;#39;&lt;/span&gt;: True
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;success&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
     }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As an added bonus, above image can be built and tested locally:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker build -t sagemaker-python-sdk-demo:latest .

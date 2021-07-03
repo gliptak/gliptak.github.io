@@ -36,10 +36,10 @@ CMD [&amp;quot;main.handler&amp;quot;]
 &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; sys
 
 &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;handler&lt;/span&gt;(event, context):
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(sys&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;version)
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sagemaker {sagemaker.__version__}&amp;#34;&lt;/span&gt;)
+    print(sys&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;version)
+    print(&lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sagemaker &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;sagemaker&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__version__&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;)
     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; {
-        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;success&amp;#39;&lt;/span&gt;: True
+        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;success&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
     }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As an added bonus, above image can be built and tested locally:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker build -t sagemaker-python-sdk-demo:latest .
@@ -338,7 +338,7 @@ source_profile = master
     page &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(mysite)
     s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;post(page&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;url, data&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;credentials) &lt;span style=&#34;color:#75715e&#34;&gt;# page.url is the Siteminder login screen&lt;/span&gt;
     page &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(mysite)
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(page&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;content)
+    print(page&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;content)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
@@ -365,11 +365,11 @@ source_profile = master
             {
                 &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Name&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;color&amp;#39;&lt;/span&gt;,
                 &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Value&amp;#39;&lt;/span&gt;: color,
-                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Replace&amp;#39;&lt;/span&gt;: True
+                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Replace&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
             },
         ],
     )
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(response)
+    print(response)
 
 
 &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
@@ -378,21 +378,21 @@ source_profile = master
     response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;create_domain(
         DomainName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;domain
     )
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(response)
+    print(response)
     response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;list_domains(
     )
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Current domains: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; response[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;DomainNames&amp;#39;&lt;/span&gt;])
+    print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Current domains: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; response[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;DomainNames&amp;#39;&lt;/span&gt;])
     put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id1&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;red&amp;#34;&lt;/span&gt;)
     put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id2&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;redblue&amp;#34;&lt;/span&gt;)
     put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id3&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;blue&amp;#34;&lt;/span&gt;)
     response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;select(
         SelectExpression&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;select * from &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; where color like &amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%%%s%%&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; (domain, quote(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;blue&amp;#39;&lt;/span&gt;)),
     )
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(response)
+    print(response)
     response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;delete_domain(
         DomainName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;domain
     )
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(response)
+    print(response)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     

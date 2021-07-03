@@ -641,10 +641,10 @@ CMD [&quot;main.handler&quot;]
 <span style="color:#f92672">import</span> sys
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handler</span>(event, context):
-    <span style="color:#66d9ef">print</span>(sys<span style="color:#f92672">.</span>version)
-    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;sagemaker {sagemaker.__version__}&#34;</span>)
+    print(sys<span style="color:#f92672">.</span>version)
+    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;sagemaker </span><span style="color:#e6db74">{</span>sagemaker<span style="color:#f92672">.</span>__version__<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
     <span style="color:#66d9ef">return</span> {
-        <span style="color:#e6db74">&#39;success&#39;</span>: True
+        <span style="color:#e6db74">&#39;success&#39;</span>: <span style="color:#66d9ef">True</span>
     }
 </code></pre></div><p>As an added bonus, above image can be built and tested locally:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build -t sagemaker-python-sdk-demo:latest .
@@ -978,7 +978,7 @@ REPORT RequestId: 0265665a-d04e-4f29-b87d-472f3e7001ae	Init Duration: 0.45 ms	Du
     
     
     
-    <script src="/js/academic.min.c816d323c3a55093dae0829b44ea1ca8.js"></script>
+    <script src="/js/academic.min.25aeac8f492a6d2661c32dcffb98689b.js"></script>
 
     
 

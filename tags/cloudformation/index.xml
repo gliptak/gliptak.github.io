@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cloudformation | </title>
+    <title>CloudFormation | </title>
     <link>https://gliptak.github.io/tags/cloudformation/</link>
       <atom:link href="https://gliptak.github.io/tags/cloudformation/index.xml" rel="self" type="application/rss+xml" />
-    <description>Cloudformation</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2021 Gábor Lipták</copyright><lastBuildDate>Wed, 11 Sep 2019 21:32:25 -0400</lastBuildDate>
+    <description>CloudFormation</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2021 Gábor Lipták</copyright><lastBuildDate>Sat, 03 Jul 2021 16:50:49 +0000</lastBuildDate>
     <image>
       <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
-      <title>Cloudformation</title>
+      <title>CloudFormation</title>
       <link>https://gliptak.github.io/tags/cloudformation/</link>
     </image>
+    
+    <item>
+      <title>AWS CloudFormation Starter/`null` Template</title>
+      <link>https://gliptak.github.io/post/aws_cloudformation_starter/</link>
+      <pubDate>Sat, 03 Jul 2021 16:50:49 +0000</pubDate>
+      <guid>https://gliptak.github.io/post/aws_cloudformation_starter/</guid>
+      <description>&lt;p&gt;If the CloudFormation create has an error, the CloudFormation doesn&amp;rsquo;t roll back so it has to be deleted and recreated. To avoid multiple initial create/delete, the best approach is to use a &lt;code&gt;null&lt;/code&gt; CloudFormation. An example is below:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;AWSTemplateFormatVersion: 2010-09-09
+Description: CloudFormation Starter
+
+Conditions:
+  Never: !Equals [ a, b ]
+
+Resources:
+  NullResource:
+    Type: Custom::Null
+    Condition: Never
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     
     <item>
       <title>AWS Cloudformation Referencing AMIs Using SSM Parameter Store</title>

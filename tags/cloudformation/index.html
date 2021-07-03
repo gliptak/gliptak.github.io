@@ -232,11 +232,11 @@
   
   <meta property="og:site_name" content="">
   <meta property="og:url" content="https://gliptak.github.io/tags/cloudformation/">
-  <meta property="og:title" content="Cloudformation | ">
+  <meta property="og:title" content="CloudFormation | ">
   <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2019-09-11T21:32:25-04:00">
+    <meta property="og:updated_time" content="2021-07-03T16:50:49&#43;00:00">
   
 
   
@@ -253,7 +253,7 @@
 
 
 
-  <title>Cloudformation | </title>
+  <title>CloudFormation | </title>
 
 </head>
 
@@ -493,7 +493,7 @@
     
   
 <div class="universal-wrapper pt-3">
-  <h1>Cloudformation</h1>
+  <h1>CloudFormation</h1>
 
   
 
@@ -506,6 +506,19 @@
   
 
   
+  
+    
+    
+    
+    <div>
+      <h2><a href="/post/aws_cloudformation_starter/" >AWS CloudFormation Starter/`null` Template</a></h2>
+      <div class="article-style">
+        
+          If the CloudFormation create has an error, the CloudFormation doesn&rsquo;t roll back so it has to be deleted and recreated. To avoid multiple initial create/delete, the best approach is to use a null CloudFormation. An example is below:
+AWSTemplateFormatVersion: 2010-09-09 Description: CloudFormation Starter Conditions: Never: !Equals [ a, b ] Resources: NullResource: Type: Custom::Null Condition: Never 
+        
+      </div>
+    </div>
   
     
     
@@ -626,7 +639,7 @@ This represents a tradeoff, as recreating the Cloudformation stack might pickup 
     
     
     
-    <script src="/js/academic.min.c816d323c3a55093dae0829b44ea1ca8.js"></script>
+    <script src="/js/academic.min.25aeac8f492a6d2661c32dcffb98689b.js"></script>
 
     
 
