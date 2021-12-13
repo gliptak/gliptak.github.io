@@ -5,12 +5,59 @@
     <link>https://gliptak.github.io/tags/graphql/</link>
       <atom:link href="https://gliptak.github.io/tags/graphql/index.xml" rel="self" type="application/rss+xml" />
     <description>GraphQL</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2021 Gábor Lipták</copyright><lastBuildDate>Sun, 31 Oct 2021 16:18:41 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2021 Gábor Lipták</copyright><lastBuildDate>Sun, 12 Dec 2021 20:32:51 +0000</lastBuildDate>
     <image>
       <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>GraphQL</title>
       <link>https://gliptak.github.io/tags/graphql/</link>
     </image>
+    
+    <item>
+      <title>Github Create PR with GraphQL</title>
+      <link>https://gliptak.github.io/post/github_graphql_newpr/</link>
+      <pubDate>Sun, 12 Dec 2021 20:32:51 +0000</pubDate>
+      <guid>https://gliptak.github.io/post/github_graphql_newpr/</guid>
+      <description>&lt;p&gt;GraphQL API allows for query and mutation (update) operations which can be executed in 
+&lt;a href=&#34;https://docs.github.com/en/graphql/overview/explorer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GitHub&amp;rsquo;s GraphQL Explorer&lt;/a&gt; Below example creates a PR. First, find the repository id:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-graphql&#34; data-lang=&#34;graphql&#34;&gt;{
+  repository(owner: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;gliptak&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#a6e22e&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;githubapitest1&amp;#34;&lt;/span&gt;) {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;id&lt;/span&gt;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The repository id to be used to create the pull request:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;repository&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R_kgDOGS1otA&amp;#34;&lt;/span&gt;
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The mutation (update) below creates a new PR from an existing branch (additional details could have been submitted):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-graphql&#34; data-lang=&#34;graphql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;mutation&lt;/span&gt; {
+  &lt;span style=&#34;color:#a6e22e&#34;&gt;createPullRequest&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;input&lt;/span&gt;: {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;repositoryId&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R_kgDOGS1otA&amp;#34;&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;title&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;my PR&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;baseRefName&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;,
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;headRefName&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;patch-1&amp;#34;&lt;/span&gt;}) {
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;pullRequest&lt;/span&gt; {
+      &lt;span style=&#34;color:#a6e22e&#34;&gt;url&lt;/span&gt;
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Resulting JSON displays the URL of PR created:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;createPullRequest&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;pullRequest&amp;#34;&lt;/span&gt;: {
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://github.com/gliptak/githubapitest1/pull/1&amp;#34;&lt;/span&gt;
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At this point 
+&lt;a href=&#34;https://github.com/graphql/graphql-spec/issues/377&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@export directive&lt;/a&gt; allowing to &lt;code&gt;chain&lt;/code&gt; variables between queries is under consideration so variable substitution has to happen manually or programatically.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Github GraphQL Example</title>

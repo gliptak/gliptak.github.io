@@ -28,10 +28,12 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content="GraphQL API allows for query and mutation (update) operations which can be executed in GitHub&rsquo;s GraphQL Explorer Below example creates a PR. First, find the repository id:
+{ repository(owner: &#34;gliptak&#34;, name: &#34;githubapitest1&#34;) { id } } The repository id to be used to create the pull request:
+{ &#34;data&#34;: { &#34;repository&#34;: { &#34;id&#34;: &#34;R_kgDOGS1otA&#34; } } } The mutation (update) below creates a new PR from an existing branch (additional details could have been submitted):">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/tags/github/">
+  <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/post/github_graphql_newpr/">
 
   
 
@@ -210,14 +212,12 @@
 
 
   
-  <link rel="alternate" href="/tags/github/index.xml" type="application/rss+xml" title="">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://gliptak.github.io/tags/github/">
+  <link rel="canonical" href="https://gliptak.github.io/post/github_graphql_newpr/">
 
   
   
@@ -231,18 +231,65 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="">
-  <meta property="og:url" content="https://gliptak.github.io/tags/github/">
-  <meta property="og:title" content="Github | ">
-  <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="og:url" content="https://gliptak.github.io/post/github_graphql_newpr/">
+  <meta property="og:title" content="Github Create PR with GraphQL | ">
+  <meta property="og:description" content="GraphQL API allows for query and mutation (update) operations which can be executed in GitHub&rsquo;s GraphQL Explorer Below example creates a PR. First, find the repository id:
+{ repository(owner: &#34;gliptak&#34;, name: &#34;githubapitest1&#34;) { id } } The repository id to be used to create the pull request:
+{ &#34;data&#34;: { &#34;repository&#34;: { &#34;id&#34;: &#34;R_kgDOGS1otA&#34; } } } The mutation (update) below creates a new PR from an existing branch (additional details could have been submitted):"><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2021-12-12T20:32:51&#43;00:00">
+    
+      <meta property="article:published_time" content="2021-12-12T20:32:51&#43;00:00">
+    
+    <meta property="article:modified_time" content="2021-12-12T20:32:51&#43;00:00">
   
 
   
 
 
+    
 
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gliptak.github.io/post/github_graphql_newpr/"
+  },
+  "headline": "Github Create PR with GraphQL",
+  
+  "datePublished": "2021-12-12T20:32:51Z",
+  "dateModified": "2021-12-12T20:32:51Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Gábor Lipták"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "GraphQL API allows for query and mutation (update) operations which can be executed in GitHub\u0026rsquo;s GraphQL Explorer Below example creates a PR. First, find the repository id:\n{ repository(owner: \u0026#34;gliptak\u0026#34;, name: \u0026#34;githubapitest1\u0026#34;) { id } } The repository id to be used to create the pull request:\n{ \u0026#34;data\u0026#34;: { \u0026#34;repository\u0026#34;: { \u0026#34;id\u0026#34;: \u0026#34;R_kgDOGS1otA\u0026#34; } } } The mutation (update) below creates a new PR from an existing branch (additional details could have been submitted):"
+}
+</script>
+
+  
 
   
 
@@ -250,10 +297,13 @@
   
 
 
+  
 
 
 
-  <title>Github | </title>
+
+
+  <title>Github Create PR with GraphQL | </title>
 
 </head>
 
@@ -472,72 +522,340 @@
 </nav>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
+  <article class="article">
 
   
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
   
   
+  
+<div class="article-container pt-3">
+  <h1>Github Create PR with GraphQL</h1>
+
+  
+
   
     
-  
-<div class="universal-wrapper pt-3">
-  <h1>Github</h1>
+
+
+<div class="article-metadata">
 
   
+  
+  
+  
+  <div>
+    
+
+  
+  <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    2021-12-12
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/github_graphql_newpr/#disqus_thread"></a>
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
 </div>
 
 
 
-<div class="universal-wrapper">
-  
+  <div class="article-container">
 
-  
-  
-    
-    
-    
-    <div>
-      <h2><a href="/post/github_graphql_newpr/" >Github Create PR with GraphQL</a></h2>
-      <div class="article-style">
-        
-          GraphQL API allows for query and mutation (update) operations which can be executed in GitHub&rsquo;s GraphQL Explorer Below example creates a PR. First, find the repository id:
-{ repository(owner: &#34;gliptak&#34;, name: &#34;githubapitest1&#34;) { id } } The repository id to be used to create the pull request:
-{ &#34;data&#34;: { &#34;repository&#34;: { &#34;id&#34;: &#34;R_kgDOGS1otA&#34; } } } The mutation (update) below creates a new PR from an existing branch (additional details could have been submitted):
-        
-      </div>
+    <div class="article-style">
+      <p>GraphQL API allows for query and mutation (update) operations which can be executed in 
+<a href="https://docs.github.com/en/graphql/overview/explorer" target="_blank" rel="noopener">GitHub&rsquo;s GraphQL Explorer</a> Below example creates a PR. First, find the repository id:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-graphql" data-lang="graphql">{
+  repository(owner: <span style="color:#e6db74">&#34;gliptak&#34;</span>, <span style="color:#a6e22e">name</span>: <span style="color:#e6db74">&#34;githubapitest1&#34;</span>) {
+    <span style="color:#a6e22e">id</span>
+  }
+}
+</code></pre></div><p>The repository id to be used to create the pull request:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;data&#34;</span>: {
+    <span style="color:#f92672">&#34;repository&#34;</span>: {
+      <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;R_kgDOGS1otA&#34;</span>
+    }
+  }
+}
+</code></pre></div><p>The mutation (update) below creates a new PR from an existing branch (additional details could have been submitted):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-graphql" data-lang="graphql"><span style="color:#66d9ef">mutation</span> {
+  <span style="color:#a6e22e">createPullRequest</span>(<span style="color:#66d9ef">input</span>: {
+    <span style="color:#a6e22e">repositoryId</span>: <span style="color:#e6db74">&#34;R_kgDOGS1otA&#34;</span>
+    <span style="color:#a6e22e">title</span>: <span style="color:#e6db74">&#34;my PR&#34;</span>,
+    <span style="color:#a6e22e">baseRefName</span>: <span style="color:#e6db74">&#34;master&#34;</span>,
+    <span style="color:#a6e22e">headRefName</span>: <span style="color:#e6db74">&#34;patch-1&#34;</span>}) {
+    <span style="color:#a6e22e">pullRequest</span> {
+      <span style="color:#a6e22e">url</span>
+    }
+  }
+}
+</code></pre></div><p>Resulting JSON displays the URL of PR created:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;data&#34;</span>: {
+    <span style="color:#f92672">&#34;createPullRequest&#34;</span>: {
+      <span style="color:#f92672">&#34;pullRequest&#34;</span>: {
+        <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;https://github.com/gliptak/githubapitest1/pull/1&#34;</span>
+      }
+    }
+  }
+}
+</code></pre></div><p>At this point 
+<a href="https://github.com/graphql/graphql-spec/issues/377" target="_blank" rel="noopener">@export directive</a> allowing to <code>chain</code> variables between queries is under consideration so variable substitution has to happen manually or programatically.</p>
+
     </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/post/github_graphql_example/" >Github GraphQL Example</a></h2>
-      <div class="article-style">
-        
-          While Github GraphQL offers detailed documentation and an API Explorer, it doesn&rsquo;t have (Python) code samples. Below is a basic GQL example. The query can be developed/tested in Explorer
-from gql import gql, Client from gql.transport.requests import RequestsHTTPTransport import click @click.command() @click.option(&#39;--githubtoken&#39;, envvar=&#34;GITHUB_TOKEN&#34;, prompt=True, hide_input=True, help=&#39;Github token&#39;) @click.option(&#39;--owner&#39;, help=&#39;Repository owner&#39;, required=True) @click.option(&#39;--repository&#39;, help=&#39;Repository name&#39;, required=True) def gh_query_repo(githubtoken, owner, repository): transport=RequestsHTTPTransport( url=&#39;https://api.github.com/graphql&#39;, use_json=True, headers={ &#34;Authorization&#34;: f&#34;Bearer {githubtoken}&#34;, }, #verify=False, retries=3, ) client = Client( transport=transport, fetch_schema_from_transport=True, ) query_repo = &#39;&#39;&#39; query Repository($owner: String!
-        
-      </div>
-    </div>
-  
 
-  
+    
 
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/github/">Github</a>
+  
+  <a class="badge badge-light" href="/tags/graphql/">GraphQL</a>
+  
 </div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://gliptak.github.io/post/github_graphql_newpr/&amp;text=Github%20Create%20PR%20with%20GraphQL" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://gliptak.github.io/post/github_graphql_newpr/&amp;t=Github%20Create%20PR%20with%20GraphQL" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Github%20Create%20PR%20with%20GraphQL&amp;body=https://gliptak.github.io/post/github_graphql_newpr/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://gliptak.github.io/post/github_graphql_newpr/&amp;title=Github%20Create%20PR%20with%20GraphQL" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Github%20Create%20PR%20with%20GraphQL%20https://gliptak.github.io/post/github_graphql_newpr/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://gliptak.github.io/post/github_graphql_newpr/&amp;title=Github%20Create%20PR%20with%20GraphQL" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://gliptak.github.io/">Gábor Lipták</a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+<section id="comments">
+  
+    
+<div id="disqus_thread"></div>
+<script>
+  let disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "https-gliptak-github-io" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  
+</section>
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/github_graphql_example/">Github GraphQL Example</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
 
       
 
