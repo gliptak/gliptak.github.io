@@ -18,7 +18,7 @@
       <pubDate>Sun, 12 Dec 2021 20:32:51 +0000</pubDate>
       <guid>https://gliptak.github.io/post/github_graphql_newpr/</guid>
       <description>&lt;p&gt;GraphQL API allows for query and mutation (update) operations which can be executed in 
-&lt;a href=&#34;https://docs.github.com/en/graphql/overview/explorer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GitHub&amp;rsquo;s GraphQL Explorer&lt;/a&gt; Below example creates a PR. First, find the repository id:&lt;/p&gt;
+&lt;a href=&#34;https://docs.github.com/en/graphql/overview/explorer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GitHub&amp;rsquo;s GraphQL Explorer&lt;/a&gt;. Below example creates a PR. First, find the repository id:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;{
   repository(owner: &amp;quot;gliptak&amp;quot;, name: &amp;quot;githubapitest1&amp;quot;) {
     id
@@ -32,7 +32,7 @@
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The mutation (update) below creates a new PR from an existing branch (additional details could have been submitted):&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The mutation (update) creates a new PR from an existing branch (additional details could have been submitted):&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;mutation {
   createPullRequest(input: {
     repositoryId: &amp;quot;R_kgDOGS1otA&amp;quot;
@@ -54,8 +54,8 @@
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At this point 
-&lt;a href=&#34;https://github.com/graphql/graphql-spec/issues/377&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@export directive&lt;/a&gt; allowing to &lt;code&gt;chain&lt;/code&gt; variables between queries is under consideration so variable substitution has to happen manually or programatically.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At the time of publishing, 
+&lt;a href=&#34;https://github.com/graphql/graphql-spec/issues/377&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@export directive&lt;/a&gt; allowing to &lt;code&gt;chain&lt;/code&gt; variables between queries is under consideration so variable substitution has to happen manually or programmatically.&lt;/p&gt;
 </description>
     </item>
     
