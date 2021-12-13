@@ -11,8 +11,17 @@ git submodule add https://github.com/gcushen/hugo-academic.git themes/hugo-acade
 cd themes/hugo-academic
 git checkout v5.2.0
 ```
-## New content
 
+## New content (Devcontainer)
+
+```sh
+hugo new post/my_first_post/index.md
+hugo server -D --bind 0.0.0.0
+```
+
+## New content (Docker)
+
+```sh
 docker run --rm -v $(pwd):/data -w /data hugo:latest new post/my_first_post/index.md
-
 docker run --rm -v $(pwd):/data -w /data -p 1313:1313 hugo:latest server -D --bind 0.0.0.0
+```
