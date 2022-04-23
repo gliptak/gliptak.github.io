@@ -236,7 +236,7 @@
   <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2021-12-12T20:32:51&#43;00:00">
+    <meta property="og:updated_time" content="2022-04-23T01:50:53&#43;00:00">
   
 
   
@@ -1099,6 +1099,105 @@
   <div class="media-body">
 
     <h3 class="article-title mb-0 mt-0">
+      <a href="/post/docker_compose_logs/" >Docker Compose Tailing of Log Files</a>
+    </h3>
+
+    
+    <div class="article-style">
+      Docker Compose Logs docker compose logs aggregates stdout of containers started with no out-of-the-box capability for aggregating additional logs generated on container filesystems. Implementing sidecar allows tailing logs generated on container volumes.
+docker-compose.yaml services: counter: image: busybox command: | /bin/sh -c &#39;i=0; while true; do echo &#34;$$(date) WARN $$i&#34; &gt;&gt; /var/log/1.log; echo &#34;$$(date) INFO $$i&#34; &gt;&gt; /var/log/2.log; i=$$((i+1)); sleep 5; done&#39; volumes: - log-volume:/var/log counter-log: image: busybox command: | /bin/sh -c &#39;tail -n+1 -F /var/log/*.
+    </div>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    2022-04-23
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/docker_compose_logs/#disqus_thread"></a>
+  
+
+  
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+      
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item">
+  <div class="media-body">
+
+    <h3 class="article-title mb-0 mt-0">
       <a href="/post/github_graphql_newpr/" >Github Create Pull Request with GraphQL</a>
     </h3>
 
@@ -1467,106 +1566,6 @@ import sagemaker import sys def handler(event, context): print(sys.
 
       
     
-      
-        
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/jupyterhub_docker/" >Running Jupyterhub Docker</a>
-    </h3>
-
-    
-    <div class="article-style">
-      Jupyterhub doesn&rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:
-As the Docker image name indicates, this is singleuser instance preconfigured for user jovyan. Run below command in directory with your notebooks
-docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub There doesn&rsquo;t seem to be (default) password set for jovyan user, so at this point you cannot login into the GUI.
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    2020-12-19
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-  <span class="middot-divider"></span>
-  <a href="/post/jupyterhub_docker/#disqus_thread"></a>
-  
-
-  
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-      
-    
 
     
     <div class="see-all">
@@ -1702,7 +1701,7 @@ docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jup
   
 
   <p class="powered-by">
-    © 2016-2021 Gábor Lipták &middot; 
+    © 2016-2022 Gábor Lipták &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

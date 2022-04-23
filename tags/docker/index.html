@@ -236,7 +236,7 @@
   <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2021-06-27T01:47:41-04:00">
+    <meta property="og:updated_time" content="2022-04-23T01:50:53&#43;00:00">
   
 
   
@@ -511,6 +511,19 @@
     
     
     <div>
+      <h2><a href="/post/docker_compose_logs/" >Docker Compose Tailing of Log Files</a></h2>
+      <div class="article-style">
+        
+          Docker Compose Logs docker compose logs aggregates stdout of containers started with no out-of-the-box capability for aggregating additional logs generated on container filesystems. Implementing sidecar allows tailing logs generated on container volumes.
+docker-compose.yaml services: counter: image: busybox command: | /bin/sh -c &#39;i=0; while true; do echo &#34;$$(date) WARN $$i&#34; &gt;&gt; /var/log/1.log; echo &#34;$$(date) INFO $$i&#34; &gt;&gt; /var/log/2.log; i=$$((i+1)); sleep 5; done&#39; volumes: - log-volume:/var/log counter-log: image: busybox command: | /bin/sh -c &#39;tail -n+1 -F /var/log/*.
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div>
       <h2><a href="/post/aws_lambda_container/" >Packaging AWS Lambda functions with large dependencies as containers</a></h2>
       <div class="article-style">
         
@@ -658,7 +671,7 @@ docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jup
   
 
   <p class="powered-by">
-    © 2016-2021 Gábor Lipták &middot; 
+    © 2016-2022 Gábor Lipták &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

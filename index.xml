@@ -5,12 +5,67 @@
     <link>https://gliptak.github.io/</link>
       <atom:link href="https://gliptak.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description></description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2021 Gábor Lipták</copyright><lastBuildDate>Sun, 12 Dec 2021 20:32:51 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2022 Gábor Lipták</copyright><lastBuildDate>Sat, 23 Apr 2022 01:50:53 +0000</lastBuildDate>
     <image>
       <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title></title>
       <link>https://gliptak.github.io/</link>
     </image>
+    
+    <item>
+      <title>Docker Compose Tailing of Log Files</title>
+      <link>https://gliptak.github.io/post/docker_compose_logs/</link>
+      <pubDate>Sat, 23 Apr 2022 01:50:53 +0000</pubDate>
+      <guid>https://gliptak.github.io/post/docker_compose_logs/</guid>
+      <description>&lt;h2 id=&#34;docker-compose-logs&#34;&gt;Docker Compose Logs&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;docker compose logs&lt;/code&gt; aggregates &lt;code&gt;stdout&lt;/code&gt; of containers started with no out-of-the-box
+capability for aggregating additional logs generated on container filesystems.
+Implementing 
+&lt;a href=&#34;https://kubernetes.io/docs/concepts/cluster-administration/logging/#using-a-sidecar-container-with-the-logging-agent&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;sidecar&lt;/a&gt;
+allows tailing logs generated on container volumes.&lt;/p&gt;
+&lt;h2 id=&#34;docker-composeyaml&#34;&gt;&lt;code&gt;docker-compose.yaml&lt;/code&gt;&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;services&lt;/span&gt;:
+  &lt;span style=&#34;color:#f92672&#34;&gt;counter&lt;/span&gt;:
+    &lt;span style=&#34;color:#f92672&#34;&gt;image&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;busybox&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;command&lt;/span&gt;: |&lt;span style=&#34;color:#e6db74&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;      &lt;/span&gt;      &lt;span style=&#34;color:#ae81ff&#34;&gt;/bin/sh -c &amp;#39;i=0; while true; do echo &amp;#34;$$(date) WARN $$i&amp;#34; &amp;gt;&amp;gt; /var/log/1.log; echo &amp;#34;$$(date) INFO $$i&amp;#34; &amp;gt;&amp;gt; /var/log/2.log; i=$$((i+1)); sleep 5; done&amp;#39;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
+    - &lt;span style=&#34;color:#ae81ff&#34;&gt;log-volume:/var/log&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;counter-log&lt;/span&gt;:
+    &lt;span style=&#34;color:#f92672&#34;&gt;image&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;busybox&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;command&lt;/span&gt;: |&lt;span style=&#34;color:#e6db74&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;      &lt;/span&gt;      &lt;span style=&#34;color:#ae81ff&#34;&gt;/bin/sh -c &amp;#39;tail -n+1 -F /var/log/*.log&amp;#39;&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
+    - &lt;span style=&#34;color:#ae81ff&#34;&gt;log-volume:/var/log&lt;/span&gt;
+
+&lt;span style=&#34;color:#f92672&#34;&gt;volumes&lt;/span&gt;:
+  &lt;span style=&#34;color:#f92672&#34;&gt;log-volume&lt;/span&gt;:
+    &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;counter-log-volume&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;running&#34;&gt;Running&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;➜ docker compose up
+&lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;+&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; Running 4/4
+ ⠿ Network 202204_docker_default          Created                                                   0.1s
+ ⠿ Volume &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;counter-log-volume&amp;#34;&lt;/span&gt;            Created                                                   0.0s
+ ⠿ Container 202204_docker-counter-log-1  Created                                                   0.1s
+ ⠿ Container 202204_docker-counter-1      Created                                                   0.1s
+Attaching to 202204_docker-counter-1, 202204_docker-counter-log-1
+202204_docker-counter-log-1  | &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt;&amp;gt; /var/log/1.log &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt;
+202204_docker-counter-log-1  | Sat Apr &lt;span style=&#34;color:#ae81ff&#34;&gt;23&lt;/span&gt; 01:37:03 UTC &lt;span style=&#34;color:#ae81ff&#34;&gt;2022&lt;/span&gt; WARN &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+202204_docker-counter-log-1  | 
+202204_docker-counter-log-1  | &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt;&amp;gt; /var/log/2.log &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt;
+202204_docker-counter-log-1  | Sat Apr &lt;span style=&#34;color:#ae81ff&#34;&gt;23&lt;/span&gt; 01:37:03 UTC &lt;span style=&#34;color:#ae81ff&#34;&gt;2022&lt;/span&gt; INFO &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+202204_docker-counter-log-1  | 
+202204_docker-counter-log-1  | &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt;&amp;gt; /var/log/1.log &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt;
+202204_docker-counter-log-1  | Sat Apr &lt;span style=&#34;color:#ae81ff&#34;&gt;23&lt;/span&gt; 01:37:08 UTC &lt;span style=&#34;color:#ae81ff&#34;&gt;2022&lt;/span&gt; WARN &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+202204_docker-counter-log-1  | 
+202204_docker-counter-log-1  | &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt;&amp;gt; /var/log/2.log &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt;
+202204_docker-counter-log-1  | Sat Apr &lt;span style=&#34;color:#ae81ff&#34;&gt;23&lt;/span&gt; 01:37:08 UTC &lt;span style=&#34;color:#ae81ff&#34;&gt;2022&lt;/span&gt; INFO &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+^C
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;cleanup&#34;&gt;Cleanup&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker compose down
+docker volume rm counter-log-volume
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
     
     <item>
       <title>Github Create Pull Request with GraphQL</title>

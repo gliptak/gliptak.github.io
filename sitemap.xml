@@ -3,13 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://gliptak.github.io/</loc>
-    <lastmod>2021-12-12T20:32:51+00:00</lastmod>
+    <lastmod>2022-04-23T01:50:53+00:00</lastmod>
   </url><url>
     <loc>https://gliptak.github.io/authors/gliptak/</loc>
-    <lastmod>2021-12-12T20:32:51+00:00</lastmod>
+    <lastmod>2022-04-23T01:50:53+00:00</lastmod>
   </url><url>
     <loc>https://gliptak.github.io/authors/</loc>
-    <lastmod>2021-12-12T20:32:51+00:00</lastmod>
+    <lastmod>2022-04-23T01:50:53+00:00</lastmod>
+  </url><url>
+    <loc>https://gliptak.github.io/tags/docker/</loc>
+    <lastmod>2022-04-23T01:50:53+00:00</lastmod>
+  </url><url>
+    <loc>https://gliptak.github.io/post/docker_compose_logs/</loc>
+    <lastmod>2022-04-23T01:50:53+00:00</lastmod>
+  </url><url>
+    <loc>https://gliptak.github.io/post/</loc>
+    <lastmod>2022-04-23T01:50:53+00:00</lastmod>
+  </url><url>
+    <loc>https://gliptak.github.io/tags/</loc>
+    <lastmod>2022-04-23T01:50:53+00:00</lastmod>
   </url><url>
     <loc>https://gliptak.github.io/tags/github/</loc>
     <lastmod>2021-12-12T20:32:51+00:00</lastmod>
@@ -18,12 +30,6 @@
     <lastmod>2021-12-12T20:32:51+00:00</lastmod>
   </url><url>
     <loc>https://gliptak.github.io/tags/graphql/</loc>
-    <lastmod>2021-12-12T20:32:51+00:00</lastmod>
-  </url><url>
-    <loc>https://gliptak.github.io/post/</loc>
-    <lastmod>2021-12-12T20:32:51+00:00</lastmod>
-  </url><url>
-    <loc>https://gliptak.github.io/tags/</loc>
     <lastmod>2021-12-12T20:32:51+00:00</lastmod>
   </url><url>
     <loc>https://gliptak.github.io/post/github_graphql_example/</loc>
@@ -37,9 +43,6 @@
   </url><url>
     <loc>https://gliptak.github.io/tags/cloudformation/</loc>
     <lastmod>2021-07-03T16:50:49+00:00</lastmod>
-  </url><url>
-    <loc>https://gliptak.github.io/tags/docker/</loc>
-    <lastmod>2021-06-27T01:47:41-04:00</lastmod>
   </url><url>
     <loc>https://gliptak.github.io/tags/lambda/</loc>
     <lastmod>2021-06-27T01:47:41-04:00</lastmod>
