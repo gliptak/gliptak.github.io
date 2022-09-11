@@ -7,7 +7,7 @@
     <description>Boto3</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2022 Gábor Lipták</copyright><lastBuildDate>Wed, 15 Feb 2017 17:51:55 -0500</lastBuildDate>
     <image>
-      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Boto3</title>
       <link>https://gliptak.github.io/tags/boto3/</link>
     </image>
@@ -19,51 +19,51 @@
       <guid>https://gliptak.github.io/post/simpledb-example/</guid>
       <description>&lt;p&gt;When looking into AWS SimpleDB, a quick search didn&amp;rsquo;t return any short Python Boto3 examples. So I decided to post one.
 (As with any services you to subscribe to, running this code below might cost you money &amp;hellip;)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; __future__ &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; print_function
-&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; boto3
-
-
-&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;quote&lt;/span&gt;(string):
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; string&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#34;&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#34;&amp;#34;&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;`&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;``&amp;#39;&lt;/span&gt;)
-
-
-&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;put_attributes&lt;/span&gt;(sdb, domain, id, color):
-    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;put_attributes(
-        DomainName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;domain,
-        ItemName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;id,
-        Attributes&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[
-            {
-                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Name&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;color&amp;#39;&lt;/span&gt;,
-                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Value&amp;#39;&lt;/span&gt;: color,
-                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Replace&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
-            },
-        ],
-    )
-    print(response)
-
-
-&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
-    domain &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;TEST_DOMAIN&amp;#34;&lt;/span&gt;
-    sdb &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; boto3&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;client(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sdb&amp;#39;&lt;/span&gt;)
-    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;create_domain(
-        DomainName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;domain
-    )
-    print(response)
-    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;list_domains(
-    )
-    print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Current domains: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; response[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;DomainNames&amp;#39;&lt;/span&gt;])
-    put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id1&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;red&amp;#34;&lt;/span&gt;)
-    put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id2&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;redblue&amp;#34;&lt;/span&gt;)
-    put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id3&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;blue&amp;#34;&lt;/span&gt;)
-    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;select(
-        SelectExpression&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;select * from &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; where color like &amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%%%s%%&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; (domain, quote(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;blue&amp;#39;&lt;/span&gt;)),
-    )
-    print(response)
-    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;delete_domain(
-        DomainName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;domain
-    )
-    print(response)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; __future__ &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; print_function
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; boto3
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;quote&lt;/span&gt;(string):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; string&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&amp;#39;&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#34;&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#34;&amp;#34;&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;replace(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;`&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;``&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;put_attributes&lt;/span&gt;(sdb, domain, id, color):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;put_attributes(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        DomainName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;domain,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ItemName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;id,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        Attributes&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Name&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;color&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Value&amp;#39;&lt;/span&gt;: color,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Replace&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(response)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    domain &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;TEST_DOMAIN&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    sdb &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; boto3&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;client(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;sdb&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;create_domain(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        DomainName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;domain
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(response)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;list_domains(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Current domains: &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; response[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;DomainNames&amp;#39;&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id1&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;red&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id2&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;redblue&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    put_attributes(sdb, domain, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;id3&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;blue&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;select(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        SelectExpression&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;select * from &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%s&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; where color like &amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;%%%s%%&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; (domain, quote(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;blue&amp;#39;&lt;/span&gt;)),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(response)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sdb&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;delete_domain(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        DomainName&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;domain
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(response)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>

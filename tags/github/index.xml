@@ -7,7 +7,7 @@
     <description>Github</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2022 Gábor Lipták</copyright><lastBuildDate>Sun, 11 Sep 2022 16:56:52 +0000</lastBuildDate>
     <image>
-      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Github</title>
       <link>https://gliptak.github.io/tags/github/</link>
     </image>
@@ -18,12 +18,12 @@
       <pubDate>Sun, 11 Sep 2022 16:56:52 +0000</pubDate>
       <guid>https://gliptak.github.io/post/github_graphql_repofiles/</guid>
       <description>&lt;p&gt;At this point GraphQL doesn&amp;rsquo;t seem to provide the right constructs to list files folders of unconstrained depth. Instead, users will make multiple calls into the API. So let&amp;rsquo;s get started:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
-  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;owner&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;gliptak&amp;#34;&lt;/span&gt;,
-  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;aws-cdk-python&amp;#34;&lt;/span&gt;,
-  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;rev&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;query DefaultBranch($owner: String!, $name: String!) {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;owner&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;gliptak&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;aws-cdk-python&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;rev&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;query DefaultBranch($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
     name
     defaultBranchRef {
@@ -32,18 +32,18 @@
   }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;returns&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
-  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
-    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;repository&amp;#34;&lt;/span&gt;: {
-      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;aws-cdk-python&amp;#34;&lt;/span&gt;,
-      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;defaultBranchRef&amp;#34;&lt;/span&gt;: {
-        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;
-      }
-    }
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Subtitute the default branch from above into the query variables with &lt;code&gt;:&lt;/code&gt; appended (&lt;code&gt;master:&lt;/code&gt; for our example) and run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;query RepoFiles($owner: String!, $name: String!, $rev: String!) {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;repository&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;aws-cdk-python&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;defaultBranchRef&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Subtitute the default branch from above into the query variables with &lt;code&gt;:&lt;/code&gt; appended (&lt;code&gt;master:&lt;/code&gt; for our example) and run:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;query RepoFiles($owner: String!, $name: String!, $rev: String!) {
   repository(owner: $owner, name: $name) {
     object(expression: $rev) {
       id
@@ -59,29 +59,29 @@
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
 &lt;a href=&#34;https://git-scm.com/docs/git-rev-parse&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rev&lt;/a&gt; above points to a directory &lt;code&gt;Tree&lt;/code&gt; to list entries for returning (slightly abbreviated):&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
-  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
-    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;repository&amp;#34;&lt;/span&gt;: {
-      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;: {
-        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;entries&amp;#34;&lt;/span&gt;: [
-          {
-            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.env&amp;#34;&lt;/span&gt;,
-            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;oid&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;9a10a235bf64f16f2684148e33c7aaf5eaa88721&amp;#34;&lt;/span&gt;,
-            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;blob&amp;#34;&lt;/span&gt;
-          },
-          {
-            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.github&amp;#34;&lt;/span&gt;,
-            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;oid&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;17ddafeaf72048e2dcb4a3ccb05ffbc12459cabd&amp;#34;&lt;/span&gt;,
-            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tree&amp;#34;&lt;/span&gt;
-          },
-          &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;...&lt;/span&gt;
-        ]
-      }
-    }
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;From above &lt;code&gt;oid&lt;/code&gt;/&lt;code&gt;path&lt;/code&gt;(including branch prefix) can be used to list entries of &lt;code&gt;tree&lt;/code&gt;s and to display content of &lt;code&gt;blob&lt;/code&gt;s as below:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;query RepoFiles($owner: String!, $name: String!, $rev: String!) {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;repository&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;entries&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.env&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;oid&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;9a10a235bf64f16f2684148e33c7aaf5eaa88721&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;blob&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.github&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;oid&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;17ddafeaf72048e2dcb4a3ccb05ffbc12459cabd&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tree&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;From above &lt;code&gt;oid&lt;/code&gt;/&lt;code&gt;path&lt;/code&gt;(including branch prefix) can be used to list entries of &lt;code&gt;tree&lt;/code&gt;s and to display content of &lt;code&gt;blob&lt;/code&gt;s as below:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;query RepoFiles($owner: String!, $name: String!, $rev: String!) {
   repository(owner: $owner, name: $name) {
     object(expression: $rev) {
       ... on Blob {
@@ -90,16 +90,16 @@
     }
   }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
-  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
-    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;repository&amp;#34;&lt;/span&gt;: {
-      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;: {
-        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;USER_ID=1001\nGROUP_ID=1001\n&amp;#34;&lt;/span&gt;
-      }
-    }
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;API transaction limits might apply so multiple queries could be performed in a single call.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;repository&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;USER_ID=1001\nGROUP_ID=1001\n&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;API transaction limits might apply so multiple queries could be performed in a single call.&lt;/p&gt;
 </description>
     </item>
     
@@ -110,13 +110,13 @@
       <guid>https://gliptak.github.io/post/github_graphql_repolist/</guid>
       <description>&lt;p&gt;One of the Github GraphQL operations supporting pagination is searching/listing repositories. Below queries utilize &lt;code&gt;query variables&lt;/code&gt; running in 
 &lt;a href=&#34;https://docs.github.com/en/graphql/overview/explorer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GitHub&amp;rsquo;s GraphQL Explorer&lt;/a&gt;.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
-  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;query&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;org:gliptak is:all&amp;#34;&lt;/span&gt;,
-  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;pageSzie&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,
-  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;after&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Below setup has 2 for pagination size for demonstration purposes, larger window to be used in real queries. The initial query:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;query ListRepos($query: String!, $pageSize: Int!) {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;query&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;org:gliptak is:all&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;pageSzie&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;after&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Below setup has 2 for pagination size for demonstration purposes, larger window to be used in real queries. The initial query:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;query ListRepos($query: String!, $pageSize: Int!) {
   search(query: $query, type: REPOSITORY, first: $pageSize) {
     edges {
       node {
@@ -136,37 +136,37 @@
   }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;returns repo details and cursor values:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
-  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
-    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;search&amp;#34;&lt;/span&gt;: {
-      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;edges&amp;#34;&lt;/span&gt;: [
-        {
-          &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;node&amp;#34;&lt;/span&gt;: {
-            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;JAllele&amp;#34;&lt;/span&gt;,
-            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;defaultBranchRef&amp;#34;&lt;/span&gt;: {
-              &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;
-            }
-          }
-        },
-        {
-          &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;node&amp;#34;&lt;/span&gt;: {
-            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;aws-cdk-python&amp;#34;&lt;/span&gt;,
-            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;defaultBranchRef&amp;#34;&lt;/span&gt;: {
-              &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;
-            }
-          }
-        }
-      ],
-      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;pageInfo&amp;#34;&lt;/span&gt;: {
-        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;startCursor&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Y3Vyc29yOjE=&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;endCursor&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Y3Vyc29yOjI=&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;hasNextPage&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
-      }
-    }
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Which can be used to form the next query:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;query ListRepos($query: String!, $pageSize: Int!, $after: String!) {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;search&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;edges&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;node&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;JAllele&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;defaultBranchRef&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;node&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;aws-cdk-python&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;defaultBranchRef&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;pageInfo&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;startCursor&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Y3Vyc29yOjE=&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;endCursor&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Y3Vyc29yOjI=&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;hasNextPage&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Which can be used to form the next query:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;query ListRepos($query: String!, $pageSize: Int!, $after: String!) {
   search(query: $query, type: REPOSITORY, after: $after, first: $pageSize) {
     edges {
       node {
@@ -196,42 +196,42 @@
       <guid>https://gliptak.github.io/post/github_graphql_newpr/</guid>
       <description>&lt;p&gt;GraphQL API allows for query and mutation (update) operations which can be executed in 
 &lt;a href=&#34;https://docs.github.com/en/graphql/overview/explorer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GitHub&amp;rsquo;s GraphQL Explorer&lt;/a&gt;. Below example creates a PR. First, find the repository id:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;{
-  repository(owner: &amp;quot;gliptak&amp;quot;, name: &amp;quot;githubapitest1&amp;quot;) {
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+  repository(owner: &amp;#34;gliptak&amp;#34;, name: &amp;#34;githubapitest1&amp;#34;) {
     id
   }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The repository id returned to be used to create the pull request:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
-  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
-    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;repository&amp;#34;&lt;/span&gt;: {
-      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R_kgDOGS1otA&amp;#34;&lt;/span&gt;
-    }
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The mutation (update) creates a new PR from an existing branch (additional details could have been submitted):&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;mutation {
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;repository&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R_kgDOGS1otA&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The mutation (update) creates a new PR from an existing branch (additional details could have been submitted):&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;mutation {
   createPullRequest(input: {
-    repositoryId: &amp;quot;R_kgDOGS1otA&amp;quot;
-    title: &amp;quot;my PR&amp;quot;,
-    baseRefName: &amp;quot;master&amp;quot;,
-    headRefName: &amp;quot;patch-1&amp;quot;}) {
+    repositoryId: &amp;#34;R_kgDOGS1otA&amp;#34;
+    title: &amp;#34;my PR&amp;#34;,
+    baseRefName: &amp;#34;master&amp;#34;,
+    headRefName: &amp;#34;patch-1&amp;#34;}) {
     pullRequest {
       url
     }
   }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Resulting JSON displays the URL of PR created:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
-  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
-    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;createPullRequest&amp;#34;&lt;/span&gt;: {
-      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;pullRequest&amp;#34;&lt;/span&gt;: {
-        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://github.com/gliptak/githubapitest1/pull/1&amp;#34;&lt;/span&gt;
-      }
-    }
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At the time of publishing, 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;createPullRequest&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;pullRequest&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://github.com/gliptak/githubapitest1/pull/1&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At the time of publishing, 
 &lt;a href=&#34;https://github.com/graphql/graphql-spec/issues/377&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;@export directive&lt;/a&gt; allowing to &lt;code&gt;chain&lt;/code&gt; variables between queries is under consideration so variable substitution has to happen manually or programmatically.&lt;/p&gt;
 </description>
     </item>
@@ -245,52 +245,52 @@
 &lt;a href=&#34;https://docs.github.com/en/graphql&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;documentation and an API Explorer&lt;/a&gt;, it doesn&amp;rsquo;t have (Python) code samples. Below is a basic 
 &lt;a href=&#34;https://github.com/graphql-python/gql&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GQL&lt;/a&gt; example. The query can be developed/tested in 
 &lt;a href=&#34;https://docs.github.com/en/graphql/overview/explorer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Explorer&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; gql &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; gql, Client
-&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; gql.transport.requests &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; RequestsHTTPTransport
-&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; click
-
-
-&lt;span style=&#34;color:#a6e22e&#34;&gt;@click&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;command()
-&lt;span style=&#34;color:#a6e22e&#34;&gt;@click&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;option(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--githubtoken&amp;#39;&lt;/span&gt;, envvar&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GITHUB_TOKEN&amp;#34;&lt;/span&gt;, prompt&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;, hide_input&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;, help&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Github token&amp;#39;&lt;/span&gt;)
-&lt;span style=&#34;color:#a6e22e&#34;&gt;@click&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;option(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--owner&amp;#39;&lt;/span&gt;, help&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Repository owner&amp;#39;&lt;/span&gt;, required&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
-&lt;span style=&#34;color:#a6e22e&#34;&gt;@click&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;option(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--repository&amp;#39;&lt;/span&gt;, help&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Repository name&amp;#39;&lt;/span&gt;, required&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
-&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gh_query_repo&lt;/span&gt;(githubtoken, owner, repository):
-    transport&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;RequestsHTTPTransport(
-        url&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://api.github.com/graphql&amp;#39;&lt;/span&gt;,
-        use_json&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
-        headers&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{
-            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authorization&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Bearer &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;githubtoken&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;,
-        },
-        &lt;span style=&#34;color:#75715e&#34;&gt;#verify=False,&lt;/span&gt;
-        retries&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;,
-    )
-
-    client &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Client(
-        transport&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;transport,
-        fetch_schema_from_transport&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
-    )
-
-    query_repo &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;
-&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        query Repository($owner: String!, $repo: String!) {
-&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;            repository(name: $repo, owner: $owner) {
-&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                id
-&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;            }
-&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        }
-&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt; [&lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]
-    result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; client&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;execute(
-        gql(query_repo),
-        variable_values&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{
-                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;owner&amp;#34;&lt;/span&gt;: owner,
-                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;repo&amp;#34;&lt;/span&gt;: repository,
-            }
-        )
-    repositoryId &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; result[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;repository&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;]
-    print(repositoryId)
-
-
-&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
-    gh_query_repo()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; gql &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; gql, Client
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; gql.transport.requests &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; RequestsHTTPTransport
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; click
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@click&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;command()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@click&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;option(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--githubtoken&amp;#39;&lt;/span&gt;, envvar&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;GITHUB_TOKEN&amp;#34;&lt;/span&gt;, prompt&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;, hide_input&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;, help&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Github token&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@click&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;option(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--owner&amp;#39;&lt;/span&gt;, help&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Repository owner&amp;#39;&lt;/span&gt;, required&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@click&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;option(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--repository&amp;#39;&lt;/span&gt;, help&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Repository name&amp;#39;&lt;/span&gt;, required&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;gh_query_repo&lt;/span&gt;(githubtoken, owner, repository):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    transport&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;RequestsHTTPTransport(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        url&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;https://api.github.com/graphql&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        use_json&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        headers&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authorization&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Bearer &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;githubtoken&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;#verify=False,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        retries&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    client &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Client(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        transport&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;transport,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        fetch_schema_from_transport&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    query_repo &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        query Repository($owner: String!, $repo: String!) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;            repository(name: $repo, owner: $owner) {
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;                id
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;        &amp;#39;&amp;#39;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt; [&lt;span style=&#34;color:#f92672&#34;&gt;^&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; client&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;execute(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        gql(query_repo),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        variable_values&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;owner&amp;#34;&lt;/span&gt;: owner,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;repo&amp;#34;&lt;/span&gt;: repository,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    repositoryId &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; result[&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;repository&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(repositoryId)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    gh_query_repo()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>

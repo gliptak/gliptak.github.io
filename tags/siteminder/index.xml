@@ -7,7 +7,7 @@
     <description>Siteminder</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2022 Gábor Lipták</copyright><lastBuildDate>Fri, 02 Jun 2017 19:07:05 -0400</lastBuildDate>
     <image>
-      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Siteminder</title>
       <link>https://gliptak.github.io/tags/siteminder/</link>
     </image>
@@ -22,17 +22,17 @@
 &lt;li&gt;utilizes a Requests Session to keep Siteminder login cookies/headers&lt;/li&gt;
 &lt;li&gt;it has a two step load, allowing to fill out the Siteminder form&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; requests
-
-&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
-    mysite &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;http://mysite/&amp;#39;&lt;/span&gt;
-    credentials &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;USER&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;myuser&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;PASSWORD&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mypassword&amp;#39;&lt;/span&gt;}
-    s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; requests&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;session() &lt;span style=&#34;color:#75715e&#34;&gt;# use Session to keep cookies around&lt;/span&gt;
-    page &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(mysite)
-    s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;post(page&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;url, data&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;credentials) &lt;span style=&#34;color:#75715e&#34;&gt;# page.url is the Siteminder login screen&lt;/span&gt;
-    page &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(mysite)
-    print(page&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;content)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; requests
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    mysite &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;http://mysite/&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    credentials &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;USER&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;myuser&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;PASSWORD&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mypassword&amp;#39;&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    s &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; requests&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;session() &lt;span style=&#34;color:#75715e&#34;&gt;# use Session to keep cookies around&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    page &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(mysite)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;post(page&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;url, data&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;credentials) &lt;span style=&#34;color:#75715e&#34;&gt;# page.url is the Siteminder login screen&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    page &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(mysite)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(page&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;content)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     
   </channel>

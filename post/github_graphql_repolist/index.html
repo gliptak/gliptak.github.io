@@ -214,8 +214,8 @@ query ListRepos($query: String!, $pageSize: Int!) { search(query: $query, type: 
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png">
 
   <link rel="canonical" href="https://gliptak.github.io/post/github_graphql_repolist/">
 
@@ -235,8 +235,8 @@ query ListRepos($query: String!, $pageSize: Int!) { search(query: $query, type: 
   <meta property="og:title" content="Github List Repositories Paginated with GraphQL | ">
   <meta property="og:description" content="One of the Github GraphQL operations supporting pagination is searching/listing repositories. Below queries utilize query variables running in GitHub&rsquo;s GraphQL Explorer.
 { &#34;query&#34;: &#34;org:gliptak is:all&#34;, &#34;pageSzie&#34;: 2, &#34;after&#34;: &#34;&#34; } Below setup has 2 for pagination size for demonstration purposes, larger window to be used in real queries. The initial query:
-query ListRepos($query: String!, $pageSize: Int!) { search(query: $query, type: REPOSITORY, first: $pageSize) { edges { node { ... on Repository { name defaultBranchRef { name } } } } pageInfo { startCursor endCursor hasNextPage } } } returns repo details and cursor values:"><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
-  <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+query ListRepos($query: String!, $pageSize: Int!) { search(query: $query, type: REPOSITORY, first: $pageSize) { edges { node { ... on Repository { name defaultBranchRef { name } } } } pageInfo { startCursor endCursor hasNextPage } } } returns repo details and cursor values:"><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png">
+  <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2022-09-11T02:42:42&#43;00:00">
@@ -282,7 +282,7 @@ query ListRepos($query: String!, $pageSize: Int!) { search(query: $query, type: 
     "name": "",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+      "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
   "description": "One of the Github GraphQL operations supporting pagination is searching/listing repositories. Below queries utilize query variables running in GitHub\u0026rsquo;s GraphQL Explorer.\n{ \u0026#34;query\u0026#34;: \u0026#34;org:gliptak is:all\u0026#34;, \u0026#34;pageSzie\u0026#34;: 2, \u0026#34;after\u0026#34;: \u0026#34;\u0026#34; } Below setup has 2 for pagination size for demonstration purposes, larger window to be used in real queries. The initial query:\nquery ListRepos($query: String!, $pageSize: Int!) { search(query: $query, type: REPOSITORY, first: $pageSize) { edges { node { ... on Repository { name defaultBranchRef { name } } } } pageInfo { startCursor endCursor hasNextPage } } } returns repo details and cursor values:"
@@ -622,13 +622,13 @@ query ListRepos($query: String!, $pageSize: Int!) { search(query: $query, type: 
     <div class="article-style">
       <p>One of the Github GraphQL operations supporting pagination is searching/listing repositories. Below queries utilize <code>query variables</code> running in 
 <a href="https://docs.github.com/en/graphql/overview/explorer" target="_blank" rel="noopener">GitHub&rsquo;s GraphQL Explorer</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#f92672">&#34;query&#34;</span>: <span style="color:#e6db74">&#34;org:gliptak is:all&#34;</span>,
-  <span style="color:#f92672">&#34;pageSzie&#34;</span>: <span style="color:#ae81ff">2</span>,
-  <span style="color:#f92672">&#34;after&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>
-}
-</code></pre></div><p>Below setup has 2 for pagination size for demonstration purposes, larger window to be used in real queries. The initial query:</p>
-<pre><code>query ListRepos($query: String!, $pageSize: Int!) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;query&#34;</span>: <span style="color:#e6db74">&#34;org:gliptak is:all&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;pageSzie&#34;</span>: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;after&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Below setup has 2 for pagination size for demonstration purposes, larger window to be used in real queries. The initial query:</p>
+<pre tabindex="0"><code>query ListRepos($query: String!, $pageSize: Int!) {
   search(query: $query, type: REPOSITORY, first: $pageSize) {
     edges {
       node {
@@ -648,37 +648,37 @@ query ListRepos($query: String!, $pageSize: Int!) { search(query: $query, type: 
   }
 }
 </code></pre><p>returns repo details and cursor values:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#f92672">&#34;data&#34;</span>: {
-    <span style="color:#f92672">&#34;search&#34;</span>: {
-      <span style="color:#f92672">&#34;edges&#34;</span>: [
-        {
-          <span style="color:#f92672">&#34;node&#34;</span>: {
-            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;JAllele&#34;</span>,
-            <span style="color:#f92672">&#34;defaultBranchRef&#34;</span>: {
-              <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;master&#34;</span>
-            }
-          }
-        },
-        {
-          <span style="color:#f92672">&#34;node&#34;</span>: {
-            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;aws-cdk-python&#34;</span>,
-            <span style="color:#f92672">&#34;defaultBranchRef&#34;</span>: {
-              <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;master&#34;</span>
-            }
-          }
-        }
-      ],
-      <span style="color:#f92672">&#34;pageInfo&#34;</span>: {
-        <span style="color:#f92672">&#34;startCursor&#34;</span>: <span style="color:#e6db74">&#34;Y3Vyc29yOjE=&#34;</span>,
-        <span style="color:#f92672">&#34;endCursor&#34;</span>: <span style="color:#e6db74">&#34;Y3Vyc29yOjI=&#34;</span>,
-        <span style="color:#f92672">&#34;hasNextPage&#34;</span>: <span style="color:#66d9ef">true</span>
-      }
-    }
-  }
-}
-</code></pre></div><p>Which can be used to form the next query:</p>
-<pre><code>query ListRepos($query: String!, $pageSize: Int!, $after: String!) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;data&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;search&#34;</span>: {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;edges&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;node&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;JAllele&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;defaultBranchRef&#34;</span>: {
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;master&#34;</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;node&#34;</span>: {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;aws-cdk-python&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&#34;defaultBranchRef&#34;</span>: {
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;master&#34;</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      ],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;pageInfo&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;startCursor&#34;</span>: <span style="color:#e6db74">&#34;Y3Vyc29yOjE=&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;endCursor&#34;</span>: <span style="color:#e6db74">&#34;Y3Vyc29yOjI=&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;hasNextPage&#34;</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Which can be used to form the next query:</p>
+<pre tabindex="0"><code>query ListRepos($query: String!, $pageSize: Int!, $after: String!) {
   search(query: $query, type: REPOSITORY, after: $after, first: $pageSize) {
     edges {
       node {
@@ -999,7 +999,7 @@ query ListRepos($query: String!, $pageSize: Int!) { search(query: $query, type: 
     
     
     
-    <script src="/js/academic.min.25aeac8f492a6d2661c32dcffb98689b.js"></script>
+    <script src="/js/academic.min.fa7d8cec12712bee9c91cc5f7b44e7f6.js"></script>
 
     
 

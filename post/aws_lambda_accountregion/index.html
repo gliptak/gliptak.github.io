@@ -29,7 +29,7 @@
     
   
   <meta name="description" content="For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:
-import json import logging import boto3 logger = logging.getLogger() logger.setLevel(logging.INFO) def lambda_handler(event, context): logger.info(json.dumps(event)) account_id = boto3.client(&#39;sts&#39;).get_caller_identity().get(&#39;Account&#39;) # use a client which is region based logs_client = boto3.client(&#39;logs&#39;) region_name = logs_client.meta.region_name logger.info(f&quot;{account_id}:{region_name}&quot;) ">
+import json import logging import boto3 logger = logging.getLogger() logger.setLevel(logging.INFO) def lambda_handler(event, context): logger.info(json.dumps(event)) account_id = boto3.client(&#39;sts&#39;).get_caller_identity().get(&#39;Account&#39;) # use a client which is region based logs_client = boto3.client(&#39;logs&#39;) region_name = logs_client.meta.region_name logger.info(f&#34;{account_id}:{region_name}&#34;) ">
 
   
   <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/post/aws_lambda_accountregion/">
@@ -213,8 +213,8 @@ import json import logging import boto3 logger = logging.getLogger() logger.setL
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png">
 
   <link rel="canonical" href="https://gliptak.github.io/post/aws_lambda_accountregion/">
 
@@ -233,8 +233,8 @@ import json import logging import boto3 logger = logging.getLogger() logger.setL
   <meta property="og:url" content="https://gliptak.github.io/post/aws_lambda_accountregion/">
   <meta property="og:title" content="AWS Lambda Lookup AccountId and Region | ">
   <meta property="og:description" content="For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:
-import json import logging import boto3 logger = logging.getLogger() logger.setLevel(logging.INFO) def lambda_handler(event, context): logger.info(json.dumps(event)) account_id = boto3.client(&#39;sts&#39;).get_caller_identity().get(&#39;Account&#39;) # use a client which is region based logs_client = boto3.client(&#39;logs&#39;) region_name = logs_client.meta.region_name logger.info(f&quot;{account_id}:{region_name}&quot;) "><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
-  <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+import json import logging import boto3 logger = logging.getLogger() logger.setLevel(logging.INFO) def lambda_handler(event, context): logger.info(json.dumps(event)) account_id = boto3.client(&#39;sts&#39;).get_caller_identity().get(&#39;Account&#39;) # use a client which is region based logs_client = boto3.client(&#39;logs&#39;) region_name = logs_client.meta.region_name logger.info(f&#34;{account_id}:{region_name}&#34;) "><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png">
+  <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2020-10-02T18:32:25-04:00">
@@ -280,10 +280,10 @@ import json import logging import boto3 logger = logging.getLogger() logger.setL
     "name": "",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+      "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:\nimport json import logging import boto3 logger = logging.getLogger() logger.setLevel(logging.INFO) def lambda_handler(event, context): logger.info(json.dumps(event)) account_id = boto3.client('sts').get_caller_identity().get('Account') # use a client which is region based logs_client = boto3.client('logs') region_name = logs_client.meta.region_name logger.info(f\u0026quot;{account_id}:{region_name}\u0026quot;) "
+  "description": "For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:\nimport json import logging import boto3 logger = logging.getLogger() logger.setLevel(logging.INFO) def lambda_handler(event, context): logger.info(json.dumps(event)) account_id = boto3.client(\u0026#39;sts\u0026#39;).get_caller_identity().get(\u0026#39;Account\u0026#39;) # use a client which is region based logs_client = boto3.client(\u0026#39;logs\u0026#39;) region_name = logs_client.meta.region_name logger.info(f\u0026#34;{account_id}:{region_name}\u0026#34;) "
 }
 </script>
 
@@ -619,7 +619,7 @@ import json import logging import boto3 logger = logging.getLogger() logger.setL
 
     <div class="article-style">
       <p>For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:</p>
-<pre><code>import json
+<pre tabindex="0"><code>import json
 import logging
 import boto3
 
@@ -628,11 +628,11 @@ logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
     logger.info(json.dumps(event))
-    account_id = boto3.client('sts').get_caller_identity().get('Account')
+    account_id = boto3.client(&#39;sts&#39;).get_caller_identity().get(&#39;Account&#39;)
     # use a client which is region based
-    logs_client = boto3.client('logs')
+    logs_client = boto3.client(&#39;logs&#39;)
     region_name = logs_client.meta.region_name
-    logger.info(f&quot;{account_id}:{region_name}&quot;)
+    logger.info(f&#34;{account_id}:{region_name}&#34;)
 </code></pre>
     </div>
 
@@ -940,7 +940,7 @@ def lambda_handler(event, context):
     
     
     
-    <script src="/js/academic.min.25aeac8f492a6d2661c32dcffb98689b.js"></script>
+    <script src="/js/academic.min.fa7d8cec12712bee9c91cc5f7b44e7f6.js"></script>
 
     
 

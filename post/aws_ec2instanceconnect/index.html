@@ -212,8 +212,8 @@
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png">
 
   <link rel="canonical" href="https://gliptak.github.io/post/aws_ec2instanceconnect/">
 
@@ -231,8 +231,8 @@
   <meta property="og:site_name" content="">
   <meta property="og:url" content="https://gliptak.github.io/post/aws_ec2instanceconnect/">
   <meta property="og:title" content="AWS EC2 Instance Connect | ">
-  <meta property="og:description" content="EC2 Instance Connect is somewhat overlooked functionality improving security of EC2 logins. During configuration, the default instance user is assigned a public key so it&rsquo;s private pair can be used to connect to the instance. The private key tends to be shared within support teams and logins can no longer be attributed to an individual. EC2 instance Connect runs and logs connect commands as the individual user and obeys user&rsquo;s permission."><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
-  <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  <meta property="og:description" content="EC2 Instance Connect is somewhat overlooked functionality improving security of EC2 logins. During configuration, the default instance user is assigned a public key so it&rsquo;s private pair can be used to connect to the instance. The private key tends to be shared within support teams and logins can no longer be attributed to an individual. EC2 instance Connect runs and logs connect commands as the individual user and obeys user&rsquo;s permission."><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png">
+  <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2020-05-29T11:17:30-04:00">
@@ -278,7 +278,7 @@
     "name": "",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+      "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
   "description": "EC2 Instance Connect is somewhat overlooked functionality improving security of EC2 logins. During configuration, the default instance user is assigned a public key so it\u0026rsquo;s private pair can be used to connect to the instance. The private key tends to be shared within support teams and logins can no longer be attributed to an individual. EC2 instance Connect runs and logs connect commands as the individual user and obeys user\u0026rsquo;s permission."
@@ -618,10 +618,10 @@
     <div class="article-style">
       <p>EC2 Instance Connect is somewhat overlooked functionality improving security of EC2 logins. During configuration, the <strong>default</strong> instance user is assigned a public key so it&rsquo;s private pair can be used to connect to the instance. The private key tends to be shared within support teams and logins can no longer be attributed to an individual. EC2 instance Connect runs and logs connect commands as the individual user and obeys user&rsquo;s permission.</p>
 <p>Onto the steps. Run:</p>
-<pre><code> aws ec2-instance-connect send-ssh-public-key --instance-id i-0123abc --instance-os-user ec2-user --availability-zone us-east-1b --ssh-public-key file://id_rsa.pub
+<pre tabindex="0"><code> aws ec2-instance-connect send-ssh-public-key --instance-id i-0123abc --instance-os-user ec2-user --availability-zone us-east-1b --ssh-public-key file://id_rsa.pub
 </code></pre><p>Substitute the right values for your instance, they can be found on the <strong>AWS Console</strong> or queried running <code>aws ec2 describe-instances</code>.</p>
 <p>After above command successful, use (routable) FQDN/IP to connect to your instance (some operating systems use a different <strong>default</strong> user):</p>
-<pre><code>ssh ec2-user@1.2.3.4
+<pre tabindex="0"><code>ssh ec2-user@1.2.3.4
 </code></pre><p>The functionality also available from the <strong>AWS Console</strong>:</p>
 <p><img src="ec2instanceconnect.png" alt="AWS Console Instance Connect" title="AWS Console Instance Connect"></p>
 <p>This activity is logged by 
@@ -931,7 +931,7 @@
     
     
     
-    <script src="/js/academic.min.25aeac8f492a6d2661c32dcffb98689b.js"></script>
+    <script src="/js/academic.min.fa7d8cec12712bee9c91cc5f7b44e7f6.js"></script>
 
     
 

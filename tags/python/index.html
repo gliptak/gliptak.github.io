@@ -214,8 +214,8 @@
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png">
 
   <link rel="canonical" href="https://gliptak.github.io/tags/python/">
 
@@ -233,8 +233,8 @@
   <meta property="og:site_name" content="">
   <meta property="og:url" content="https://gliptak.github.io/tags/python/">
   <meta property="og:title" content="Python | ">
-  <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
-  <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png">
+  <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
   
     <meta property="og:updated_time" content="2020-12-19T17:07:05-04:00">
   
@@ -529,7 +529,7 @@ docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jup
       <div class="article-style">
         
           Splunk can be extended with custom inputs written in Python. In order to connect to Splunk services, code has to be configured and use a session token. Here is a basic setup emitting records with kvstore names
-#!/usr/bin/env python import splunklib.client as client import sys import datetime as dt def generate(session_key): service = client.connect(token = session_key) for collection in service.kvstore: ts = dt.datetime.now(tz=dt.timezone.utc).isoformat() print(f'{ts}, collection=&quot;{collection.name}&quot;') if __name__ == &quot;__main__&quot;: session_key = sys.
+#!/usr/bin/env python import splunklib.client as client import sys import datetime as dt def generate(session_key): service = client.connect(token = session_key) for collection in service.kvstore: ts = dt.datetime.now(tz=dt.timezone.utc).isoformat() print(f&#39;{ts}, collection=&#34;{collection.name}&#34;&#39;) if __name__ == &#34;__main__&#34;: session_key = sys.
         
       </div>
     </div>
@@ -542,7 +542,7 @@ docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jup
       <div class="article-style">
         
           While this below code is simple, it uses two important approaches:
- utilizes a Requests Session to keep Siteminder login cookies/headers it has a two step load, allowing to fill out the Siteminder form  import requests if __name__ == &#34;__main__&#34;: mysite = &#39;http://mysite/&#39; credentials = {&#39;USER&#39;: &#39;myuser&#39;, &#39;PASSWORD&#39;: &#39;mypassword&#39;} s = requests.session() # use Session to keep cookies around page = s.get(mysite) s.post(page.url, data=credentials) # page.url is the Siteminder login screen page = s.
+utilizes a Requests Session to keep Siteminder login cookies/headers it has a two step load, allowing to fill out the Siteminder form import requests if __name__ == &#34;__main__&#34;: mysite = &#39;http://mysite/&#39; credentials = {&#39;USER&#39;: &#39;myuser&#39;, &#39;PASSWORD&#39;: &#39;mypassword&#39;} s = requests.session() # use Session to keep cookies around page = s.get(mysite) s.post(page.url, data=credentials) # page.url is the Siteminder login screen page = s.
         
       </div>
     </div>
@@ -653,7 +653,7 @@ docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jup
     
     
     
-    <script src="/js/academic.min.25aeac8f492a6d2661c32dcffb98689b.js"></script>
+    <script src="/js/academic.min.fa7d8cec12712bee9c91cc5f7b44e7f6.js"></script>
 
     
 

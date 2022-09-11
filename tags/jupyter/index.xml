@@ -7,7 +7,7 @@
     <description>Jupyter</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2022 Gábor Lipták</copyright><lastBuildDate>Sat, 19 Dec 2020 17:07:05 -0400</lastBuildDate>
     <image>
-      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Jupyter</title>
       <link>https://gliptak.github.io/tags/jupyter/</link>
     </image>
@@ -20,9 +20,9 @@
       <description>&lt;p&gt;&lt;code&gt;Jupyterhub&lt;/code&gt; doesn&amp;rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:&lt;/p&gt;
 &lt;p&gt;As the Docker image name indicates, this is 
 &lt;a href=&#34;https://hub.docker.com/r/jupyterhub/singleuser&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;singleuser&lt;/a&gt; instance preconfigured for user &lt;code&gt;jovyan&lt;/code&gt;. Run below command in directory with your notebooks&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;There doesn&amp;rsquo;t seem to be (default) password set for &lt;code&gt;jovyan&lt;/code&gt; user, so at this point you cannot login into the GUI. Set password for &lt;code&gt;jovyan&lt;/code&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;docker exec --user root -it jupyterhub bash
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker exec --user root -it jupyterhub bash
 # passwd jovyan
 New password: 
 Retype new password: 
@@ -35,7 +35,7 @@ exit
 &lt;p&gt;After completing above steps, login to &lt;code&gt;Jupyterhub&lt;/code&gt; at 
 &lt;a href=&#34;http://localhost:8000/user/jovyan/tree/work&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://localhost:8000/user/jovyan/tree/work&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;To cleanup running instance&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;docker stop jupyterhub
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;docker stop jupyterhub
 &lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     

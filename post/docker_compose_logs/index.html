@@ -213,8 +213,8 @@ docker-compose.yaml services: counter: image: busybox command: | /bin/sh -c &#39
   
 
   <link rel="manifest" href="/index.webmanifest">
-  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
-  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png">
 
   <link rel="canonical" href="https://gliptak.github.io/post/docker_compose_logs/">
 
@@ -233,8 +233,8 @@ docker-compose.yaml services: counter: image: busybox command: | /bin/sh -c &#39
   <meta property="og:url" content="https://gliptak.github.io/post/docker_compose_logs/">
   <meta property="og:title" content="Docker Compose Tailing of Log Files | ">
   <meta property="og:description" content="Docker Compose Logs docker compose logs aggregates stdout of containers started with no out-of-the-box capability for aggregating additional logs generated on container filesystems. Implementing sidecar allows tailing logs generated on container volumes.
-docker-compose.yaml services: counter: image: busybox command: | /bin/sh -c &#39;i=0; while true; do echo &#34;$$(date) WARN $$i&#34; &gt;&gt; /var/log/1.log; echo &#34;$$(date) INFO $$i&#34; &gt;&gt; /var/log/2.log; i=$$((i&#43;1)); sleep 5; done&#39; volumes: - log-volume:/var/log counter-log: image: busybox command: | /bin/sh -c &#39;tail -n&#43;1 -F /var/log/*."><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
-  <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+docker-compose.yaml services: counter: image: busybox command: | /bin/sh -c &#39;i=0; while true; do echo &#34;$$(date) WARN $$i&#34; &gt;&gt; /var/log/1.log; echo &#34;$$(date) INFO $$i&#34; &gt;&gt; /var/log/2.log; i=$$((i&#43;1)); sleep 5; done&#39; volumes: - log-volume:/var/log counter-log: image: busybox command: | /bin/sh -c &#39;tail -n&#43;1 -F /var/log/*."><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png">
+  <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
   
     
       <meta property="article:published_time" content="2022-04-23T01:50:53&#43;00:00">
@@ -280,7 +280,7 @@ docker-compose.yaml services: counter: image: busybox command: | /bin/sh -c &#39
     "name": "",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+      "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
   "description": "Docker Compose Logs docker compose logs aggregates stdout of containers started with no out-of-the-box capability for aggregating additional logs generated on container filesystems. Implementing sidecar allows tailing logs generated on container volumes.\ndocker-compose.yaml services: counter: image: busybox command: | /bin/sh -c \u0026#39;i=0; while true; do echo \u0026#34;$$(date) WARN $$i\u0026#34; \u0026gt;\u0026gt; /var/log/1.log; echo \u0026#34;$$(date) INFO $$i\u0026#34; \u0026gt;\u0026gt; /var/log/2.log; i=$$((i+1)); sleep 5; done\u0026#39; volumes: - log-volume:/var/log counter-log: image: busybox command: | /bin/sh -c \u0026#39;tail -n+1 -F /var/log/*."
@@ -625,47 +625,47 @@ Implementing
 <a href="https://kubernetes.io/docs/concepts/cluster-administration/logging/#using-a-sidecar-container-with-the-logging-agent" target="_blank" rel="noopener">sidecar</a>
 allows tailing logs generated on container volumes.</p>
 <h2 id="docker-composeyaml"><code>docker-compose.yaml</code></h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
-  <span style="color:#f92672">counter</span>:
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">busybox</span>
-    <span style="color:#f92672">command</span>: |<span style="color:#e6db74">
-</span><span style="color:#e6db74">      </span>      <span style="color:#ae81ff">/bin/sh -c &#39;i=0; while true; do echo &#34;$$(date) WARN $$i&#34; &gt;&gt; /var/log/1.log; echo &#34;$$(date) INFO $$i&#34; &gt;&gt; /var/log/2.log; i=$$((i+1)); sleep 5; done&#39;</span>
-    <span style="color:#f92672">volumes</span>:
-    - <span style="color:#ae81ff">log-volume:/var/log</span>
-  <span style="color:#f92672">counter-log</span>:
-    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">busybox</span>
-    <span style="color:#f92672">command</span>: |<span style="color:#e6db74">
-</span><span style="color:#e6db74">      </span>      <span style="color:#ae81ff">/bin/sh -c &#39;tail -n+1 -F /var/log/*.log&#39;</span>
-    <span style="color:#f92672">volumes</span>:
-    - <span style="color:#ae81ff">log-volume:/var/log</span>
-
-<span style="color:#f92672">volumes</span>:
-  <span style="color:#f92672">log-volume</span>:
-    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">counter-log-volume</span>
-</code></pre></div><h2 id="running">Running</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">➜ docker compose up
-<span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Running 4/4
- ⠿ Network 202204_docker_default          Created                                                   0.1s
- ⠿ Volume <span style="color:#e6db74">&#34;counter-log-volume&#34;</span>            Created                                                   0.0s
- ⠿ Container 202204_docker-counter-log-1  Created                                                   0.1s
- ⠿ Container 202204_docker-counter-1      Created                                                   0.1s
-Attaching to 202204_docker-counter-1, 202204_docker-counter-log-1
-202204_docker-counter-log-1  | <span style="color:#f92672">==</span>&gt; /var/log/1.log &lt;<span style="color:#f92672">==</span>
-202204_docker-counter-log-1  | Sat Apr <span style="color:#ae81ff">23</span> 01:37:03 UTC <span style="color:#ae81ff">2022</span> WARN <span style="color:#ae81ff">0</span>
-202204_docker-counter-log-1  | 
-202204_docker-counter-log-1  | <span style="color:#f92672">==</span>&gt; /var/log/2.log &lt;<span style="color:#f92672">==</span>
-202204_docker-counter-log-1  | Sat Apr <span style="color:#ae81ff">23</span> 01:37:03 UTC <span style="color:#ae81ff">2022</span> INFO <span style="color:#ae81ff">0</span>
-202204_docker-counter-log-1  | 
-202204_docker-counter-log-1  | <span style="color:#f92672">==</span>&gt; /var/log/1.log &lt;<span style="color:#f92672">==</span>
-202204_docker-counter-log-1  | Sat Apr <span style="color:#ae81ff">23</span> 01:37:08 UTC <span style="color:#ae81ff">2022</span> WARN <span style="color:#ae81ff">1</span>
-202204_docker-counter-log-1  | 
-202204_docker-counter-log-1  | <span style="color:#f92672">==</span>&gt; /var/log/2.log &lt;<span style="color:#f92672">==</span>
-202204_docker-counter-log-1  | Sat Apr <span style="color:#ae81ff">23</span> 01:37:08 UTC <span style="color:#ae81ff">2022</span> INFO <span style="color:#ae81ff">1</span>
-^C
-</code></pre></div><h2 id="cleanup">Cleanup</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker compose down
-docker volume rm counter-log-volume
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">counter</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">busybox</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      </span>      <span style="color:#ae81ff">/bin/sh -c &#39;i=0; while true; do echo &#34;$$(date) WARN $$i&#34; &gt;&gt; /var/log/1.log; echo &#34;$$(date) INFO $$i&#34; &gt;&gt; /var/log/2.log; i=$$((i+1)); sleep 5; done&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">log-volume:/var/log</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">counter-log</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">busybox</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      </span>      <span style="color:#ae81ff">/bin/sh -c &#39;tail -n+1 -F /var/log/*.log&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">log-volume:/var/log</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">log-volume</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">counter-log-volume</span>
+</span></span></code></pre></div><h2 id="running">Running</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜ docker compose up
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Running 4/4
+</span></span><span style="display:flex;"><span> ⠿ Network 202204_docker_default          Created                                                   0.1s
+</span></span><span style="display:flex;"><span> ⠿ Volume <span style="color:#e6db74">&#34;counter-log-volume&#34;</span>            Created                                                   0.0s
+</span></span><span style="display:flex;"><span> ⠿ Container 202204_docker-counter-log-1  Created                                                   0.1s
+</span></span><span style="display:flex;"><span> ⠿ Container 202204_docker-counter-1      Created                                                   0.1s
+</span></span><span style="display:flex;"><span>Attaching to 202204_docker-counter-1, 202204_docker-counter-log-1
+</span></span><span style="display:flex;"><span>202204_docker-counter-log-1  | <span style="color:#f92672">==</span>&gt; /var/log/1.log &lt;<span style="color:#f92672">==</span>
+</span></span><span style="display:flex;"><span>202204_docker-counter-log-1  | Sat Apr <span style="color:#ae81ff">23</span> 01:37:03 UTC <span style="color:#ae81ff">2022</span> WARN <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>202204_docker-counter-log-1  | 
+</span></span><span style="display:flex;"><span>202204_docker-counter-log-1  | <span style="color:#f92672">==</span>&gt; /var/log/2.log &lt;<span style="color:#f92672">==</span>
+</span></span><span style="display:flex;"><span>202204_docker-counter-log-1  | Sat Apr <span style="color:#ae81ff">23</span> 01:37:03 UTC <span style="color:#ae81ff">2022</span> INFO <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>202204_docker-counter-log-1  | 
+</span></span><span style="display:flex;"><span>202204_docker-counter-log-1  | <span style="color:#f92672">==</span>&gt; /var/log/1.log &lt;<span style="color:#f92672">==</span>
+</span></span><span style="display:flex;"><span>202204_docker-counter-log-1  | Sat Apr <span style="color:#ae81ff">23</span> 01:37:08 UTC <span style="color:#ae81ff">2022</span> WARN <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>202204_docker-counter-log-1  | 
+</span></span><span style="display:flex;"><span>202204_docker-counter-log-1  | <span style="color:#f92672">==</span>&gt; /var/log/2.log &lt;<span style="color:#f92672">==</span>
+</span></span><span style="display:flex;"><span>202204_docker-counter-log-1  | Sat Apr <span style="color:#ae81ff">23</span> 01:37:08 UTC <span style="color:#ae81ff">2022</span> INFO <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>^C
+</span></span></code></pre></div><h2 id="cleanup">Cleanup</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker compose down
+</span></span><span style="display:flex;"><span>docker volume rm counter-log-volume
+</span></span></code></pre></div>
     </div>
 
     
@@ -964,7 +964,7 @@ docker volume rm counter-log-volume
     
     
     
-    <script src="/js/academic.min.25aeac8f492a6d2661c32dcffb98689b.js"></script>
+    <script src="/js/academic.min.fa7d8cec12712bee9c91cc5f7b44e7f6.js"></script>
 
     
 
