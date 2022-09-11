@@ -1,4 +1,4 @@
-ARG HUGO_VERSION=0.84.4
+ARG HUGO_VERSION=0.102.3
 FROM klakegg/hugo:${HUGO_VERSION}-ubuntu
 
 # [Option] Install zsh
