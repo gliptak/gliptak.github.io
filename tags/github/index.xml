@@ -5,12 +5,189 @@
     <link>https://gliptak.github.io/tags/github/</link>
       <atom:link href="https://gliptak.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <description>Github</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2022 Gábor Lipták</copyright><lastBuildDate>Sun, 12 Dec 2021 20:32:51 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2022 Gábor Lipták</copyright><lastBuildDate>Sun, 11 Sep 2022 16:56:52 +0000</lastBuildDate>
     <image>
       <url>https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Github</title>
       <link>https://gliptak.github.io/tags/github/</link>
     </image>
+    
+    <item>
+      <title>Github List Files Recursively with GraphQL</title>
+      <link>https://gliptak.github.io/post/github_graphql_repofiles/</link>
+      <pubDate>Sun, 11 Sep 2022 16:56:52 +0000</pubDate>
+      <guid>https://gliptak.github.io/post/github_graphql_repofiles/</guid>
+      <description>&lt;p&gt;At this point GraphQL doesn&amp;rsquo;t seem to provide the right constructs to list files folders of unconstrained depth. Instead, users will make multiple calls into the API. So let&amp;rsquo;s get started:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;owner&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;gliptak&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;aws-cdk-python&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;rev&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;query DefaultBranch($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    id
+    defaultBranchRef {
+      name
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;returns&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;repository&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MDEwOlJlcG9zaXRvcnkzNzExNzY1OTY=&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;defaultBranchRef&amp;#34;&lt;/span&gt;: {
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Subtitute the default branch from above into the query variables with &lt;code&gt;:&lt;/code&gt; appended (&lt;code&gt;master:&lt;/code&gt; for our example) and run:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;query RepoFiles($owner: String!, $name: String!, $rev: String!) {
+  repository(owner: $owner, name: $name) {
+    object(expression: $rev) {
+      id
+      ... on Tree {
+        entries {
+          name
+          oid
+          type
+        }
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;
+&lt;a href=&#34;https://git-scm.com/docs/git-rev-parse&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rev&lt;/a&gt; above points to a directory &lt;code&gt;Tree&lt;/code&gt; to list entries for returning (slightly abbreviated):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;repository&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;: {
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;entries&amp;#34;&lt;/span&gt;: [
+          {
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.env&amp;#34;&lt;/span&gt;,
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;oid&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;9a10a235bf64f16f2684148e33c7aaf5eaa88721&amp;#34;&lt;/span&gt;,
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;blob&amp;#34;&lt;/span&gt;
+          },
+          {
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.github&amp;#34;&lt;/span&gt;,
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;oid&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;17ddafeaf72048e2dcb4a3ccb05ffbc12459cabd&amp;#34;&lt;/span&gt;,
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tree&amp;#34;&lt;/span&gt;
+          },
+          &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;...&lt;/span&gt;
+        ]
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;From above &lt;code&gt;oid&lt;/code&gt;/&lt;code&gt;path&lt;/code&gt;(including branch prefix) can be used to list entries of &lt;code&gt;tree&lt;/code&gt;s and to display content of &lt;code&gt;blob&lt;/code&gt;s as below:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;query RepoFiles($owner: String!, $name: String!, $rev: String!) {
+  repository(owner: $owner, name: $name) {
+    object(expression: $rev) {
+      ... on Blob {
+        text
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;repository&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;object&amp;#34;&lt;/span&gt;: {
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;USER_ID=1001\nGROUP_ID=1001\n&amp;#34;&lt;/span&gt;
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;API transaction limits might apply so multiple queries could be performed in a single call.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Github List Repositories Paginated with GraphQL</title>
+      <link>https://gliptak.github.io/post/github_graphql_repolist/</link>
+      <pubDate>Sun, 11 Sep 2022 02:42:42 +0000</pubDate>
+      <guid>https://gliptak.github.io/post/github_graphql_repolist/</guid>
+      <description>&lt;p&gt;One of the Github GraphQL operations supporting pagination is searching/listing repositories. Below queries utilize &lt;code&gt;query variables&lt;/code&gt; running in 
+&lt;a href=&#34;https://docs.github.com/en/graphql/overview/explorer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GitHub&amp;rsquo;s GraphQL Explorer&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;query&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;org:gliptak is:all&amp;#34;&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;pageSzie&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;after&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Below setup has 2 for pagination size for demonstration purposes, larger window to be used in real queries. The initial query:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;query ListRepos($query: String!, $pageSize: Int!) {
+  search(query: $query, type: REPOSITORY, first: $pageSize) {
+    edges {
+      node {
+        ... on Repository {
+          name
+          defaultBranchRef {
+            name
+          }
+        }
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;returns repo details and cursor values:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
+  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
+    &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;search&amp;#34;&lt;/span&gt;: {
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;edges&amp;#34;&lt;/span&gt;: [
+        {
+          &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;node&amp;#34;&lt;/span&gt;: {
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;JAllele&amp;#34;&lt;/span&gt;,
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;defaultBranchRef&amp;#34;&lt;/span&gt;: {
+              &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;
+            }
+          }
+        },
+        {
+          &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;node&amp;#34;&lt;/span&gt;: {
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;aws-cdk-python&amp;#34;&lt;/span&gt;,
+            &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;defaultBranchRef&amp;#34;&lt;/span&gt;: {
+              &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;
+            }
+          }
+        }
+      ],
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;pageInfo&amp;#34;&lt;/span&gt;: {
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;startCursor&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Y3Vyc29yOjE=&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;endCursor&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Y3Vyc29yOjI=&amp;#34;&lt;/span&gt;,
+        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;hasNextPage&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+      }
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Which can be used to form the next query:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;query ListRepos($query: String!, $pageSize: Int!, $after: String!) {
+  search(query: $query, type: REPOSITORY, after: $after, first: $pageSize) {
+    edges {
+      node {
+        ... on Repository {
+          name
+          defaultBranchRef {
+            name
+          }
+        }
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Above will return similar JSON and to be called with next &lt;code&gt;after&lt;/code&gt; cursor value while &lt;code&gt;hasNextPage&lt;/code&gt; is &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Github Create Pull Request with GraphQL</title>

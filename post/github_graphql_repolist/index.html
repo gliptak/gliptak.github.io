@@ -28,10 +28,12 @@
   
     
   
-  <meta name="description" content="">
+  <meta name="description" content="One of the Github GraphQL operations supporting pagination is searching/listing repositories. Below queries utilize query variables running in GitHub&rsquo;s GraphQL Explorer.
+{ &#34;query&#34;: &#34;org:gliptak is:all&#34;, &#34;pageSzie&#34;: 2, &#34;after&#34;: &#34;&#34; } Below setup has 2 for pagination size for demonstration purposes, larger window to be used in real queries. The initial query:
+query ListRepos($query: String!, $pageSize: Int!) { search(query: $query, type: REPOSITORY, first: $pageSize) { edges { node { ... on Repository { name defaultBranchRef { name } } } } pageInfo { startCursor endCursor hasNextPage } } } returns repo details and cursor values:">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/post/">
+  <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/post/github_graphql_repolist/">
 
   
 
@@ -210,14 +212,12 @@
 
 
   
-  <link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://gliptak.github.io/post/">
+  <link rel="canonical" href="https://gliptak.github.io/post/github_graphql_repolist/">
 
   
   
@@ -231,18 +231,65 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="">
-  <meta property="og:url" content="https://gliptak.github.io/post/">
-  <meta property="og:title" content="Posts | ">
-  <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="og:url" content="https://gliptak.github.io/post/github_graphql_repolist/">
+  <meta property="og:title" content="Github List Repositories Paginated with GraphQL | ">
+  <meta property="og:description" content="One of the Github GraphQL operations supporting pagination is searching/listing repositories. Below queries utilize query variables running in GitHub&rsquo;s GraphQL Explorer.
+{ &#34;query&#34;: &#34;org:gliptak is:all&#34;, &#34;pageSzie&#34;: 2, &#34;after&#34;: &#34;&#34; } Below setup has 2 for pagination size for demonstration purposes, larger window to be used in real queries. The initial query:
+query ListRepos($query: String!, $pageSize: Int!) { search(query: $query, type: REPOSITORY, first: $pageSize) { edges { node { ... on Repository { name defaultBranchRef { name } } } } pageInfo { startCursor endCursor hasNextPage } } } returns repo details and cursor values:"><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2022-09-11T16:56:52&#43;00:00">
+    
+      <meta property="article:published_time" content="2022-09-11T02:42:42&#43;00:00">
+    
+    <meta property="article:modified_time" content="2022-09-11T02:42:42&#43;00:00">
   
 
   
 
 
+    
 
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gliptak.github.io/post/github_graphql_repolist/"
+  },
+  "headline": "Github List Repositories Paginated with GraphQL",
+  
+  "datePublished": "2022-09-11T02:42:42Z",
+  "dateModified": "2022-09-11T02:42:42Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Gábor Lipták"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "One of the Github GraphQL operations supporting pagination is searching/listing repositories. Below queries utilize query variables running in GitHub\u0026rsquo;s GraphQL Explorer.\n{ \u0026#34;query\u0026#34;: \u0026#34;org:gliptak is:all\u0026#34;, \u0026#34;pageSzie\u0026#34;: 2, \u0026#34;after\u0026#34;: \u0026#34;\u0026#34; } Below setup has 2 for pagination size for demonstration purposes, larger window to be used in real queries. The initial query:\nquery ListRepos($query: String!, $pageSize: Int!) { search(query: $query, type: REPOSITORY, first: $pageSize) { edges { node { ... on Repository { name defaultBranchRef { name } } } } pageInfo { startCursor endCursor hasNextPage } } } returns repo details and cursor values:"
+}
+</script>
+
+  
 
   
 
@@ -250,10 +297,13 @@
   
 
 
+  
 
 
 
-  <title>Posts | </title>
+
+
+  <title>Github List Repositories Paginated with GraphQL | </title>
 
 </head>
 
@@ -472,79 +522,33 @@
 </nav>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
+  <article class="article">
 
   
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
   
   
+  
+<div class="article-container pt-3">
+  <h1>Github List Repositories Paginated with GraphQL</h1>
+
+  
+
   
     
-  
-<div class="universal-wrapper pt-3">
-  <h1>Posts</h1>
-
-  
-
-  
-</div>
-
-
-
-<div class="universal-wrapper">
-
-  
-
-  
-  
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/aws_lambda_accountregion/" >AWS Lambda Lookup AccountId and Region</a>
-    </h3>
-
-    
-    <div class="article-style">
-      For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:
-import json import logging import boto3 logger = logging.getLogger() logger.setLevel(logging.INFO) def lambda_handler(event, context): logger.info(json.dumps(event)) account_id = boto3.client('sts').get_caller_identity().get('Account') # use a client which is region based logs_client = boto3.client('logs') region_name = logs_client.meta.region_name logger.info(f&quot;{account_id}:{region_name}&quot;) 
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
 
 
 <div class="article-metadata">
@@ -568,7 +572,7 @@ import json import logging import boto3 logger = logging.getLogger() logger.setL
     
       
     
-    2020-10-02
+    2022-09-11
   </span>
   
 
@@ -585,7 +589,7 @@ import json import logging import boto3 logger = logging.getLogger() logger.setL
   
   
   <span class="middot-divider"></span>
-  <a href="/post/aws_lambda_accountregion/#disqus_thread"></a>
+  <a href="/post/github_graphql_repolist/#disqus_thread"></a>
   
 
   
@@ -593,628 +597,306 @@ import json import logging import boto3 logger = logging.getLogger() logger.setL
 
 </div>
 
-      
-    </div>
-
     
 
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 </div>
 
-    
-  
-    
-      
 
 
+  <div class="article-container">
 
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/aws_ec2instanceconnect/" >AWS EC2 Instance Connect</a>
-    </h3>
-
-    
     <div class="article-style">
-      EC2 Instance Connect is somewhat overlooked functionality improving security of EC2 logins. During configuration, the default instance user is assigned a public key so it&rsquo;s private pair can be used to connect to the instance. The private key tends to be shared within support teams and logins can no longer be attributed to an individual. EC2 instance Connect runs and logs connect commands as the individual user and obeys user&rsquo;s permission.
+      <p>One of the Github GraphQL operations supporting pagination is searching/listing repositories. Below queries utilize <code>query variables</code> running in 
+<a href="https://docs.github.com/en/graphql/overview/explorer" target="_blank" rel="noopener">GitHub&rsquo;s GraphQL Explorer</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;query&#34;</span>: <span style="color:#e6db74">&#34;org:gliptak is:all&#34;</span>,
+  <span style="color:#f92672">&#34;pageSzie&#34;</span>: <span style="color:#ae81ff">2</span>,
+  <span style="color:#f92672">&#34;after&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>
+}
+</code></pre></div><p>Below setup has 2 for pagination size for demonstration purposes, larger window to be used in real queries. The initial query:</p>
+<pre><code>query ListRepos($query: String!, $pageSize: Int!) {
+  search(query: $query, type: REPOSITORY, first: $pageSize) {
+    edges {
+      node {
+        ... on Repository {
+          name
+          defaultBranchRef {
+            name
+          }
+        }
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+    }
+  }
+}
+</code></pre><p>returns repo details and cursor values:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;data&#34;</span>: {
+    <span style="color:#f92672">&#34;search&#34;</span>: {
+      <span style="color:#f92672">&#34;edges&#34;</span>: [
+        {
+          <span style="color:#f92672">&#34;node&#34;</span>: {
+            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;JAllele&#34;</span>,
+            <span style="color:#f92672">&#34;defaultBranchRef&#34;</span>: {
+              <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;master&#34;</span>
+            }
+          }
+        },
+        {
+          <span style="color:#f92672">&#34;node&#34;</span>: {
+            <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;aws-cdk-python&#34;</span>,
+            <span style="color:#f92672">&#34;defaultBranchRef&#34;</span>: {
+              <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;master&#34;</span>
+            }
+          }
+        }
+      ],
+      <span style="color:#f92672">&#34;pageInfo&#34;</span>: {
+        <span style="color:#f92672">&#34;startCursor&#34;</span>: <span style="color:#e6db74">&#34;Y3Vyc29yOjE=&#34;</span>,
+        <span style="color:#f92672">&#34;endCursor&#34;</span>: <span style="color:#e6db74">&#34;Y3Vyc29yOjI=&#34;</span>,
+        <span style="color:#f92672">&#34;hasNextPage&#34;</span>: <span style="color:#66d9ef">true</span>
+      }
+    }
+  }
+}
+</code></pre></div><p>Which can be used to form the next query:</p>
+<pre><code>query ListRepos($query: String!, $pageSize: Int!, $after: String!) {
+  search(query: $query, type: REPOSITORY, after: $after, first: $pageSize) {
+    edges {
+      node {
+        ... on Repository {
+          name
+          defaultBranchRef {
+            name
+          }
+        }
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+    }
+  }
+}
+</code></pre><p>Above will return similar JSON and to be called with next <code>after</code> cursor value while <code>hasNextPage</code> is <code>true</code>.</p>
+
     </div>
+
     
 
-    <div class="stream-meta article-metadata">
 
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/github/">Github</a>
+  
+  <a class="badge badge-light" href="/tags/graphql/">GraphQL</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
       
-
+      
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://gliptak.github.io/post/github_graphql_repolist/&amp;text=Github%20List%20Repositories%20Paginated%20with%20GraphQL" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
     
       
-    
-    2020-05-29
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-  <span class="middot-divider"></span>
-  <a href="/post/aws_ec2instanceconnect/#disqus_thread"></a>
-  
-
-  
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-    
-  
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/aws_s3_signed_url/" >AWS S3 Signed Upload URL Basics</a>
-    </h3>
-
-    
-    <div class="article-style">
-      While I found a number of examples for generating signed upload S3 URLs, there didn&rsquo;t seem to be examples with the basics.
-After substituting the name for your bucket, file name and expiry desired, run below code to generate the URL:
-import boto3 if __name__ == &quot;__main__&quot;: s3_client = boto3.client('s3') response = s3_client.generate_presigned_url( ClientMethod='put_object', Params={&quot;Bucket&quot;: &quot;mybucket&quot;, &quot;Key&quot;: &quot;file.pdf&quot;}, ExpiresIn=48*60*60, HttpMethod=&quot;PUT&quot;) print(response) To upload from command line run below (substituting URL from previous section):
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://gliptak.github.io/post/github_graphql_repolist/&amp;t=Github%20List%20Repositories%20Paginated%20with%20GraphQL" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
     
       
-    
-    2020-03-19
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-  <span class="middot-divider"></span>
-  <a href="/post/aws_s3_signed_url/#disqus_thread"></a>
-  
-
-  
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-    
-  
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/aws_ssm_ami/" >AWS Cloudformation Referencing AMIs Using SSM Parameter Store</a>
-    </h3>
-
-    
-    <div class="article-style">
-      When AWS infrastructure configured in &ldquo;traditional&rdquo; compute/storage/network style, identifying, referencing and patching AMIs in all regions in use is crucial. Cloudformation has a way to redirect AMI references through SSM Parameter Store.
-This represents a tradeoff, as recreating the Cloudformation stack might pickup the next (patched) AMI hence it is no longer immutable. But resulting state is similar to externally patched Linux/Windows images which also cannot be recreated by simply redeploying Cloudformation.
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Github%20List%20Repositories%20Paginated%20with%20GraphQL&amp;body=https://gliptak.github.io/post/github_graphql_repolist/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
     
       
-    
-    2019-09-11
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-  <span class="middot-divider"></span>
-  <a href="/post/aws_ssm_ami/#disqus_thread"></a>
-  
-
-  
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-    
-  
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/aws_organization_cli/" >AWS Organizations CLI</a>
-    </h3>
-
-    
-    <div class="article-style">
-      Many AWS customers take advantage of AWS Organizations to organize and secure their workloads. In many cases, users login into their master account and configure permissions allowing to switch to member accounts in the Console. The same permissions can be used for AWS CLI.
-In this example below, a single AWS Access Key has to be generated (and rotated) in the master account and it can be used to switch to test/2222222 and production/3333333 accounts using the CrossAccountAccessRole already configured for switching in the Console.
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://gliptak.github.io/post/github_graphql_repolist/&amp;title=Github%20List%20Repositories%20Paginated%20with%20GraphQL" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
     
       
-    
-    2019-09-07
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-  <span class="middot-divider"></span>
-  <a href="/post/aws_organization_cli/#disqus_thread"></a>
-  
-
-  
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-    
-  
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/python-requests-siteminder/" >Login into a CA SSO/Siteminder protected site with Python Requests</a>
-    </h3>
-
-    
-    <div class="article-style">
-      While this below code is simple, it uses two important approaches:
- utilizes a Requests Session to keep Siteminder login cookies/headers it has a two step load, allowing to fill out the Siteminder form  import requests if __name__ == &#34;__main__&#34;: mysite = &#39;http://mysite/&#39; credentials = {&#39;USER&#39;: &#39;myuser&#39;, &#39;PASSWORD&#39;: &#39;mypassword&#39;} s = requests.session() # use Session to keep cookies around page = s.get(mysite) s.post(page.url, data=credentials) # page.url is the Siteminder login screen page = s.
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Github%20List%20Repositories%20Paginated%20with%20GraphQL%20https://gliptak.github.io/post/github_graphql_repolist/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
     
       
-    
-    2017-06-02
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-  <span class="middot-divider"></span>
-  <a href="/post/python-requests-siteminder/#disqus_thread"></a>
-  
-
-  
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-    
-  
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/simpledb-example/" >AWS SimpleDB Boto3 Example</a>
-    </h3>
-
-    
-    <div class="article-style">
-      When looking into AWS SimpleDB, a quick search didn&rsquo;t return any short Python Boto3 examples. So I decided to post one. (As with any services you to subscribe to, running this code below might cost you money &hellip;)
-from __future__ import print_function import boto3 def quote(string): return string.replace(&#34;&#39;&#34;, &#34;&#39;&#39;&#34;).replace(&#39;&#34;&#39;, &#39;&#34;&#34;&#39;).replace(&#39;`&#39;, &#39;``&#39;) def put_attributes(sdb, domain, id, color): response = sdb.put_attributes( DomainName=domain, ItemName=id, Attributes=[ { &#39;Name&#39;: &#39;color&#39;, &#39;Value&#39;: color, &#39;Replace&#39;: True }, ], ) print(response) if __name__ == &#34;__main__&#34;: domain = &#34;TEST_DOMAIN&#34; sdb = boto3.
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
-    
       
-    
-    2017-02-15
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-  <span class="middot-divider"></span>
-  <a href="/post/simpledb-example/#disqus_thread"></a>
-  
-
-  
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-    
-  
-
-  
-<nav>
-  <ul class="pagination justify-content-center">
-    
-    <li class="page-item"><a class="page-link" href="/post/">&laquo;</a></li>
-    
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://gliptak.github.io/post/github_graphql_repolist/&amp;title=Github%20List%20Repositories%20Paginated%20with%20GraphQL" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
     
   </ul>
-</nav>
-
-
-
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://gliptak.github.io/">Gábor Lipták</a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+<section id="comments">
+  
+    
+<div id="disqus_thread"></div>
+<script>
+  let disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "https-gliptak-github-io" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  
+</section>
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/github_graphql_newpr/">Github Create Pull Request with GraphQL</a></li>
+      
+      <li><a href="/post/github_graphql_example/">Github GraphQL Example</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
 
       
 

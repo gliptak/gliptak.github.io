@@ -236,7 +236,7 @@
   <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2022-04-23T01:50:53&#43;00:00">
+    <meta property="og:updated_time" content="2022-09-11T16:56:52&#43;00:00">
   
 
   
@@ -1099,6 +1099,206 @@
   <div class="media-body">
 
     <h3 class="article-title mb-0 mt-0">
+      <a href="/post/github_graphql_repofiles/" >Github List Files Recursively with GraphQL</a>
+    </h3>
+
+    
+    <div class="article-style">
+      At this point GraphQL doesn&rsquo;t seem to provide the right constructs to list files folders of unconstrained depth. Instead, users will make multiple calls into the API. So let&rsquo;s get started:
+{ &#34;owner&#34;: &#34;gliptak&#34;, &#34;name&#34;: &#34;aws-cdk-python&#34;, &#34;rev&#34;: &#34;&#34; } query DefaultBranch($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { id defaultBranchRef { name } } } returns
+{ &#34;data&#34;: { &#34;repository&#34;: { &#34;id&#34;: &#34;MDEwOlJlcG9zaXRvcnkzNzExNzY1OTY=&#34;, &#34;defaultBranchRef&#34;: { &#34;name&#34;: &#34;master&#34; } } } } Subtitute the default branch from above into the query variables with : appended (master: for our example) and run:
+    </div>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    2022-09-11
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    2 min read
+  </span>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/github_graphql_repofiles/#disqus_thread"></a>
+  
+
+  
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+      
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item">
+  <div class="media-body">
+
+    <h3 class="article-title mb-0 mt-0">
+      <a href="/post/github_graphql_repolist/" >Github List Repositories Paginated with GraphQL</a>
+    </h3>
+
+    
+    <div class="article-style">
+      One of the Github GraphQL operations supporting pagination is searching/listing repositories. Below queries utilize query variables running in GitHub&rsquo;s GraphQL Explorer.
+{ &#34;query&#34;: &#34;org:gliptak is:all&#34;, &#34;pageSzie&#34;: 2, &#34;after&#34;: &#34;&#34; } Below setup has 2 for pagination size for demonstration purposes, larger window to be used in real queries. The initial query:
+query ListRepos($query: String!, $pageSize: Int!) { search(query: $query, type: REPOSITORY, first: $pageSize) { edges { node { ... on Repository { name defaultBranchRef { name } } } } pageInfo { startCursor endCursor hasNextPage } } } returns repo details and cursor values:
+    </div>
+    
+
+    <div class="stream-meta article-metadata">
+
+      
+
+      
+        
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    2022-09-11
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/github_graphql_repolist/#disqus_thread"></a>
+  
+
+  
+  
+
+</div>
+
+      
+    </div>
+
+    
+
+  </div>
+  <div class="ml-3">
+    
+    
+  </div>
+</div>
+
+      
+    
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<div class="media stream-item">
+  <div class="media-body">
+
+    <h3 class="article-title mb-0 mt-0">
       <a href="/post/docker_compose_logs/" >Docker Compose Tailing of Log Files</a>
     </h3>
 
@@ -1355,196 +1555,6 @@ from gql import gql, Client from gql.transport.requests import RequestsHTTPTrans
   
   <span class="middot-divider"></span>
   <a href="/post/github_graphql_example/#disqus_thread"></a>
-  
-
-  
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-      
-    
-      
-        
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/aws_cloudformation_starter/" >AWS CloudFormation Starter/`null` Template</a>
-    </h3>
-
-    
-    <div class="article-style">
-      If the CloudFormation create has an error, the CloudFormation doesn&rsquo;t roll back so it has to be deleted and recreated. To avoid multiple initial create/delete, the best approach is to use a null CloudFormation. An example is below:
-AWSTemplateFormatVersion: 2010-09-09 Description: CloudFormation Starter Conditions: Never: !Equals [ a, b ] Resources: NullResource: Type: Custom::Null Condition: Never 
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    2021-07-03
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-  <span class="middot-divider"></span>
-  <a href="/post/aws_cloudformation_starter/#disqus_thread"></a>
-  
-
-  
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-      
-    
-      
-        
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/aws_lambda_container/" >Packaging AWS Lambda functions with large dependencies as containers</a>
-    </h3>
-
-    
-    <div class="article-style">
-      While the actual application code for many lambda functions might be small, in many (data science) usecases libraries used and to be packaged together push over the deployment package limit of 50 MB compressed. Container packaging to the rescue.
-A sample Dockerfile installing SageMaker Python SDK
-ARG WORK_DIR=&quot;/home/app/&quot; FROM public.ecr.aws/lambda/python:3.8 ARG WORK_DIR RUN pip install wheel sagemaker COPY main.py . WORKDIR ${WORK_DIR} CMD [&quot;main.handler&quot;] and corresponding main.py
-import sagemaker import sys def handler(event, context): print(sys.
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span><a href="/authors/gliptak/">Gábor Lipták</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    2021-06-27
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-  <span class="middot-divider"></span>
-  <a href="/post/aws_lambda_container/#disqus_thread"></a>
   
 
   

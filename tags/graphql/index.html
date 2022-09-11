@@ -236,7 +236,7 @@
   <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2021-12-12T20:32:51&#43;00:00">
+    <meta property="og:updated_time" content="2022-09-11T16:56:52&#43;00:00">
   
 
   
@@ -506,6 +506,34 @@
   
 
   
+  
+    
+    
+    
+    <div>
+      <h2><a href="/post/github_graphql_repofiles/" >Github List Files Recursively with GraphQL</a></h2>
+      <div class="article-style">
+        
+          At this point GraphQL doesn&rsquo;t seem to provide the right constructs to list files folders of unconstrained depth. Instead, users will make multiple calls into the API. So let&rsquo;s get started:
+{ &#34;owner&#34;: &#34;gliptak&#34;, &#34;name&#34;: &#34;aws-cdk-python&#34;, &#34;rev&#34;: &#34;&#34; } query DefaultBranch($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { id defaultBranchRef { name } } } returns
+{ &#34;data&#34;: { &#34;repository&#34;: { &#34;id&#34;: &#34;MDEwOlJlcG9zaXRvcnkzNzExNzY1OTY=&#34;, &#34;defaultBranchRef&#34;: { &#34;name&#34;: &#34;master&#34; } } } } Subtitute the default branch from above into the query variables with : appended (master: for our example) and run:
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div>
+      <h2><a href="/post/github_graphql_repolist/" >Github List Repositories Paginated with GraphQL</a></h2>
+      <div class="article-style">
+        
+          One of the Github GraphQL operations supporting pagination is searching/listing repositories. Below queries utilize query variables running in GitHub&rsquo;s GraphQL Explorer.
+{ &#34;query&#34;: &#34;org:gliptak is:all&#34;, &#34;pageSzie&#34;: 2, &#34;after&#34;: &#34;&#34; } Below setup has 2 for pagination size for demonstration purposes, larger window to be used in real queries. The initial query:
+query ListRepos($query: String!, $pageSize: Int!) { search(query: $query, type: REPOSITORY, first: $pageSize) { edges { node { ... on Repository { name defaultBranchRef { name } } } } pageInfo { startCursor endCursor hasNextPage } } } returns repo details and cursor values:
+        
+      </div>
+    </div>
   
     
     
