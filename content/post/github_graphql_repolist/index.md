@@ -31,7 +31,7 @@ image:
 projects: []
 ---
 
-One of the Github GraphQL operations supporting pagination is searching/listing repositories. Below queries utilize `query variables` running in [GitHub's GraphQL Explorer](https://docs.github.com/en/graphql/overview/explorer).
+One of the Github GraphQL operations supporting [pagination](https://graphql.org/learn/pagination/) is searching/listing repositories. Below queries utilize `query variables` running in [GitHub's GraphQL Explorer](https://docs.github.com/en/graphql/overview/explorer).
 
 ```json
 {

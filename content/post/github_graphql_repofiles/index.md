@@ -67,7 +67,7 @@ returns
 }
 ```
 
-Subtitute the default branch from above into the query variables with `:` appended (`master:` for our example) and run:
+Subtitute the default branch from above into the query variables with `:` appended (`master:` for our example or other syntax `HEAD:`) and run:
 
 ```
 query RepoFiles($owner: String!, $name: String!, $rev: String!) {
