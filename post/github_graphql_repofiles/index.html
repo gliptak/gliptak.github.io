@@ -29,8 +29,8 @@
     
   
   <meta name="description" content="At this point GraphQL doesn&rsquo;t seem to provide the right constructs to list files folders of unconstrained depth. Instead, users will make multiple calls into the API. So let&rsquo;s get started:
-{ &#34;owner&#34;: &#34;gliptak&#34;, &#34;name&#34;: &#34;aws-cdk-python&#34;, &#34;rev&#34;: &#34;&#34; } query DefaultBranch($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { id defaultBranchRef { name } } } returns
-{ &#34;data&#34;: { &#34;repository&#34;: { &#34;id&#34;: &#34;MDEwOlJlcG9zaXRvcnkzNzExNzY1OTY=&#34;, &#34;defaultBranchRef&#34;: { &#34;name&#34;: &#34;master&#34; } } } } Subtitute the default branch from above into the query variables with : appended (master: for our example) and run:">
+{ &#34;owner&#34;: &#34;gliptak&#34;, &#34;name&#34;: &#34;aws-cdk-python&#34;, &#34;rev&#34;: &#34;&#34; } query DefaultBranch($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { name defaultBranchRef { name } } } returns
+{ &#34;data&#34;: { &#34;repository&#34;: { &#34;name&#34;: &#34;aws-cdk-python&#34;, &#34;defaultBranchRef&#34;: { &#34;name&#34;: &#34;master&#34; } } } } Subtitute the default branch from above into the query variables with : appended (master: for our example) and run:">
 
   
   <link rel="alternate" hreflang="en-us" href="https://gliptak.github.io/post/github_graphql_repofiles/">
@@ -234,8 +234,8 @@
   <meta property="og:url" content="https://gliptak.github.io/post/github_graphql_repofiles/">
   <meta property="og:title" content="Github List Files Recursively with GraphQL | ">
   <meta property="og:description" content="At this point GraphQL doesn&rsquo;t seem to provide the right constructs to list files folders of unconstrained depth. Instead, users will make multiple calls into the API. So let&rsquo;s get started:
-{ &#34;owner&#34;: &#34;gliptak&#34;, &#34;name&#34;: &#34;aws-cdk-python&#34;, &#34;rev&#34;: &#34;&#34; } query DefaultBranch($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { id defaultBranchRef { name } } } returns
-{ &#34;data&#34;: { &#34;repository&#34;: { &#34;id&#34;: &#34;MDEwOlJlcG9zaXRvcnkzNzExNzY1OTY=&#34;, &#34;defaultBranchRef&#34;: { &#34;name&#34;: &#34;master&#34; } } } } Subtitute the default branch from above into the query variables with : appended (master: for our example) and run:"><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+{ &#34;owner&#34;: &#34;gliptak&#34;, &#34;name&#34;: &#34;aws-cdk-python&#34;, &#34;rev&#34;: &#34;&#34; } query DefaultBranch($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { name defaultBranchRef { name } } } returns
+{ &#34;data&#34;: { &#34;repository&#34;: { &#34;name&#34;: &#34;aws-cdk-python&#34;, &#34;defaultBranchRef&#34;: { &#34;name&#34;: &#34;master&#34; } } } } Subtitute the default branch from above into the query variables with : appended (master: for our example) and run:"><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
@@ -285,7 +285,7 @@
       "url": "https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "At this point GraphQL doesn\u0026rsquo;t seem to provide the right constructs to list files folders of unconstrained depth. Instead, users will make multiple calls into the API. So let\u0026rsquo;s get started:\n{ \u0026#34;owner\u0026#34;: \u0026#34;gliptak\u0026#34;, \u0026#34;name\u0026#34;: \u0026#34;aws-cdk-python\u0026#34;, \u0026#34;rev\u0026#34;: \u0026#34;\u0026#34; } query DefaultBranch($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { id defaultBranchRef { name } } } returns\n{ \u0026#34;data\u0026#34;: { \u0026#34;repository\u0026#34;: { \u0026#34;id\u0026#34;: \u0026#34;MDEwOlJlcG9zaXRvcnkzNzExNzY1OTY=\u0026#34;, \u0026#34;defaultBranchRef\u0026#34;: { \u0026#34;name\u0026#34;: \u0026#34;master\u0026#34; } } } } Subtitute the default branch from above into the query variables with : appended (master: for our example) and run:"
+  "description": "At this point GraphQL doesn\u0026rsquo;t seem to provide the right constructs to list files folders of unconstrained depth. Instead, users will make multiple calls into the API. So let\u0026rsquo;s get started:\n{ \u0026#34;owner\u0026#34;: \u0026#34;gliptak\u0026#34;, \u0026#34;name\u0026#34;: \u0026#34;aws-cdk-python\u0026#34;, \u0026#34;rev\u0026#34;: \u0026#34;\u0026#34; } query DefaultBranch($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { name defaultBranchRef { name } } } returns\n{ \u0026#34;data\u0026#34;: { \u0026#34;repository\u0026#34;: { \u0026#34;name\u0026#34;: \u0026#34;aws-cdk-python\u0026#34;, \u0026#34;defaultBranchRef\u0026#34;: { \u0026#34;name\u0026#34;: \u0026#34;master\u0026#34; } } } } Subtitute the default branch from above into the query variables with : appended (master: for our example) and run:"
 }
 </script>
 
@@ -628,7 +628,7 @@
 }
 </code></pre></div><pre><code>query DefaultBranch($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
-    id
+    name
     defaultBranchRef {
       name
     }
@@ -638,7 +638,7 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;data&#34;</span>: {
     <span style="color:#f92672">&#34;repository&#34;</span>: {
-      <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;MDEwOlJlcG9zaXRvcnkzNzExNzY1OTY=&#34;</span>,
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;aws-cdk-python&#34;</span>,
       <span style="color:#f92672">&#34;defaultBranchRef&#34;</span>: {
         <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;master&#34;</span>
       }

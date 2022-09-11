@@ -25,7 +25,7 @@
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;query DefaultBranch($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
-    id
+    name
     defaultBranchRef {
       name
     }
@@ -35,7 +35,7 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;{
   &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;: {
     &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;repository&amp;#34;&lt;/span&gt;: {
-      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MDEwOlJlcG9zaXRvcnkzNzExNzY1OTY=&amp;#34;&lt;/span&gt;,
+      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;aws-cdk-python&amp;#34;&lt;/span&gt;,
       &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;defaultBranchRef&amp;#34;&lt;/span&gt;: {
         &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;
       }

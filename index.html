@@ -1105,8 +1105,8 @@
     
     <div class="article-style">
       At this point GraphQL doesn&rsquo;t seem to provide the right constructs to list files folders of unconstrained depth. Instead, users will make multiple calls into the API. So let&rsquo;s get started:
-{ &#34;owner&#34;: &#34;gliptak&#34;, &#34;name&#34;: &#34;aws-cdk-python&#34;, &#34;rev&#34;: &#34;&#34; } query DefaultBranch($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { id defaultBranchRef { name } } } returns
-{ &#34;data&#34;: { &#34;repository&#34;: { &#34;id&#34;: &#34;MDEwOlJlcG9zaXRvcnkzNzExNzY1OTY=&#34;, &#34;defaultBranchRef&#34;: { &#34;name&#34;: &#34;master&#34; } } } } Subtitute the default branch from above into the query variables with : appended (master: for our example) and run:
+{ &#34;owner&#34;: &#34;gliptak&#34;, &#34;name&#34;: &#34;aws-cdk-python&#34;, &#34;rev&#34;: &#34;&#34; } query DefaultBranch($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { name defaultBranchRef { name } } } returns
+{ &#34;data&#34;: { &#34;repository&#34;: { &#34;name&#34;: &#34;aws-cdk-python&#34;, &#34;defaultBranchRef&#34;: { &#34;name&#34;: &#34;master&#34; } } } } Subtitute the default branch from above into the query variables with : appended (master: for our example) and run:
     </div>
     
 
