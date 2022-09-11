@@ -236,7 +236,7 @@
   <meta property="og:description" content=""><meta property="og:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png">
   <meta property="twitter:image" content="https://gliptak.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2022-09-11T16:56:52&#43;00:00">
+    <meta property="og:updated_time" content="2022-09-11T23:07:14&#43;00:00">
   
 
   
@@ -511,12 +511,41 @@
     
     
     <div>
+      <h2><a href="/post/github_graphql_branchfile/" >Github Add/Update/Delete File(s) on Branch with GraphQL</a></h2>
+      <div class="article-style">
+        
+          In input contents is base64 encoded and expectedHeadOid must match with last commit on branch referenced and operation will fails on mismatch:
+{ &#34;input&#34;: { &#34;branch&#34;: { &#34;repositoryNameWithOwner&#34;: &#34;gliptak/githubapitest1&#34;, &#34;branchName&#34;: &#34;my_branch&#34; }, &#34;message&#34;: { &#34;headline&#34;: &#34;Hello from GraphQL!&#34; }, &#34;fileChanges&#34;: { &#34;additions&#34;: [ { &#34;path&#34;: &#34;graphql.txt&#34;, &#34;contents&#34;: &#34;SGVsbG8gZnJvbSBHcmFwaFFMIQo=&#34; } ], &#34;deletions&#34;: [ { &#34;path&#34;: &#34;README.md&#34; } ] }, &#34;expectedHeadOid&#34;: &#34;74512c01ecaec77e38497d448d391065c07ce973&#34; } } Mutation below updates branch with fileChanges listed:
+mutation ($input: CreateCommitOnBranchInput!
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div>
+      <h2><a href="/post/github_graphql_newbranch/" >Github Create Branch with GraphQL</a></h2>
+      <div class="article-style">
+        
+          First gather some context:
+{ repository(owner: &#34;gliptak&#34;, name: &#34;githubapitest1&#34;) { id defaultBranchRef { name target { oid } } } } Substitute repositoryId and oid from above and use the name of the to be created branch:
+{ &#34;input&#34;: { &#34;clientMutationId&#34;: &#34;1234&#34;, &#34;name&#34;: &#34;refs/heads/&lt;BRANCH_NAME&gt;&#34;, &#34;oid&#34;: &#34;&lt;OID&gt;&#34;, &#34;repositoryId&#34;: &#34;&lt;REPOSITORY_ID&#34; } } mutation AddBranch($input: CreateRefInput!) { createRef(input: $input) { ref { name } clientMutationId } } Success returns
+{ &#34;data&#34;: { &#34;createRef&#34;: { &#34;ref&#34;: { &#34;name&#34;: &#34;my_branch&#34; }, &#34;clientMutationId&#34;: &#34;1234&#34; } } } And in case of error, relevant details are returned
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div>
       <h2><a href="/post/github_graphql_repofiles/" >Github List Files Recursively with GraphQL</a></h2>
       <div class="article-style">
         
           At this point GraphQL doesn&rsquo;t seem to provide the right constructs to list files folders of unconstrained depth. Instead, users will make multiple calls into the API. So let&rsquo;s get started:
 { &#34;owner&#34;: &#34;gliptak&#34;, &#34;name&#34;: &#34;aws-cdk-python&#34;, &#34;rev&#34;: &#34;&#34; } query DefaultBranch($owner: String!, $name: String!) { repository(owner: $owner, name: $name) { name defaultBranchRef { name } } } returns
-{ &#34;data&#34;: { &#34;repository&#34;: { &#34;name&#34;: &#34;aws-cdk-python&#34;, &#34;defaultBranchRef&#34;: { &#34;name&#34;: &#34;master&#34; } } } } Subtitute the default branch from above into the query variables with : appended (master: for our example) and run:
+{ &#34;data&#34;: { &#34;repository&#34;: { &#34;name&#34;: &#34;aws-cdk-python&#34;, &#34;defaultBranchRef&#34;: { &#34;name&#34;: &#34;master&#34; } } } } Subtitute the default branch from above into the query variables with : appended (master: for our example or other syntax HEAD:) and run:
         
       </div>
     </div>
