@@ -33,7 +33,7 @@ jobs:
           find /home/runner/work/gliptak.github.io/
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: '0.102.3'
           extended: true
