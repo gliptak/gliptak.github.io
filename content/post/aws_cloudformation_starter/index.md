@@ -4,7 +4,8 @@
 title: "AWS CloudFormation Starter/`null` Template"
 subtitle: ""
 summary: ""
-authors: []
+authors:
+- gliptak
 tags:
 - AWS
 - CloudFormation

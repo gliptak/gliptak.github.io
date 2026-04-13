@@ -4,7 +4,7 @@ name: Gábor Lipták
 
 # Username (this should match the folder name)
 authors:
-- gliptak
+  - gliptak
 
 # Is this the primary user of the site?
 superuser: true

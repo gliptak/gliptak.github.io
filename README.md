@@ -22,6 +22,6 @@ hugo server -D --bind 0.0.0.0
 ## New content (Docker)
 
 ```sh
-docker run --rm -v $(pwd):/data -w /data hugo:latest new post/my_first_post/index.md
-docker run --rm -v $(pwd):/data -w /data -p 1313:1313 hugo:latest server -D --bind 0.0.0.0
+docker run --rm -v $(pwd):/data -w /data ghcr.io/gohugoio/hugo:v0.135.0 new post/my_first_post/index.md
+docker run --rm -v $(pwd):/data -w /data -p 1313:1313 ghcr.io/gohugoio/hugo:v0.135.0 server -D --bind 0.0.0.0
 ```
