@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>S3 on</title><link>https://gliptak.github.io/pr-preview/pr-14/tags/s3/</link><description>Recent content in S3 on</description><generator>Hugo</generator><language>en-us</language><copyright>&amp;copy; 2016-2026 Gábor Lipták</copyright><lastBuildDate>Thu, 19 Mar 2020 17:32:25 -0400</lastBuildDate><atom:link href="https://gliptak.github.io/pr-preview/pr-14/tags/s3/index.xml" rel="self" type="application/rss+xml"/><item><title>AWS S3 Signed Upload URL Basics</title><link>https://gliptak.github.io/pr-preview/pr-14/post/aws_s3_signed_url/</link><pubDate>Thu, 19 Mar 2020 17:32:25 -0400</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/aws_s3_signed_url/</guid><description>&lt;p>While I found a number of examples for generating signed upload S3 URLs, there didn&amp;rsquo;t seem to be examples with the basics.&lt;/p>
+&lt;p>After substituting the name for your bucket, file name and expiry desired, run below code to generate the URL:&lt;/p>
+&lt;pre tabindex="0">&lt;code>import boto3
+
+if __name__ == &amp;#34;__main__&amp;#34;:
+ s3_client = boto3.client(&amp;#39;s3&amp;#39;)
+ response = s3_client.generate_presigned_url(
+ ClientMethod=&amp;#39;put_object&amp;#39;,
+ Params={&amp;#34;Bucket&amp;#34;: &amp;#34;mybucket&amp;#34;, &amp;#34;Key&amp;#34;: &amp;#34;file.pdf&amp;#34;},
+ ExpiresIn=48*60*60,
+ HttpMethod=&amp;#34;PUT&amp;#34;)
+ print(response)
+&lt;/code>&lt;/pre>&lt;p>To upload from command line run below (substituting URL from previous section):&lt;/p></description></item></channel></rss>

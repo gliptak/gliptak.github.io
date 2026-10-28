@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AWS on</title><link>https://gliptak.github.io/pr-preview/pr-14/tags/aws/</link><description>Recent content in AWS on</description><generator>Hugo</generator><language>en-us</language><copyright>&amp;copy; 2016-2026 Gábor Lipták</copyright><lastBuildDate>Sat, 03 Jul 2021 16:50:49 +0000</lastBuildDate><atom:link href="https://gliptak.github.io/pr-preview/pr-14/tags/aws/index.xml" rel="self" type="application/rss+xml"/><item><title>AWS CloudFormation Starter/`null` Template</title><link>https://gliptak.github.io/pr-preview/pr-14/post/aws_cloudformation_starter/</link><pubDate>Sat, 03 Jul 2021 16:50:49 +0000</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/aws_cloudformation_starter/</guid><description>&lt;p>If the CloudFormation create has an error, the CloudFormation doesn&amp;rsquo;t roll back so it has to be deleted and recreated. To avoid multiple initial create/delete, the best approach is to use a &lt;code>null&lt;/code> CloudFormation. An example is below:&lt;/p>
+&lt;pre tabindex="0">&lt;code>AWSTemplateFormatVersion: 2010-09-09
+Description: CloudFormation Starter
+
+Conditions:
+ Never: !Equals [ a, b ]
+
+Resources:
+ NullResource:
+ Type: Custom::Null
+ Condition: Never
+&lt;/code>&lt;/pre></description></item><item><title>Packaging AWS Lambda functions with large dependencies as containers</title><link>https://gliptak.github.io/pr-preview/pr-14/post/aws_lambda_container/</link><pubDate>Sun, 27 Jun 2021 01:47:41 -0400</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/aws_lambda_container/</guid><description>&lt;p>While the actual application code for many lambda functions might be small, in many (data science) usecases libraries used and to be packaged together push over the deployment package limit of 50 MB compressed. Container packaging to the rescue.&lt;/p>
+&lt;p>A sample &lt;code>Dockerfile&lt;/code> installing &lt;a href="https://github.com/aws/sagemaker-python-sdk">SageMaker Python SDK&lt;/a>&lt;/p>
+&lt;pre tabindex="0">&lt;code>ARG WORK_DIR=&amp;#34;/home/app/&amp;#34;
+
+FROM public.ecr.aws/lambda/python:3.8
+ARG WORK_DIR
+
+RUN pip install wheel sagemaker
+
+COPY main.py .
+
+WORKDIR ${WORK_DIR}
+CMD [&amp;#34;main.handler&amp;#34;]
+&lt;/code>&lt;/pre>&lt;p>and corresponding &lt;code>main.py&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> sagemaker
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> sys
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">handler&lt;/span>(event, context):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(sys&lt;span style="color:#f92672">.&lt;/span>version)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">f&lt;/span>&lt;span style="color:#e6db74">&amp;#34;sagemaker &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>sagemaker&lt;span style="color:#f92672">.&lt;/span>__version__&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;success&amp;#39;&lt;/span>: &lt;span style="color:#66d9ef">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>As an added bonus, above image can be built and tested locally:&lt;/p></description></item><item><title>AWS Account Cleanup</title><link>https://gliptak.github.io/pr-preview/pr-14/post/aws_account_cleanup/</link><pubDate>Sat, 31 Oct 2020 10:17:30 -0400</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/aws_account_cleanup/</guid><description>&lt;p>Many AWS customers skip initial planning steps and don&amp;rsquo;t establish infrastructure-as-code scripting practices initially necessitating querying and cleaning up resources to avoid billing charges.&lt;/p>
+&lt;h2 id="aws-tooling">AWS tooling&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://aws.amazon.com/aws-cost-management/aws-cost-explorer/">AWS Cost Explorer&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://console.aws.amazon.com/billing/">AWS Billing Console&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.aws.amazon.com/ARG/latest/userguide/tag-editor.html">AWS Tag Editor&lt;/a> select all regions, all resource types and uncheck tags&lt;/li>
+&lt;/ul>
+&lt;p>The open source community developed a number of tools&lt;/p>
+&lt;h2 id="list-all-aws-resources">List all AWS resources&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/JohannesEbke/aws_list_all">aws_list_all&lt;/a> command line&lt;/li>
+&lt;li>&lt;a href="https://github.com/jckuester/awsls">awsls&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/dtylman/AWSRetriever">AWSRetriever&lt;/a> desktop&lt;/li>
+&lt;li>&lt;a href="https://github.com/nccgroup/aws-inventory">aws-inventory&lt;/a> command line and GUI&lt;/li>
+&lt;/ul>
+&lt;h2 id="filtered-delete">Filtered delete&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/rebuy-de/aws-nuke">aws-nuke&lt;/a> extensive filtering&lt;/li>
+&lt;li>&lt;a href="https://github.com/gruntwork-io/cloud-nuke">cloud-nuke&lt;/a> filtering by region, age, resourcetype is available&lt;/li>
+&lt;/ul></description></item><item><title>AWS Lambda Lookup AccountId and Region</title><link>https://gliptak.github.io/pr-preview/pr-14/post/aws_lambda_accountregion/</link><pubDate>Fri, 02 Oct 2020 18:32:25 -0400</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/aws_lambda_accountregion/</guid><description>&lt;p>For a number of uses including generating IAM roles and various policies, lambda code might require access to current account id and region. Here is a code snippet on how to acquire those values:&lt;/p>
+&lt;pre tabindex="0">&lt;code>import json
+import logging
+import boto3
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+def lambda_handler(event, context):
+ logger.info(json.dumps(event))
+ account_id = boto3.client(&amp;#39;sts&amp;#39;).get_caller_identity().get(&amp;#39;Account&amp;#39;)
+ # use a client which is region based
+ logs_client = boto3.client(&amp;#39;logs&amp;#39;)
+ region_name = logs_client.meta.region_name
+ logger.info(f&amp;#34;{account_id}:{region_name}&amp;#34;)
+&lt;/code>&lt;/pre></description></item><item><title>AWS EC2 Instance Connect</title><link>https://gliptak.github.io/pr-preview/pr-14/post/aws_ec2instanceconnect/</link><pubDate>Fri, 29 May 2020 11:17:30 -0400</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/aws_ec2instanceconnect/</guid><description>&lt;p>EC2 Instance Connect is somewhat overlooked functionality improving security of EC2 logins. During configuration, the &lt;strong>default&lt;/strong> instance user is assigned a public key so it&amp;rsquo;s private pair can be used to connect to the instance. The private key tends to be shared within support teams and logins can no longer be attributed to an individual. EC2 instance Connect runs and logs connect commands as the individual user and obeys user&amp;rsquo;s permission.&lt;/p></description></item><item><title>AWS S3 Signed Upload URL Basics</title><link>https://gliptak.github.io/pr-preview/pr-14/post/aws_s3_signed_url/</link><pubDate>Thu, 19 Mar 2020 17:32:25 -0400</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/aws_s3_signed_url/</guid><description>&lt;p>While I found a number of examples for generating signed upload S3 URLs, there didn&amp;rsquo;t seem to be examples with the basics.&lt;/p>
+&lt;p>After substituting the name for your bucket, file name and expiry desired, run below code to generate the URL:&lt;/p>
+&lt;pre tabindex="0">&lt;code>import boto3
+
+if __name__ == &amp;#34;__main__&amp;#34;:
+ s3_client = boto3.client(&amp;#39;s3&amp;#39;)
+ response = s3_client.generate_presigned_url(
+ ClientMethod=&amp;#39;put_object&amp;#39;,
+ Params={&amp;#34;Bucket&amp;#34;: &amp;#34;mybucket&amp;#34;, &amp;#34;Key&amp;#34;: &amp;#34;file.pdf&amp;#34;},
+ ExpiresIn=48*60*60,
+ HttpMethod=&amp;#34;PUT&amp;#34;)
+ print(response)
+&lt;/code>&lt;/pre>&lt;p>To upload from command line run below (substituting URL from previous section):&lt;/p></description></item><item><title>AWS Cloudformation Referencing AMIs Using SSM Parameter Store</title><link>https://gliptak.github.io/pr-preview/pr-14/post/aws_ssm_ami/</link><pubDate>Wed, 11 Sep 2019 21:32:25 -0400</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/aws_ssm_ami/</guid><description>&lt;p>When AWS infrastructure configured in &amp;ldquo;traditional&amp;rdquo; compute/storage/network style, identifying, referencing and patching AMIs in all regions in use is crucial. Cloudformation has a way to redirect AMI references through SSM Parameter Store.&lt;/p>
+&lt;p>This represents a tradeoff, as recreating the Cloudformation stack might pickup the next (patched) AMI hence it is no longer immutable. But resulting state is similar to externally patched Linux/Windows images which also cannot be recreated by simply redeploying Cloudformation.&lt;/p></description></item><item><title>AWS Organizations CLI</title><link>https://gliptak.github.io/pr-preview/pr-14/post/aws_organization_cli/</link><pubDate>Sat, 07 Sep 2019 21:17:30 -0400</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/aws_organization_cli/</guid><description>&lt;p>Many AWS customers take advantage of AWS Organizations to organize and secure their workloads. In many cases, users login into their &lt;code>master&lt;/code> account and configure permissions allowing to switch to &lt;code>member&lt;/code> accounts in the Console. The same permissions can be used for &lt;code>AWS CLI&lt;/code>.&lt;/p>
+&lt;p>In this example below, a single &lt;code>AWS Access Key&lt;/code> has to be generated (and rotated) in the &lt;code>master&lt;/code> account and it can be used to switch to &lt;code>test/2222222&lt;/code> and &lt;code>production/3333333&lt;/code> accounts using the &lt;code>CrossAccountAccessRole&lt;/code> already configured for switching in the Console.&lt;/p></description></item><item><title>AWS SimpleDB Boto3 Example</title><link>https://gliptak.github.io/pr-preview/pr-14/post/simpledb-example/</link><pubDate>Wed, 15 Feb 2017 17:51:55 -0500</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/simpledb-example/</guid><description>&lt;p>When looking into AWS SimpleDB, a quick search didn&amp;rsquo;t return any short Python Boto3 examples. So I decided to post one.
+(As with any services you to subscribe to, running this code below might cost you money &amp;hellip;)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> __future__ &lt;span style="color:#f92672">import&lt;/span> print_function
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> boto3
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">quote&lt;/span>(string):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> string&lt;span style="color:#f92672">.&lt;/span>replace(&lt;span style="color:#e6db74">&amp;#34;&amp;#39;&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;&amp;#39;&amp;#39;&amp;#34;&lt;/span>)&lt;span style="color:#f92672">.&lt;/span>replace(&lt;span style="color:#e6db74">&amp;#39;&amp;#34;&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;&amp;#34;&amp;#34;&amp;#39;&lt;/span>)&lt;span style="color:#f92672">.&lt;/span>replace(&lt;span style="color:#e6db74">&amp;#39;`&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;``&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">put_attributes&lt;/span>(sdb, domain, id, color):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> response &lt;span style="color:#f92672">=&lt;/span> sdb&lt;span style="color:#f92672">.&lt;/span>put_attributes(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> DomainName&lt;span style="color:#f92672">=&lt;/span>domain,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ItemName&lt;span style="color:#f92672">=&lt;/span>id,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Attributes&lt;span style="color:#f92672">=&lt;/span>[
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;Name&amp;#39;&lt;/span>: &lt;span style="color:#e6db74">&amp;#39;color&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;Value&amp;#39;&lt;/span>: color,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;Replace&amp;#39;&lt;/span>: &lt;span style="color:#66d9ef">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(response)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> __name__ &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;__main__&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> domain &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;TEST_DOMAIN&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sdb &lt;span style="color:#f92672">=&lt;/span> boto3&lt;span style="color:#f92672">.&lt;/span>client(&lt;span style="color:#e6db74">&amp;#39;sdb&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> response &lt;span style="color:#f92672">=&lt;/span> sdb&lt;span style="color:#f92672">.&lt;/span>create_domain(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> DomainName&lt;span style="color:#f92672">=&lt;/span>domain
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(response)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> response &lt;span style="color:#f92672">=&lt;/span> sdb&lt;span style="color:#f92672">.&lt;/span>list_domains(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#34;Current domains: &lt;/span>&lt;span style="color:#e6db74">%s&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#f92672">%&lt;/span> response[&lt;span style="color:#e6db74">&amp;#39;DomainNames&amp;#39;&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> put_attributes(sdb, domain, &lt;span style="color:#e6db74">&amp;#34;id1&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;red&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> put_attributes(sdb, domain, &lt;span style="color:#e6db74">&amp;#34;id2&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;redblue&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> put_attributes(sdb, domain, &lt;span style="color:#e6db74">&amp;#34;id3&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;blue&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> response &lt;span style="color:#f92672">=&lt;/span> sdb&lt;span style="color:#f92672">.&lt;/span>select(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SelectExpression&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;select * from &lt;/span>&lt;span style="color:#e6db74">%s&lt;/span>&lt;span style="color:#e6db74"> where color like &amp;#34;&lt;/span>&lt;span style="color:#e6db74">%%%s%%&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&amp;#39;&lt;/span> &lt;span style="color:#f92672">%&lt;/span> (domain, quote(&lt;span style="color:#e6db74">&amp;#39;blue&amp;#39;&lt;/span>)),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(response)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> response &lt;span style="color:#f92672">=&lt;/span> sdb&lt;span style="color:#f92672">.&lt;/span>delete_domain(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> DomainName&lt;span style="color:#f92672">=&lt;/span>domain
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(response)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

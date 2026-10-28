@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cloudformation on</title><link>https://gliptak.github.io/pr-preview/pr-14/tags/cloudformation/</link><description>Recent content in Cloudformation on</description><generator>Hugo</generator><language>en-us</language><copyright>&amp;copy; 2016-2026 Gábor Lipták</copyright><lastBuildDate>Sat, 03 Jul 2021 16:50:49 +0000</lastBuildDate><atom:link href="https://gliptak.github.io/pr-preview/pr-14/tags/cloudformation/index.xml" rel="self" type="application/rss+xml"/><item><title>AWS CloudFormation Starter/`null` Template</title><link>https://gliptak.github.io/pr-preview/pr-14/post/aws_cloudformation_starter/</link><pubDate>Sat, 03 Jul 2021 16:50:49 +0000</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/aws_cloudformation_starter/</guid><description>&lt;p>If the CloudFormation create has an error, the CloudFormation doesn&amp;rsquo;t roll back so it has to be deleted and recreated. To avoid multiple initial create/delete, the best approach is to use a &lt;code>null&lt;/code> CloudFormation. An example is below:&lt;/p>
+&lt;pre tabindex="0">&lt;code>AWSTemplateFormatVersion: 2010-09-09
+Description: CloudFormation Starter
+
+Conditions:
+ Never: !Equals [ a, b ]
+
+Resources:
+ NullResource:
+ Type: Custom::Null
+ Condition: Never
+&lt;/code>&lt;/pre></description></item><item><title>AWS Cloudformation Referencing AMIs Using SSM Parameter Store</title><link>https://gliptak.github.io/pr-preview/pr-14/post/aws_ssm_ami/</link><pubDate>Wed, 11 Sep 2019 21:32:25 -0400</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/aws_ssm_ami/</guid><description>&lt;p>When AWS infrastructure configured in &amp;ldquo;traditional&amp;rdquo; compute/storage/network style, identifying, referencing and patching AMIs in all regions in use is crucial. Cloudformation has a way to redirect AMI references through SSM Parameter Store.&lt;/p>
+&lt;p>This represents a tradeoff, as recreating the Cloudformation stack might pickup the next (patched) AMI hence it is no longer immutable. But resulting state is similar to externally patched Linux/Windows images which also cannot be recreated by simply redeploying Cloudformation.&lt;/p></description></item></channel></rss>

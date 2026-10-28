@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Github on</title><link>https://gliptak.github.io/pr-preview/pr-14/tags/github/</link><description>Recent content in Github on</description><generator>Hugo</generator><language>en-us</language><copyright>&amp;copy; 2016-2026 Gábor Lipták</copyright><lastBuildDate>Sun, 11 Sep 2022 23:07:14 +0000</lastBuildDate><atom:link href="https://gliptak.github.io/pr-preview/pr-14/tags/github/index.xml" rel="self" type="application/rss+xml"/><item><title>Github Add/Update/Delete File(s) on Branch with GraphQL</title><link>https://gliptak.github.io/pr-preview/pr-14/post/github_graphql_branchfile/</link><pubDate>Sun, 11 Sep 2022 23:07:14 +0000</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/github_graphql_branchfile/</guid><description>&lt;p>In &lt;code>input&lt;/code> contents is &lt;code>base64&lt;/code> encoded and &lt;code>expectedHeadOid&lt;/code> must match with last commit on branch referenced and operation will fails on mismatch:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;input&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;branch&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;repositoryNameWithOwner&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;gliptak/githubapitest1&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;branchName&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;my_branch&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;message&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;headline&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;Hello from GraphQL!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;fileChanges&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;additions&amp;#34;&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;path&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;graphql.txt&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;contents&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;SGVsbG8gZnJvbSBHcmFwaFFMIQo=&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;deletions&amp;#34;&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;path&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;README.md&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;expectedHeadOid&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;74512c01ecaec77e38497d448d391065c07ce973&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Mutation below updates branch with fileChanges listed:&lt;/p></description></item><item><title>Github Create Branch with GraphQL</title><link>https://gliptak.github.io/pr-preview/pr-14/post/github_graphql_newbranch/</link><pubDate>Sun, 11 Sep 2022 20:10:44 +0000</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/github_graphql_newbranch/</guid><description>&lt;p>First gather some context:&lt;/p>
+&lt;pre tabindex="0">&lt;code>{
+ repository(owner: &amp;#34;gliptak&amp;#34;, name: &amp;#34;githubapitest1&amp;#34;) {
+ id
+ defaultBranchRef {
+ name
+ target {
+ oid
+ }
+ }
+ }
+}
+&lt;/code>&lt;/pre>&lt;p>Substitute &lt;code>repositoryId&lt;/code> and &lt;code>oid&lt;/code> from above and use the name of the to be created branch:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;input&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;clientMutationId&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;1234&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;refs/heads/&amp;lt;BRANCH_NAME&amp;gt;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;oid&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;lt;OID&amp;gt;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;repositoryId&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;lt;REPOSITORY_ID&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;pre tabindex="0">&lt;code>mutation AddBranch($input: CreateRefInput!) {
+ createRef(input: $input) {
+ ref {
+ name
+ }
+ clientMutationId
+ }
+}
+&lt;/code>&lt;/pre>&lt;p>Success returns&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;data&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;createRef&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;ref&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;my_branch&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;clientMutationId&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;1234&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>And in case of error, relevant details are returned&lt;/p></description></item><item><title>Github List Files Recursively with GraphQL</title><link>https://gliptak.github.io/pr-preview/pr-14/post/github_graphql_repofiles/</link><pubDate>Sun, 11 Sep 2022 16:56:52 +0000</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/github_graphql_repofiles/</guid><description>&lt;p>At this point GraphQL doesn&amp;rsquo;t seem to provide the right constructs to list files folders of unconstrained depth. Instead, users will make multiple calls into the API. So let&amp;rsquo;s get started:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;owner&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;gliptak&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;aws-cdk-python&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;rev&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;pre tabindex="0">&lt;code>query DefaultBranch($owner: String!, $name: String!) {
+ repository(owner: $owner, name: $name) {
+ name
+ defaultBranchRef {
+ name
+ }
+ }
+}
+&lt;/code>&lt;/pre>&lt;p>returns&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;data&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;repository&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;aws-cdk-python&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;defaultBranchRef&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;master&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Subtitute the default branch from above into the query variables with &lt;code>:&lt;/code> appended (&lt;code>master:&lt;/code> for our example or other syntax &lt;code>HEAD:&lt;/code>) and run:&lt;/p></description></item><item><title>Github List Repositories Paginated with GraphQL</title><link>https://gliptak.github.io/pr-preview/pr-14/post/github_graphql_repolist/</link><pubDate>Sun, 11 Sep 2022 02:42:42 +0000</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/github_graphql_repolist/</guid><description>&lt;p>One of the Github GraphQL operations supporting &lt;a href="https://graphql.org/learn/pagination/">pagination&lt;/a> is searching/listing repositories. Below queries utilize &lt;code>query variables&lt;/code> running in &lt;a href="https://docs.github.com/en/graphql/overview/explorer">GitHub&amp;rsquo;s GraphQL Explorer&lt;/a>.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;query&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;org:gliptak is:all&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;pageSzie&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">2&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;after&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Below setup has 2 for pagination size for demonstration purposes, larger window to be used in real queries. The initial query:&lt;/p>
+&lt;pre tabindex="0">&lt;code>query ListRepos($query: String!, $pageSize: Int!) {
+ search(query: $query, type: REPOSITORY, first: $pageSize) {
+ edges {
+ node {
+ ... on Repository {
+ name
+ defaultBranchRef {
+ name
+ }
+ }
+ }
+ }
+ pageInfo {
+ startCursor
+ endCursor
+ hasNextPage
+ }
+ }
+}
+&lt;/code>&lt;/pre>&lt;p>returns repo details and cursor values:&lt;/p></description></item><item><title>Github Create Pull Request with GraphQL</title><link>https://gliptak.github.io/pr-preview/pr-14/post/github_graphql_newpr/</link><pubDate>Sun, 12 Dec 2021 20:32:51 +0000</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/github_graphql_newpr/</guid><description>&lt;p>GraphQL API allows for query and mutation (update) operations which can be executed in &lt;a href="https://docs.github.com/en/graphql/overview/explorer">GitHub&amp;rsquo;s GraphQL Explorer&lt;/a>. Below example creates a PR. First, find the repository id:&lt;/p>
+&lt;pre tabindex="0">&lt;code>{
+ repository(owner: &amp;#34;gliptak&amp;#34;, name: &amp;#34;githubapitest1&amp;#34;) {
+ id
+ }
+}
+&lt;/code>&lt;/pre>&lt;p>The repository id returned to be used to create the pull request:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;data&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;repository&amp;#34;&lt;/span>: {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;id&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;R_kgDOGS1otA&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The mutation (update) creates a new PR from an existing branch (additional details could have been submitted):&lt;/p></description></item><item><title>Github GraphQL Example</title><link>https://gliptak.github.io/pr-preview/pr-14/post/github_graphql_example/</link><pubDate>Sun, 31 Oct 2021 16:18:41 +0000</pubDate><guid>https://gliptak.github.io/pr-preview/pr-14/post/github_graphql_example/</guid><description>&lt;p>While Github GraphQL offers detailed &lt;a href="https://docs.github.com/en/graphql">documentation and an API Explorer&lt;/a>, it doesn&amp;rsquo;t have (Python) code samples. Below is a basic &lt;a href="https://github.com/graphql-python/gql">GQL&lt;/a> example. The query can be developed/tested in &lt;a href="https://docs.github.com/en/graphql/overview/explorer">Explorer&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> gql &lt;span style="color:#f92672">import&lt;/span> gql, Client
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> gql.transport.requests &lt;span style="color:#f92672">import&lt;/span> RequestsHTTPTransport
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> click
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@click.command&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@click.option&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;--githubtoken&amp;#39;&lt;/span>, envvar&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;GITHUB_TOKEN&amp;#34;&lt;/span>, prompt&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">True&lt;/span>, hide_input&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">True&lt;/span>, help&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;Github token&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@click.option&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;--owner&amp;#39;&lt;/span>, help&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;Repository owner&amp;#39;&lt;/span>, required&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">True&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@click.option&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;--repository&amp;#39;&lt;/span>, help&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;Repository name&amp;#39;&lt;/span>, required&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">True&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">gh_query_repo&lt;/span>(githubtoken, owner, repository):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> transport&lt;span style="color:#f92672">=&lt;/span>RequestsHTTPTransport(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> url&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;https://api.github.com/graphql&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> use_json&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">True&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> headers&lt;span style="color:#f92672">=&lt;/span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;Authorization&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">f&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Bearer &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>githubtoken&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">#verify=False,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> retries&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> client &lt;span style="color:#f92672">=&lt;/span> Client(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> transport&lt;span style="color:#f92672">=&lt;/span>transport,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> fetch_schema_from_transport&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">True&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> query_repo &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> query Repository($owner: String!, $repo: String!) {
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> repository(name: $repo, owner: $owner) {
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> id
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> }
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> }
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;#39;&amp;#39;&amp;#39;&lt;/span> &lt;span style="color:#f92672">//&lt;/span> [&lt;span style="color:#f92672">^&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> result &lt;span style="color:#f92672">=&lt;/span> client&lt;span style="color:#f92672">.&lt;/span>execute(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> gql(query_repo),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> variable_values&lt;span style="color:#f92672">=&lt;/span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;owner&amp;#34;&lt;/span>: owner,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;repo&amp;#34;&lt;/span>: repository,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> repositoryId &lt;span style="color:#f92672">=&lt;/span> result[&lt;span style="color:#e6db74">&amp;#39;repository&amp;#39;&lt;/span>][&lt;span style="color:#e6db74">&amp;#39;id&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(repositoryId)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> __name__ &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;__main__&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> gh_query_repo()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
