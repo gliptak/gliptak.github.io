@@ -627,10 +627,10 @@ from gql import gql, Client from gql.transport.requests import RequestsHTTPTrans
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> click
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@click</span><span style="color:#f92672">.</span>command()
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@click</span><span style="color:#f92672">.</span>option(<span style="color:#e6db74">&#39;--githubtoken&#39;</span>, envvar<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;GITHUB_TOKEN&#34;</span>, prompt<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, hide_input<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Github token&#39;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@click</span><span style="color:#f92672">.</span>option(<span style="color:#e6db74">&#39;--owner&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Repository owner&#39;</span>, required<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@click</span><span style="color:#f92672">.</span>option(<span style="color:#e6db74">&#39;--repository&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Repository name&#39;</span>, required<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@click.command</span>()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@click.option</span>(<span style="color:#e6db74">&#39;--githubtoken&#39;</span>, envvar<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;GITHUB_TOKEN&#34;</span>, prompt<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, hide_input<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Github token&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@click.option</span>(<span style="color:#e6db74">&#39;--owner&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Repository owner&#39;</span>, required<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@click.option</span>(<span style="color:#e6db74">&#39;--repository&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Repository name&#39;</span>, required<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gh_query_repo</span>(githubtoken, owner, repository):
 </span></span><span style="display:flex;"><span>    transport<span style="color:#f92672">=</span>RequestsHTTPTransport(
 </span></span><span style="display:flex;"><span>        url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;https://api.github.com/graphql&#39;</span>,
@@ -973,7 +973,7 @@ from gql import gql, Client from gql.transport.requests import RequestsHTTPTrans
   
 
   <p class="powered-by">
-    © 2016-2022 Gábor Lipták &middot; 
+    © 2016-2026 Gábor Lipták &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for

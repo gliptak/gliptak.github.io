@@ -629,13 +629,13 @@ allows tailing logs generated on container volumes.</p>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">counter</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">busybox</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: |<span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      </span>      <span style="color:#ae81ff">/bin/sh -c &#39;i=0; while true; do echo &#34;$$(date) WARN $$i&#34; &gt;&gt; /var/log/1.log; echo &#34;$$(date) INFO $$i&#34; &gt;&gt; /var/log/2.log; i=$$((i+1)); sleep 5; done&#39;</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      /bin/sh -c &#39;i=0; while true; do echo &#34;$$(date) WARN $$i&#34; &gt;&gt; /var/log/1.log; echo &#34;$$(date) INFO $$i&#34; &gt;&gt; /var/log/2.log; i=$$((i+1)); sleep 5; done&#39;</span>      
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
 </span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">log-volume:/var/log</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">counter-log</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">busybox</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">command</span>: |<span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      </span>      <span style="color:#ae81ff">/bin/sh -c &#39;tail -n+1 -F /var/log/*.log&#39;</span>
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      /bin/sh -c &#39;tail -n+1 -F /var/log/*.log&#39;</span>      
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
 </span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">log-volume:/var/log</span>
 </span></span><span style="display:flex;"><span>
@@ -980,7 +980,7 @@ allows tailing logs generated on container volumes.</p>
   
 
   <p class="powered-by">
-    © 2016-2022 Gábor Lipták &middot; 
+    © 2016-2026 Gábor Lipták &middot; 
 
     Powered by the
     <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
