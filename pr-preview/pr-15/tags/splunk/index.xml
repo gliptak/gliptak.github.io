@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Splunk |</title><link>https://gliptak.github.io/pr-preview/pr-15/tags/splunk/</link><atom:link href="https://gliptak.github.io/pr-preview/pr-15/tags/splunk/index.xml" rel="self" type="application/rss+xml"/><description>Splunk</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2026 Gábor Lipták</copyright><lastBuildDate>Sat, 31 Oct 2020 11:17:30 -0400</lastBuildDate><image><url>https://gliptak.github.io/pr-preview/pr-15/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url><title>Splunk</title><link>https://gliptak.github.io/pr-preview/pr-15/tags/splunk/</link></image><item><title>Splunk custom input with session</title><link>https://gliptak.github.io/pr-preview/pr-15/post/splunk_custom_input_session/</link><pubDate>Sat, 31 Oct 2020 11:17:30 -0400</pubDate><guid>https://gliptak.github.io/pr-preview/pr-15/post/splunk_custom_input_session/</guid><description>&lt;p>&lt;code>Splunk&lt;/code> can be extended with custom inputs written in &lt;code>Python&lt;/code>. In order to connect to &lt;code>Splunk&lt;/code> services, code has to be configured and use a session token. Here is a basic setup emitting records with &lt;code>kvstore&lt;/code> names&lt;/p>
+&lt;pre tabindex="0">&lt;code>#!/usr/bin/env python
+import splunklib.client as client
+import sys
+import datetime as dt
+def generate(session_key):
+service = client.connect(token = session_key)
+for collection in service.kvstore:
+ts = dt.datetime.now(tz=dt.timezone.utc).isoformat()
+print(f&amp;#39;{ts}, collection=&amp;#34;{collection.name}&amp;#34;&amp;#39;)
+if __name__ == &amp;#34;__main__&amp;#34;:
+session_key = sys.stdin.read()
+generate(session_key)
+&lt;/code>&lt;/pre>&lt;p>and the corresponding &lt;code>default/inputs.conf&lt;/code>&lt;/p>
+&lt;pre tabindex="0">&lt;code>[script://./bin/listkvstores.py]
+interval = 300
+disabled = False
+passAuth = nobody
+&lt;/code>&lt;/pre>&lt;p>&lt;code>kvstore&lt;/code> access uses user &lt;code>nobody&lt;/code>, other &lt;code>Splunk&lt;/code> services might need a different user configured.&lt;/p></description></item></channel></rss>

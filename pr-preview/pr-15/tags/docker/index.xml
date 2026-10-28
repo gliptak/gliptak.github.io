@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker |</title><link>https://gliptak.github.io/pr-preview/pr-15/tags/docker/</link><atom:link href="https://gliptak.github.io/pr-preview/pr-15/tags/docker/index.xml" rel="self" type="application/rss+xml"/><description>Docker</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© 2016-2026 Gábor Lipták</copyright><lastBuildDate>Sat, 23 Apr 2022 01:50:53 +0000</lastBuildDate><image><url>https://gliptak.github.io/pr-preview/pr-15/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url><title>Docker</title><link>https://gliptak.github.io/pr-preview/pr-15/tags/docker/</link></image><item><title>Docker Compose Tailing of Log Files</title><link>https://gliptak.github.io/pr-preview/pr-15/post/docker_compose_logs/</link><pubDate>Sat, 23 Apr 2022 01:50:53 +0000</pubDate><guid>https://gliptak.github.io/pr-preview/pr-15/post/docker_compose_logs/</guid><description>&lt;h2 id="docker-compose-logs">Docker Compose Logs&lt;/h2>
+&lt;p>&lt;code>docker compose logs&lt;/code> aggregates &lt;code>stdout&lt;/code> of containers started with no out-of-the-box
+capability for aggregating additional logs generated on container filesystems.
+Implementing
+&lt;a href="https://kubernetes.io/docs/concepts/cluster-administration/logging/#using-a-sidecar-container-with-the-logging-agent" target="_blank" rel="noopener">sidecar&lt;/a>
+allows tailing logs generated on container volumes.&lt;/p>
+&lt;h2 id="docker-composeyaml">&lt;code>docker-compose.yaml&lt;/code>&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">services&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">counter&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">image&lt;/span>: &lt;span style="color:#ae81ff">busybox&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">command&lt;/span>: |&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> /bin/sh -c &amp;#39;i=0; while true; do echo &amp;#34;$$(date) WARN $$i&amp;#34; &amp;gt;&amp;gt; /var/log/1.log; echo &amp;#34;$$(date) INFO $$i&amp;#34; &amp;gt;&amp;gt; /var/log/2.log; i=$$((i+1)); sleep 5; done&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">log-volume:/var/log&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">counter-log&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">image&lt;/span>: &lt;span style="color:#ae81ff">busybox&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">command&lt;/span>: |&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> /bin/sh -c &amp;#39;tail -n+1 -F /var/log/*.log&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">log-volume:/var/log&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">volumes&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">log-volume&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">counter-log-volume&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="running">Running&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>➜ docker compose up
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>+&lt;span style="color:#f92672">]&lt;/span> Running 4/4
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ⠿ Network 202204_docker_default Created 0.1s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ⠿ Volume &lt;span style="color:#e6db74">&amp;#34;counter-log-volume&amp;#34;&lt;/span> Created 0.0s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ⠿ Container 202204_docker-counter-log-1 Created 0.1s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ⠿ Container 202204_docker-counter-1 Created 0.1s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Attaching to 202204_docker-counter-1, 202204_docker-counter-log-1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>202204_docker-counter-log-1 | &lt;span style="color:#f92672">==&lt;/span>&amp;gt; /var/log/1.log &amp;lt;&lt;span style="color:#f92672">==&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>202204_docker-counter-log-1 | Sat Apr &lt;span style="color:#ae81ff">23&lt;/span> 01:37:03 UTC &lt;span style="color:#ae81ff">2022&lt;/span> WARN &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>202204_docker-counter-log-1 |
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>202204_docker-counter-log-1 | &lt;span style="color:#f92672">==&lt;/span>&amp;gt; /var/log/2.log &amp;lt;&lt;span style="color:#f92672">==&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>202204_docker-counter-log-1 | Sat Apr &lt;span style="color:#ae81ff">23&lt;/span> 01:37:03 UTC &lt;span style="color:#ae81ff">2022&lt;/span> INFO &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>202204_docker-counter-log-1 |
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>202204_docker-counter-log-1 | &lt;span style="color:#f92672">==&lt;/span>&amp;gt; /var/log/1.log &amp;lt;&lt;span style="color:#f92672">==&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>202204_docker-counter-log-1 | Sat Apr &lt;span style="color:#ae81ff">23&lt;/span> 01:37:08 UTC &lt;span style="color:#ae81ff">2022&lt;/span> WARN &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>202204_docker-counter-log-1 |
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>202204_docker-counter-log-1 | &lt;span style="color:#f92672">==&lt;/span>&amp;gt; /var/log/2.log &amp;lt;&lt;span style="color:#f92672">==&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>202204_docker-counter-log-1 | Sat Apr &lt;span style="color:#ae81ff">23&lt;/span> 01:37:08 UTC &lt;span style="color:#ae81ff">2022&lt;/span> INFO &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>^C
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="cleanup">Cleanup&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker compose down
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>docker volume rm counter-log-volume
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Packaging AWS Lambda functions with large dependencies as containers</title><link>https://gliptak.github.io/pr-preview/pr-15/post/aws_lambda_container/</link><pubDate>Sun, 27 Jun 2021 01:47:41 -0400</pubDate><guid>https://gliptak.github.io/pr-preview/pr-15/post/aws_lambda_container/</guid><description>&lt;p>While the actual application code for many lambda functions might be small, in many (data science) usecases libraries used and to be packaged together push over the deployment package limit of 50 MB compressed. Container packaging to the rescue.&lt;/p>
+&lt;p>A sample &lt;code>Dockerfile&lt;/code> installing
+&lt;a href="https://github.com/aws/sagemaker-python-sdk" target="_blank" rel="noopener">SageMaker Python SDK&lt;/a>&lt;/p>
+&lt;pre tabindex="0">&lt;code>ARG WORK_DIR=&amp;#34;/home/app/&amp;#34;
+FROM public.ecr.aws/lambda/python:3.8
+ARG WORK_DIR
+RUN pip install wheel sagemaker
+COPY main.py .
+WORKDIR ${WORK_DIR}
+CMD [&amp;#34;main.handler&amp;#34;]
+&lt;/code>&lt;/pre>&lt;p>and corresponding &lt;code>main.py&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> sagemaker
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> sys
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">handler&lt;/span>(event, context):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(sys&lt;span style="color:#f92672">.&lt;/span>version)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">f&lt;/span>&lt;span style="color:#e6db74">&amp;#34;sagemaker &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>sagemaker&lt;span style="color:#f92672">.&lt;/span>__version__&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#39;success&amp;#39;&lt;/span>: &lt;span style="color:#66d9ef">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>As an added bonus, above image can be built and tested locally:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker build -t sagemaker-python-sdk-demo:latest .
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>curl -XPOST &lt;span style="color:#e6db74">&amp;#34;http://localhost:9002/2015-03-31/functions/function/invocations&amp;#34;&lt;/span> -d &lt;span style="color:#e6db74">&amp;#39;{}&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">{&lt;/span>&lt;span style="color:#e6db74">&amp;#34;success&amp;#34;&lt;/span>: true&lt;span style="color:#f92672">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker run --rm -p 9002:8080 sagemaker-python-sdk-demo:latest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>time&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;2021-06-28T02:12:34.914&amp;#34;&lt;/span> level&lt;span style="color:#f92672">=&lt;/span>info msg&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;exec &amp;#39;/var/runtime/bootstrap&amp;#39; (cwd=/home/app, handler=)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>time&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;2021-06-28T02:13:21.485&amp;#34;&lt;/span> level&lt;span style="color:#f92672">=&lt;/span>info msg&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;extensionsDisabledByLayer(/opt/disable-extensions-jwigqn8j) -&amp;gt; stat /opt/disable-extensions-jwigqn8j: no such file or directory&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>time&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;2021-06-28T02:13:21.485&amp;#34;&lt;/span> level&lt;span style="color:#f92672">=&lt;/span>warning msg&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Cannot list external agents&amp;#34;&lt;/span> error&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;open /opt/extensions: no such file or directory&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>START RequestId: 0265665a-d04e-4f29-b87d-472f3e7001ae Version: $LATEST
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>3.8.10 &lt;span style="color:#f92672">(&lt;/span>default, Jun &lt;span style="color:#ae81ff">21&lt;/span> 2021, 07:32:26&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>GCC 7.3.1 &lt;span style="color:#ae81ff">20180712&lt;/span> &lt;span style="color:#f92672">(&lt;/span>Red Hat 7.3.1-12&lt;span style="color:#f92672">)]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sagemaker 2.47.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>END RequestId: 0265665a-d04e-4f29-b87d-472f3e7001ae
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>REPORT RequestId: 0265665a-d04e-4f29-b87d-472f3e7001ae Init Duration: 0.45 ms Duration: 1025.09 ms Billed Duration: &lt;span style="color:#ae81ff">1100&lt;/span> ms Memory Size: &lt;span style="color:#ae81ff">3008&lt;/span> MB Max Memory Used: &lt;span style="color:#ae81ff">3008&lt;/span> MB
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;blockquote>
+&lt;p>Note the memory consumed above&lt;/p>
+&lt;/blockquote>
+&lt;/blockquote>
+&lt;p>Review
+&lt;a href="https://docs.aws.amazon.com/lambda/latest/dg/images-create.html" target="_blank" rel="noopener">Amazon ECR Registry upload&lt;/a> and
+&lt;a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-images.html" target="_blank" rel="noopener">deployment&lt;/a> documentation&lt;/p></description></item><item><title>Running Jupyterhub Docker</title><link>https://gliptak.github.io/pr-preview/pr-15/post/jupyterhub_docker/</link><pubDate>Sat, 19 Dec 2020 17:07:05 -0400</pubDate><guid>https://gliptak.github.io/pr-preview/pr-15/post/jupyterhub_docker/</guid><description>&lt;p>&lt;code>Jupyterhub&lt;/code> doesn&amp;rsquo;t seem to have complete instructions available on simply running an instance under Docker with a number of issues, Stackoverflow questions asking for clarifications. These are my quick notes:&lt;/p>
+&lt;p>As the Docker image name indicates, this is
+&lt;a href="https://hub.docker.com/r/jupyterhub/singleuser" target="_blank" rel="noopener">singleuser&lt;/a> instance preconfigured for user &lt;code>jovyan&lt;/code>. Run below command in directory with your notebooks&lt;/p>
+&lt;pre tabindex="0">&lt;code>docker run --rm -p 8000:8000 -d -v `pwd`:/home/jovyan/work --name jupyterhub jupyterhub/singleuser jupyterhub
+&lt;/code>&lt;/pre>&lt;p>There doesn&amp;rsquo;t seem to be (default) password set for &lt;code>jovyan&lt;/code> user, so at this point you cannot login into the GUI. Set password for &lt;code>jovyan&lt;/code>&lt;/p>
+&lt;pre tabindex="0">&lt;code>docker exec --user root -it jupyterhub bash
+# passwd jovyan
+New password:
+Retype new password:
+passwd: password updated successfully
+# exit
+exit
+&lt;/code>&lt;/pre>&lt;blockquote>
+&lt;p>ℹ️ Above shell command can also be used to install system packages and pip install Python libraries. Please note that additional installs will not persist beyond stopping this current instance&lt;/p>
+&lt;/blockquote>
+&lt;p>After completing above steps, login to &lt;code>Jupyterhub&lt;/code> at
+&lt;a href="http://localhost:8000/user/jovyan/tree/work" target="_blank" rel="noopener">http://localhost:8000/user/jovyan/tree/work&lt;/a>&lt;/p>
+&lt;p>To cleanup running instance&lt;/p>
+&lt;pre tabindex="0">&lt;code>docker stop jupyterhub
+&lt;/code>&lt;/pre></description></item></channel></rss>
